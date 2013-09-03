@@ -14,9 +14,14 @@
 class GameHUD : public cocos2d::CCLayer ,public cocos2d:: extension::CCScrollViewDelegate{
 public:
 	~GameHUD();
+    
 	bool init();
     void resetHUD();
     void backToMain();
+    void pauseGame(cocos2d::CCObject* psender);
+    void resumeGame(cocos2d::CCObject* psender);
+    void speedUp(cocos2d::CCObject* psender);
+    void setSpeed(int val);
 	bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
@@ -35,7 +40,9 @@ public:
     virtual void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
     
     cocos2d::extension::CCScrollView* tScrollView;
+    CC_SYNTHESIZE(bool, ispause, IsPause);
 protected:
+    
 	cocos2d::CCSprite* background;
 	cocos2d::CCSprite* selSpriteRange;
 	cocos2d::CCSprite* selSprite;

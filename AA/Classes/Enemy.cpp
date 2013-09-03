@@ -206,7 +206,7 @@ CCAnimate * Enemy::BoomReady(){
     //根据4幅帧生成ＣＣＡnimation对象
     CCAnimation *animation=CCAnimation::createWithSpriteFrames(animFrames);
     //创建一个CCSprite用来显示勇士，可以使用Animation中的一帧来作为勇士静止时的画面
-    actionSprite=CCSprite::createWithSpriteFrame(frame0);
+    setActionSprite(CCSprite::createWithSpriteFrame(frame0));
     actionSprite->setPosition(CCPointMake(0, 0));
     actionSprite->setScale(0.3);
     addChild(actionSprite);
@@ -216,6 +216,7 @@ CCAnimate * Enemy::BoomReady(){
     return animate;
 }
 void Enemy::boomNow(){
+    if (!hasRemoved)
     actionSprite->removeFromParentAndCleanup(true);
 }
 
@@ -249,11 +250,11 @@ void Enemy::enemyLogic(float dt){
 	}
     
 	if(this->getHP() <= 0){
-		unscheduleAllSelectors();
+		
         
 		gm->getGameHUDLayer()->updateResources(5);
         
-		this->stopAllActions();
+		
 		auto deadAction = CCBlink::create(1.0f, 5);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         
@@ -400,6 +401,7 @@ void Enemy::moveToTarget(){
 void Enemy::removeSelf(){
 	if(hasRemoved)
 		return;
+    unscheduleAllSelectors();
     this->stopAllActions();
     this->removeFromParentAndCleanup(true);
 	hasRemoved = true;

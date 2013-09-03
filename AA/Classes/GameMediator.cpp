@@ -36,6 +36,7 @@ bool GameMediator::init(){
 	do
 	{
         setCurMapID(0);
+        nowSpeed = 1;
 		_gameLayer = NULL;
 		_gameHUDLayer = NULL;
         

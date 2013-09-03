@@ -12,13 +12,14 @@
 #include "cocos2d.h"
 #include "MainLayer.h"
 #include "GameHUD.h"
-
+#define maxSpeed 3
 class GameMediator : public cocos2d::CCObject {
 public:
 	~GameMediator();
 	bool init();
     void clear();
 	static GameMediator* sharedMediator();
+    int nowSpeed;
     
 	CC_SYNTHESIZE_RETAIN(MainLayer*, _gameLayer, GameLayer);
 	CC_SYNTHESIZE_RETAIN(GameHUD*, _gameHUDLayer, GameHUDLayer);

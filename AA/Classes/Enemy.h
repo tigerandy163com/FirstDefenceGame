@@ -37,6 +37,7 @@ public:
     void IamAimed(bool aimed);
     cocos2d::CCSprite *aim;
     CC_SYNTHESIZE(bool, hasRemoved, HasRemoved);
+    CC_SYNTHESIZE_RETAIN(cocos2d::CCSprite*, actionSprite, ActionSprite);
     cocos2d::CCAnimate *animate;
 protected:
 	cocos2d::CCSprite* sprite;
@@ -48,7 +49,7 @@ protected:
     cocos2d::CCAnimation *createAnimationByDirection(HeroDirection direction);
 	cocos2d::CCAnimate* BoomReady();
     void boomNow();
-    cocos2d::CCSprite* actionSprite;
+    
 	TileData* pre;
     
 	void timer(float dt);

@@ -83,7 +83,7 @@ bool MainLayer::init()
 		createTileMap();
         
 		gameHUD = GameHUD::sharedHUD();
-        
+         
 		currentLevel = 0;
 		addWaves();
         
@@ -502,6 +502,8 @@ void MainLayer::addWaves(){
 	wave = Wave::create(1.2f, 40, 60);
 	m->getWaves()->addObject(wave);
 	wave = NULL;
+    
+    wave =(Wave*) m->getWaves()->objectAtIndex(0);
 }
 
 Wave* MainLayer::getCurrentWave(){
@@ -620,8 +622,8 @@ void MainLayer::strikeLight(float dt){
 	l->strikeRandom();
 }
 void MainLayer::onExit(){
-//    GameMediator* gm = GameMediator::sharedMediator();
-//    gm->clear();
+    GameMediator* gm = GameMediator::sharedMediator();
+    gm->clear();
     GameHUD* hud = gameHUD->sharedHUD();
     hud->resetHUD();
 }

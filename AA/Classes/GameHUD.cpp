@@ -117,21 +117,117 @@ bool GameHUD::init(){
 		healthBar->setPosition(ccp(winSize.width -55, winSize.height -15));
 		this->addChild(healthBar);
         CCMenuItemFont *back = CCMenuItemFont::create("back", this, menu_selector(GameHUD::backToMain));
-        back->setColor(ccRED);
+        
         back->setPosition(CCPointZero);
-        back->setFontSizeObj(30);
+        back->setFontSizeObj(20);
+        CCMenuItemFont *pause = CCMenuItemFont::create("stop", this, menu_selector(GameHUD::pauseGame));
+       
+        pause->setPosition(CCPointZero);
+        pause->setFontSizeObj(20);
+        
+        CCMenuItemFont *speed = CCMenuItemFont::create("x1", this, menu_selector(GameHUD::speedUp));
+        
+        speed->setPosition(CCPointZero);
+        speed->setFontSizeObj(20);
         
         CCMenu *menu1 = CCMenu::create(back,NULL);
-        menu1->setPosition(ccp(winSize.width -55, winSize.height -35));
+        menu1->setColor(ccRED);
+        menu1->setPosition(ccp(winSize.width -150, winSize.height -35));
         this->addChild(menu1);
         
+        CCMenu* menu2 = CCMenu::create(pause,NULL);
+        menu2->setColor(ccBLUE);
+        menu2->setPosition(ccp(winSize.width - 100,winSize.height-35));
+        menu2->setTag(100);
+        this->addChild(menu2);
+        
+        CCMenu* menu3 = CCMenu::create(speed,NULL);
+        menu3->setColor(ccGREEN);
+        menu3->setPosition(ccp(winSize.width - 50,winSize.height-35));
+        menu3->setTag(101);
+        this->addChild(menu3);
 		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0 , true);
         
 		bRet = true;
 	} while (0);
 	return bRet;
 }
+void GameHUD::pauseGame(cocos2d::CCObject* psender){
+    if (getIsPause()) {
+        return;
+    }
+    setIsPause(true);
+       CCMenu* menu =  (CCMenu*)this->getChildByTag(100);
+    
+    CCMenuItemFont *pause = CCMenuItemFont::create("resume", this, menu_selector(GameHUD::resumeGame));
+    
+    pause->setPosition(CCPointZero);
+    pause->setFontSizeObj(20);
+    CCMenu* menu2 = CCMenu::create(pause,NULL);
+    menu2->setColor(ccBLUE);
+    menu2->setPosition(menu->getPosition());
+    menu2->setTag(100);
+    
+    menu->removeFromParent();
+    this->addChild(menu2);
+    CCDirector::sharedDirector()->pause();
+    
+}
+void GameHUD::resumeGame(cocos2d::CCObject* psender){
+    if (!getIsPause()) {
+        return;
+    }
+    setIsPause(false);
+    CCMenu* menu =  (CCMenu*)this->getChildByTag(100);
+    
+    CCMenuItemFont *pause = CCMenuItemFont::create("stop", this, menu_selector(GameHUD::pauseGame));
+    
+    pause->setPosition(CCPointZero);
+    pause->setFontSizeObj(20);
+    CCMenu* menu2 = CCMenu::create(pause,NULL);
+    menu2->setColor(ccBLUE);
+    menu2->setPosition(menu->getPosition());
+    menu2->setTag(100);
+    
+    menu->removeFromParent();
+    this->addChild(menu2);
+    CCDirector::sharedDirector()->resume();
+}
+void GameHUD::speedUp(cocos2d::CCObject *psender){
+    static bool isshouldup = false;
+    
+    GameMediator* gm = GameMediator::sharedMediator();
+    if (gm->nowSpeed==1){
+        isshouldup = true;
+    }
+    if (gm->nowSpeed==maxSpeed) {
+        isshouldup = false;
+    }
+    if (gm->nowSpeed<maxSpeed&&isshouldup) {
+        gm->nowSpeed+=1;
+    }else if ( gm->nowSpeed>1&&!isshouldup){
+        gm->nowSpeed-=1;
+    }
+    setSpeed(gm->nowSpeed);
+}
+void GameHUD::setSpeed(int val){
+    CCMenu* menu = (CCMenu*)getChildByTag(101);
+    CCString *str = CCString::createWithFormat("x%d",val);
+    CCMenuItemFont *speed = CCMenuItemFont::create(str->getCString(), this, menu_selector(GameHUD::speedUp));
+    
+    speed->setPosition(CCPointZero);
+    speed->setFontSizeObj(20);
+    CCMenu* menu3 = CCMenu::create(speed,NULL);
+    menu3->setColor(ccGREEN);
+    menu3->setPosition(menu->getPosition());
+    menu3->setTag(101);
+    menu->removeFromParent();
+    this->addChild(menu3);
+}
 void GameHUD::backToMain(){
+    if (getIsPause()) {
+        resumeGame(NULL);
+    }
     CCScene *scene = StartScene::scene();
     CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(1, scene));
 }
@@ -242,6 +338,9 @@ void GameHUD::updateWaveCount(){
 }
 void GameHUD::resetHUD(){
     waveCount = 1;
+    GameMediator::sharedMediator()->nowSpeed = 1;
+    setSpeed(1);
+    resumeGame(NULL);
     waveCountLabel->setString(CCString::createWithFormat("Wave %d",waveCount)->getCString());
     resources = 300;
     resourceLabel->setString(CCString::createWithFormat("Money %d",resources)->getCString());
