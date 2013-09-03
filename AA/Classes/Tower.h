@@ -26,7 +26,7 @@ public:
 protected:
     cocos2d::CCSprite* actionSprite;
 	cocos2d::CCSprite* sprite;
-    
+    cocos2d::CCSprite* rangeSprite;
 	cocos2d::CCSprite* sprite1;
 	cocos2d::CCSprite* sprite2;
 	cocos2d::CCSprite* sprite3;

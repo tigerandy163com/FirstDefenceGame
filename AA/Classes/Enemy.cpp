@@ -62,8 +62,8 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
         
         animFrames->release();
 
-		
-		
+		actionSprite = CCSprite::createWithSpriteFrame(frame0);
+		actionSprite->retain();
 		this->setHP(hp);
 		this->setSpeed(speed);
         this->totalHP = hp;
@@ -181,10 +181,16 @@ void Enemy:: SetDemage(float val,bool isBoom){
     
     demageLab->runAction(CCSpawn::create(scale,fade,NULL));
     CCAnimate * animate = BoomReady();
+    if (animate==NULL) {
+        return;
+    }
     auto callfun = CCCallFunc::create(this,callfunc_selector(Enemy::boomNow));
     actionSprite->runAction(CCSequence::create(animate,callfun));
 }
 CCAnimate * Enemy::BoomReady(){
+    if (hasRemoved) {
+        return NULL;
+    }
     //将图片生成纹理，保存到全局的纹理缓存取
     CCTexture2D *heroTexture=CCTextureCache::sharedTextureCache()->addImage("003-Attack01.png");
     //用纹理创建4幅帧动画
@@ -253,8 +259,8 @@ void Enemy::enemyLogic(float dt){
 		
         
 		gm->getGameHUDLayer()->updateResources(5);
-        
-		
+        stopAllActions();
+		unscheduleAllSelectors();
 		auto deadAction = CCBlink::create(1.0f, 5);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         

@@ -32,7 +32,7 @@ public:
 	void updateResourcesNom();
 	void updateResources(int amount);
 	void updateWaveCount();
-    
+    float rangeScale(int towerID);
     
 	CC_SYNTHESIZE(int, resources, Resources);
 	CC_SYNTHESIZE(float, baseHpPercentage, BaseHpPercentage);

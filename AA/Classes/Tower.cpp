@@ -45,6 +45,14 @@ bool Tower::initWithFileAndRange(const char *pszFilename, int range){
         
 		this->setRange(range);
         
+        rangeSprite = CCSprite::create("Range.png");
+        float scale = range/100.0;
+        rangeSprite->setScale(scale);
+        rangeSprite->setVisible(false);
+        rangeSprite->setPosition(sprite->getPosition());
+        this->addChild(rangeSprite, -1);
+ 
+        
 		_target = NULL;
         
 		isShowing =false;
@@ -109,6 +117,7 @@ void Tower::towerLogic(float dt){
 }
 
 void Tower::show(){
+    CCActionInterval *fade = CCFadeIn::create(0.5f);
 	sprite1->runAction(CCMoveBy::create(0.5f, ccp(- sprite->getContentSize().width -10, 0)));
 	sprite1->setVisible(true);
     
@@ -120,9 +129,14 @@ void Tower::show(){
     
 	sprite4->runAction(CCMoveBy::create(0.5f, ccp(0, - sprite->getContentSize().height - 10)));
 	sprite4->setVisible(true);
+    
+    rangeSprite->setVisible(true);
+    
+    rangeSprite->runAction(CCSequence::create(fade, CCShow::create(),NULL));
 }
 
 void Tower::unShow(){
+    CCActionInterval *fade = CCFadeOut::create(0.5f);
 	sprite1->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
     
 	sprite2->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
@@ -131,6 +145,9 @@ void Tower::unShow(){
     
 	sprite4->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
 	
+    //rangeSprite->setVisible(false);
+    
+    rangeSprite->runAction(CCSequence::create(fade, CCHide::create(), NULL));
 }
 
 bool Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
@@ -177,7 +194,7 @@ MachineGunTower* MachineGunTower::create(const char *pszFilename, int range){
 }
 
 MachineGunTower* MachineGunTower::create(){
-	return MachineGunTower::create("MachineGunTurret.png", 200);
+	return MachineGunTower::create("MachineGunTurret.png", 100);
 }
 
 bool MachineGunTower::initWithFileAndRange(const char *pszFilename, int range){
@@ -318,7 +335,7 @@ CannonTower* CannonTower::create(const char *pszFilename, int range){
 }
 
 CannonTower* CannonTower::create(){
-	return CannonTower::create("CannonTurret.png", 100);
+	return CannonTower::create("CannonTurret.png", 200);
 }
 
 bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
@@ -394,7 +411,7 @@ Enemy* CannonTower::getClosestTarget(){
 }
 
 MutilTower* MutilTower::create(){
-    return  MutilTower::create("CannonTurret.png", 100);
+    return  MutilTower::create("CannonTurret.png", 200);
 }
 MutilTower* MutilTower::create(const char *pszFilename, int range){
     MutilTower *t = new MutilTower;

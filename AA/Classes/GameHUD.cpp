@@ -57,6 +57,7 @@ bool GameHUD::init(){
         this->addChild(tScrollView);
 		CCArray* images = CCArray::create(CCString::create("MachineGunTurret.png"), CCString::create("FreezeTurret.png"),
                                           CCString::create("CannonTurret.png"),CCString::create("CannonTurret.png"), NULL);
+        
         float offsetFraction = ((float)(CCDirector::sharedDirector()->getWinSize().width))/(images->count()+1);
 		for(unsigned int i = 0; i < images->count(); i++){
 			CCString* image = (CCString*)images->objectAtIndex(i);
@@ -231,6 +232,27 @@ void GameHUD::backToMain(){
     CCScene *scene = StartScene::scene();
     CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(1, scene));
 }
+float GameHUD::rangeScale(int towerID){
+    float ret = 0.0;
+    float range = 0;
+    switch (towerID) {
+        case 1:
+            range = 100.0;
+            break;
+        case 2:
+            range = 150.0;
+            break;
+        case 3:
+            range = 200.0;
+            break;
+        case 4:
+            range = 200.0;
+            break;
+        default:
+            break;
+    }
+   return  ret = range/100.0;
+}
 bool GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 	CCPoint touchLocation = this->convertTouchToNodeSpace(pTouch);
 	if(!background->boundingBox().containsPoint(touchLocation)){
@@ -244,13 +266,14 @@ bool GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 		if(sprite->boundingBox().containsPoint(touchLocation)){
             tScrollView->setTouchEnabled(false);
 			selSpriteRange = CCSprite::create("Range.png");
-			selSpriteRange->setScale(2.0f);
+             float scale = rangeScale(sprite->getTag());
+			selSpriteRange->setScale(scale);
 			this->addChild(selSpriteRange, -1);
 			selSpriteRange->setPosition(sprite->getPosition());
-            
+           
 			newSprite = CCSprite::createWithTexture(sprite->getTexture());
-			newSprite->setPosition(ccpAdd(sprite->getPosition(), ccp(0, 30)));
-            
+			//newSprite->setPosition(ccpAdd(sprite->getPosition(), ccp(0, 30)));
+            newSprite->setPosition(touchLocation);
 			selSprite = newSprite;
 			selSprite->setTag(sprite->getTag());
 			this->addChild(newSprite);
