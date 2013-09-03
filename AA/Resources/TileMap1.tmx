@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="12" tilewidth="30" tileheight="30">
+ <tileset firstgid="1" name="map3" tilewidth="30" tileheight="30">
+  <image source="map3.jpg" width="640" height="384"/>
+  <tile id="116">
+   <properties>
+    <property name="way" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <objectgroup name="Objects" width="20" height="12">
+  <object name="pl1" x="2" y="180" width="29" height="30"/>
+ </objectgroup>
+ <layer name="bg1" width="20" height="12">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA63SSQ4BQRTG8U7MYoghZhaIIeaZBTFdAXfAwsZNdN8Bd8AdcB//RC1EutMtsfilkq73vup+1bIkSQpMMMMCK2ywwwEnZLjghgde7OGDHwEEEUIYEUQRQxwJJJESWVexppFBVuTlkEcBRZRQRgVV1FBHA0200EYHXfTQx0DkDT+MMMYEU8wwF3Vqdl/UahZYYmWg9/uZWs0aG2x1evT2jH6TVp5W30Hcm2LgTCPve8QJ5x/npbV/kd7/1u1PeXc88Pxhxnqz/qcX8RxZWsADAAA=
+  </data>
+ </layer>
+</map>

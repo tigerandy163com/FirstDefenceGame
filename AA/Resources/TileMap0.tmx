@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="17" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tmw_desert_spacing.png" width="265" height="199"/>
+  <tile id="29">
+   <properties>
+    <property name="buildable" value="1"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="way" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <objectgroup name="Objects" width="17" height="10">
+  <object name="pl1" x="0" y="128" width="32" height="32"/>
+ </objectgroup>
+ <layer name="bg1" width="17" height="10">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA42QvQrAIAyEHfqH9Mep7WZxqVt9/6frCQkEaarDR8JxnPGSMaYHnTK9og9gBDeYwSKmrcC+FWyUUeZnX1Cw5LnADg5wKm+FRs02vJlvdRXfX7at3PrVUdkp9z797JG8ucskOn1I594d7V7srHOGdofsXdujqf+zlRcQxCbyqAIAAA==
+  </data>
+ </layer>
+</map>
