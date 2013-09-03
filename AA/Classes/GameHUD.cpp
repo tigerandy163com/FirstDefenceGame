@@ -202,12 +202,13 @@ void GameHUD::speedUp(cocos2d::CCObject *psender){
         isshouldup = true;
     }
     if (gm->nowSpeed==maxSpeed) {
+        gm->nowSpeed=1;
         isshouldup = false;
     }
     if (gm->nowSpeed<maxSpeed&&isshouldup) {
-        gm->nowSpeed+=1;
-    }else if ( gm->nowSpeed>1&&!isshouldup){
-        gm->nowSpeed-=1;
+       gm->nowSpeed+=1;
+//    }else if ( gm->nowSpeed>1&&!isshouldup){
+//        gm->nowSpeed-=1;
     }
     setSpeed(gm->nowSpeed);
 }
@@ -224,6 +225,8 @@ void GameHUD::setSpeed(int val){
     menu3->setTag(101);
     menu->removeFromParent();
     this->addChild(menu3);
+    CCScheduler* pScheduler = CCDirector::sharedDirector()->getScheduler();
+    pScheduler->setTimeScale(val); //实现加速效果
 }
 void GameHUD::backToMain(){
     if (getIsPause()) {
