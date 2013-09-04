@@ -9,7 +9,7 @@
 #include "Tower.h"
 #include "GameMediator.h"
 #include "ProjectTile.h"
-
+#include "data.h"
 using namespace cocos2d;
 
 Tower::~Tower(){
@@ -21,27 +21,28 @@ bool Tower::initWithFileAndRange(const char *pszFilename, int range){
 	do
 	{
 		sprite = CCSprite::create(pszFilename);
-		this->addChild(sprite, 10);
+		this->addChild(sprite);
         
-		sprite1 = CCSprite::create(pszFilename);
+        CCSpriteFrame* frame1 = button_sell_normal;
+		sprite1 = CCSprite::createWithSpriteFrame(frame1);
 		this->addChild(sprite1);
 		sprite1->setVisible(false);
-		sprite1->setColor(ccBLUE);
+		//sprite1->setColor(ccBLUE);
         
-		sprite2 = CCSprite::create(pszFilename);
-		this->addChild(sprite2);
-		sprite2->setVisible(false);
-		sprite2->setColor(ccGREEN);
+//		sprite2 = CCSprite::create(pszFilename);
+//		this->addChild(sprite2);
+//		sprite2->setVisible(false);
+//		sprite2->setColor(ccGREEN);
         
-		sprite3 = CCSprite::create(pszFilename);
+		sprite3 = CCSprite::createWithSpriteFrame(button_upgrade_normal);
 		this->addChild(sprite3);
 		sprite3->setVisible(false);
-		sprite3->setColor(ccBLACK);
+		//sprite3->setColor(ccBLACK);
         
-		sprite4 = CCSprite::create(pszFilename);
-		this->addChild(sprite4);
-		sprite4->setVisible(false);
-		sprite4->setColor(ccRED);
+//		sprite4 = CCSprite::create(pszFilename);
+//		this->addChild(sprite4);
+//		sprite4->setVisible(false);
+//		sprite4->setColor(ccRED);
         
 		this->setRange(range);
         
@@ -52,7 +53,7 @@ bool Tower::initWithFileAndRange(const char *pszFilename, int range){
         rangeSprite->setPosition(sprite->getPosition());
         this->addChild(rangeSprite, -1);
  
-        
+        _level =1;
 		_target = NULL;
         
 		isShowing =false;
@@ -65,7 +66,86 @@ bool Tower::initWithFileAndRange(const char *pszFilename, int range){
 	} while (0);
 	return bRet;
 }
+bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
+    bool bRet = false;
+	do
+	{
+		sprite = CCSprite::createWithSpriteFrame(frame);
+		this->addChild(sprite);
+        
+        CCSpriteFrame* frame1 = button_sell_normal;
+		sprite1 = CCSprite::createWithSpriteFrame(frame1);
+		this->addChild(sprite1);
+		sprite1->setVisible(false);
+        
 
+		//sprite1->setColor(ccBLUE);
+        
+        //		sprite2 = CCSprite::create(pszFilename);
+        //		this->addChild(sprite2);
+        //		sprite2->setVisible(false);
+        //		sprite2->setColor(ccGREEN);
+        
+		sprite3 = CCSprite::createWithSpriteFrame(button_upgrade_normal);
+		this->addChild(sprite3);
+		sprite3->setVisible(false);
+		//sprite3->setColor(ccBLACK);
+        
+        //		sprite4 = CCSprite::create(pszFilename);
+        //		this->addChild(sprite4);
+        //		sprite4->setVisible(false);
+        //		sprite4->setColor(ccRED);
+        
+		this->setRange(range);
+        
+        rangeSprite = CCSprite::create("Range.png");
+        float scale = range/100.0;
+        rangeSprite->setScale(scale);
+        rangeSprite->setVisible(false);
+        rangeSprite->setPosition(sprite->getPosition());
+        this->addChild(rangeSprite, -1);
+        
+        
+		_target = NULL;
+        _level = 1;
+		isShowing =false;
+        
+		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 1, true);
+        
+        
+        
+		bRet = true;
+	} while (0);
+	return bRet;
+}
+void Tower::levelUp(){
+    GameHUD::sharedHUD()->updateResources(-_money);
+    _money *=2;
+    _damge *=1.5;
+    _maxDamge*=2;
+    _range *=1.5;
+    _interval *=0.5;
+
+   
+    sprite->removeFromParent();
+    if(_level==TowerMaxLevel){
+       
+        CCSprite *max = CCSprite::createWithSpriteFrame(button_max_normal);
+        max->setPosition(sprite3->getPosition());
+        sprite3->removeFromParent();
+        sprite3 = max;
+       this->addChild(max);
+    }else{
+    CCLabelTTF *label =(CCLabelTTF*)sprite3->getChildByTag(888);
+    CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt", 20);
+    towerCost->setPosition(label->getPosition());
+    towerCost->setColor(ccRED);
+    towerCost->setString(CCString::createWithFormat("%d",_money)->getCString());
+    label->removeFromParent();
+    towerCost->setTag(888);
+    sprite3->addChild(towerCost);
+    }
+}
 Enemy* Tower::getClosestTarget(){
 	Enemy* closestEnemy = NULL;
 	double maxDistant = 99999;
@@ -94,41 +174,61 @@ Enemy* Tower::getClosestTarget(){
 void Tower::towerLogic(float dt){
 	if(this->getTarget() == NULL ||!GameMediator::sharedMediator()->getTargets()->containsObject(this->getTarget()))
     {
-		this->setTarget(this->getClosestTarget());
+        CCObject *ret = this->getClosestTarget();
+        if (ret!=NULL) {
+            this->setTarget((Enemy*)ret);
+        }
 	}
     else{
   
 		double curDistance = ccpDistance(this->getPosition(), this->getTarget()->getPosition());
 		if(this->getTarget()->getHP() <= 0 || curDistance > this->getRange()){
-			this->setTarget(this->getClosestTarget());
+            CCObject *ret = this->getClosestTarget();
+            if (ret!=NULL) {
+                this->setTarget((Enemy*)ret);
+            }
 		
         }
 	}
-
-	if(this->getTarget() != NULL){
-		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
-		float shootAngle = ccpToAngle(shootVector);
-		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
-        
-		float rotateSpeed = (float)(0.25 / M_PI);
-		float rotateDuration = fabs(shootAngle * rotateSpeed);
-		this->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
-	}
+    if (GameHUD::sharedHUD()->getResources()<getMoney()) {
+        moneyEnough = false;
+    }else
+        moneyEnough = true;
+//	if(this->getTarget() != NULL){
+//		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
+//		float shootAngle = ccpToAngle(shootVector);
+//		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
+//        
+//		float rotateSpeed = (float)(0.25 / M_PI);
+//		float rotateDuration = fabs(shootAngle * rotateSpeed);
+//		sprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
+//	}
 }
-
+void Tower::setMoney(int val){
+    _money = val;
+    CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt", 20);
+    towerCost->setPosition(ccp(sprite1->getPosition().x+sprite->getContentSize().width/2, 15));
+    towerCost->setColor(ccRED);
+    towerCost->setTag(888);
+    towerCost->setString(CCString::createWithFormat("%d",_money)->getCString());
+    sprite3->addChild(towerCost);
+}
+int Tower::getMoney(){
+    return _money;
+}
 void Tower::show(){
     CCActionInterval *fade = CCFadeIn::create(0.5f);
 	sprite1->runAction(CCMoveBy::create(0.5f, ccp(- sprite->getContentSize().width -10, 0)));
 	sprite1->setVisible(true);
     
-	sprite2->runAction(CCMoveBy::create(0.5f, ccp(0, sprite->getContentSize().height + 10)));
-	sprite2->setVisible(true);
+//	sprite2->runAction(CCMoveBy::create(0.5f, ccp(0, sprite->getContentSize().height + 10)));
+//	sprite2->setVisible(true);
     
 	sprite3->runAction(CCMoveBy::create(0.5f, ccp(sprite->getContentSize().width +10,0)));
 	sprite3->setVisible(true);
     
-	sprite4->runAction(CCMoveBy::create(0.5f, ccp(0, - sprite->getContentSize().height - 10)));
-	sprite4->setVisible(true);
+//	sprite4->runAction(CCMoveBy::create(0.5f, ccp(0, - sprite->getContentSize().height - 10)));
+//	sprite4->setVisible(true);
     
     rangeSprite->setVisible(true);
     
@@ -139,11 +239,11 @@ void Tower::unShow(){
     CCActionInterval *fade = CCFadeOut::create(0.5f);
 	sprite1->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
     
-	sprite2->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
+//	sprite2->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
     
 	sprite3->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
     
-	sprite4->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
+//	sprite4->runAction(CCSequence::create(CCMoveTo::create(0.5f, sprite->getPosition()), CCHide::create(), NULL));
 	
     //rangeSprite->setVisible(false);
     
@@ -165,24 +265,42 @@ bool Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 	if(isShowing && sprite1->boundingBox().containsPoint(touchLocation)){
 		CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
 		GameMediator::sharedMediator()->getGameLayer()->removeTower(this);
+        GameHUD::sharedHUD()->updateResources(_money);
 		return true;
 	}
-	if(isShowing && sprite2->boundingBox().containsPoint(touchLocation)){
-		sprite2->runAction(CCBlink::create(1.0f, 5));
-		return true;
-	}
+//	if(isShowing && sprite2->boundingBox().containsPoint(touchLocation)){
+//		sprite2->runAction(CCBlink::create(1.0f, 5));
+//		return true;
+//	}
 	if(isShowing && sprite3->boundingBox().containsPoint(touchLocation)){
-		sprite3->runAction(CCSequence::create(CCFadeOut::create(0.5), CCFadeIn::create(0.5f), NULL));
+		//sprite3->runAction(CCSequence::create(CCFadeOut::create(0.5), CCFadeIn::create(0.5f), NULL));
+        if (moneyEnough) {
+            if (_level<TowerMaxLevel) {
+                _level++;
+                levelUp();
+            }
+        }
 		return true;
 	}
-	if(isShowing && sprite4->boundingBox().containsPoint(touchLocation)){
-		sprite4->runAction(CCRotateBy::create(1.0f, 360.0f));
-		return true;
-	}
+//	if(isShowing && sprite4->boundingBox().containsPoint(touchLocation)){
+//		sprite4->runAction(CCRotateBy::create(1.0f, 360.0f));
+//		return true;
+//	}
     
 	return false;
 }
-
+void MachineGunTower::towerLogic(float dt){
+    Tower::towerLogic(dt);
+    	if(this->getTarget() != NULL){
+    		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
+    		float shootAngle = ccpToAngle(shootVector);
+    		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
+    
+    		float rotateSpeed = (float)(0.25 / M_PI);
+    		float rotateDuration = fabs(shootAngle * rotateSpeed);
+    		sprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
+    	}
+}
 MachineGunTower* MachineGunTower::create(const char *pszFilename, int range){
 	MachineGunTower* t = new MachineGunTower;
 	if(t && t->initWithFileAndRange(pszFilename, range)){
@@ -192,17 +310,43 @@ MachineGunTower* MachineGunTower::create(const char *pszFilename, int range){
 	CC_SAFE_DELETE(t);
 	return NULL;
 }
-
+MachineGunTower* MachineGunTower::create(cocos2d::CCSpriteFrame *frame, int range){
+    MachineGunTower* t = new MachineGunTower;
+	if(t && t->initWithSpriteFrame(frame, range)){
+		t->autorelease();
+		return t;
+	}
+	CC_SAFE_DELETE(t);
+	return NULL;
+}
 MachineGunTower* MachineGunTower::create(){
 	return MachineGunTower::create("MachineGunTurret.png", 100);
+    //MachineGunTower::create(Tower1_1, 100);
 }
-
+bool MachineGunTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
+    bool bRet = false;
+	do
+	{
+		CC_BREAK_IF(!Tower::initWithSpriteFrame(frame, range));
+        setMoney(25);
+        _damge = T1Damage;
+        _maxDamge = T1MaxDamage;
+        _range = T1Range;
+		schedule(schedule_selector(MachineGunTower::fire), 1.0f);
+        this->schedule(schedule_selector(MachineGunTower::towerLogic), 0.2f);
+		bRet = true;
+	} while (0);
+	return bRet;
+}
 bool MachineGunTower::initWithFileAndRange(const char *pszFilename, int range){
 	bool bRet = false;
 	do
 	{
 		CC_BREAK_IF(!Tower::initWithFileAndRange(pszFilename, range));
-        
+        setMoney(Tower1Cost);
+        _damge = T1Damage;
+        _maxDamge = T1MaxDamage;
+        _range = T1Range;
 		schedule(schedule_selector(MachineGunTower::fire), 1.0f);
         this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
 		bRet = true;
@@ -226,6 +370,9 @@ void MachineGunTower::fireNow(){
     ProjectTile->setPosition(this->getPosition());
     ProjectTile->setRotation(this->getRotation());
     
+    
+    ProjectTile->setDamage(_damge);
+    ProjectTile->setMaxDamge(_maxDamge);
     m->getGameLayer()->addChild(ProjectTile);
 }
 void MachineGunTower::fireReady(){
@@ -251,9 +398,9 @@ void MachineGunTower::fireReady(){
     CCAnimation *animation=CCAnimation::createWithSpriteFrames(animFrames);
     //创建一个CCSprite用来显示勇士，可以使用Animation中的一帧来作为勇士静止时的画面
     actionSprite=CCSprite::createWithSpriteFrame(frame0);
-    actionSprite->setPosition(CCPointMake(30, 0));
+    actionSprite->setPosition(CCPointMake(30, 30));
    
-    addChild(actionSprite);
+    sprite->addChild(actionSprite,1);
     //根据动画模板创建动画
     animation->setDelayPerUnit(0.2f);
     CCAnimate *animate=CCAnimate::create(animation);
@@ -280,7 +427,27 @@ void MachineGunTower::fire(float dt){
 //		m->getGameLayer()->addChild(ProjectTile);
 	}
 }
-
+void MachineGunTower::levelUp(){
+    Tower::levelUp();
+    CCSpriteFrame *frame = NULL;
+    
+    switch (getLevel()) {
+        case 2:
+            frame = Tower1_2;
+            break;
+        case 3:
+            frame = Tower1_3;
+            break;
+        case 4:
+            frame = Tower1_4;
+            break;
+            
+        default:
+            break;
+    }
+    sprite = CCSprite::createWithSpriteFrame(frame);
+    this->addChild(sprite);
+}
 FreezeTower* FreezeTower::create(const char *pszFilename, int range){
 	FreezeTower* t = new FreezeTower;
 	if(t && t->initWithFileAndRange(pszFilename, range)){
@@ -290,17 +457,42 @@ FreezeTower* FreezeTower::create(const char *pszFilename, int range){
 	CC_SAFE_DELETE(t);
 	return NULL;
 }
-
-FreezeTower* FreezeTower::create(){
-	return FreezeTower::create("FreezeTurret.png", 150);
+FreezeTower* FreezeTower::create(CCSpriteFrame* frame, int range){
+	FreezeTower* t = new FreezeTower;
+	if(t && t->initWithSpriteFrame(frame, range)){
+		t->autorelease();
+		return t;
+	}
+	CC_SAFE_DELETE(t);
+	return NULL;
 }
-
+FreezeTower* FreezeTower::create(){
+	return //FreezeTower::create("FreezeTurret.png", 150);
+    FreezeTower::create(Tower2_1, 150);
+}
+bool FreezeTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
+    bool bret = false;
+    do {
+        CC_BREAK_IF(!Tower::initWithSpriteFrame(frame, range));
+        setMoney(Tower2Cost);
+        _damge = T2Damage;
+        _maxDamge = T2MaxDamage;
+        _range = T2Range;
+        schedule(schedule_selector(FreezeTower::fire), 1.0f);
+        this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
+        bret = true;
+    } while (0);
+    return bret;
+}
 bool FreezeTower::initWithFileAndRange(const char *pszFilename, int range){
 	bool bRet = false;
 	do
 	{
 		CC_BREAK_IF(!Tower::initWithFileAndRange(pszFilename, range));
-        
+        setMoney(Tower2Cost);
+        _damge = T2Damage;
+        _maxDamge = T2MaxDamage;
+        _range = T2Range;
 		schedule(schedule_selector(FreezeTower::fire), 1.0f);
          this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
 		bRet = true;
@@ -320,10 +512,32 @@ void FreezeTower::fire(float dt){
 		IceProjectTile* ProjectTile = IceProjectTile::create(offscreenPoint);
 		ProjectTile->setPosition(this->getPosition());
 		ProjectTile->setRotation(this->getRotation());
+        ProjectTile->setDamage(_damge);
+        ProjectTile->setMaxDamge(_maxDamge);
 		m->getGameLayer()->addChild(ProjectTile);
 	}
 }
-
+void FreezeTower::levelUp(){
+    Tower::levelUp();
+    CCSpriteFrame *frame = NULL;
+    
+    switch (getLevel()) {
+        case 2:
+            frame = Tower2_2;
+            break;
+        case 3:
+            frame = Tower2_3;
+            break;
+        case 4:
+            frame = Tower2_4;
+            break;
+            
+        default:
+            break;
+    }
+    sprite = CCSprite::createWithSpriteFrame(frame);
+    this->addChild(sprite);
+}
 CannonTower* CannonTower::create(const char *pszFilename, int range){
 	CannonTower* t = new CannonTower;
 	if(t && t->initWithFileAndRange(pszFilename, range)){
@@ -333,19 +547,39 @@ CannonTower* CannonTower::create(const char *pszFilename, int range){
 	CC_SAFE_DELETE(t);
 	return NULL;
 }
-
-CannonTower* CannonTower::create(){
-	return CannonTower::create("CannonTurret.png", 200);
+CannonTower* CannonTower::create(CCSpriteFrame* frame, int range){
+	CannonTower* t = new CannonTower;
+	if(t && t->initWithSpriteFrame(frame, range)){
+		t->autorelease();
+		return t;
+	}
+	CC_SAFE_DELETE(t);
+	return NULL;
 }
-
+CannonTower* CannonTower::create(){
+	return //CannonTower::create("CannonTurret.png", 400);
+    CannonTower::create(Tower3_1, 400);
+}
+bool CannonTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
+    bool bret = false;
+    do {
+        CC_BREAK_IF(!Tower::initWithSpriteFrame(frame, range));
+        setMoney(Tower3Cost);
+        schedule(schedule_selector(CannonTower::fire), 2.0f);
+        this->schedule(schedule_selector(Tower::towerLogic), 0.1f);
+        bret = true;
+    } while (0);
+    return bret;
+}
 bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
 	bool bRet = false;
 	do
 	{
 		CC_BREAK_IF(!Tower::initWithFileAndRange(pszFilename, range));
-        
-		this->setRange(400);
-        
+        setMoney(Tower3Cost);
+        _damge = T3Damage;
+        _maxDamge = T3MaxDamage;
+        _range = T3Range;
 		schedule(schedule_selector(CannonTower::fire), 2.0f);
          this->schedule(schedule_selector(Tower::towerLogic), 0.1f);
 		bRet = true;
@@ -362,12 +596,14 @@ void CannonTower::fire(float dt){
         CCLOG("target pos is:%f,%f",this->getTarget()->getPosition().x,this->getTarget()->getPosition().y);
 		ProjectTile->setPosition(this->getPosition());
 		ProjectTile->setRotation(this->getRotation());
+        ProjectTile->setDamage(_damge);
+        ProjectTile->setMaxDamge(_maxDamge);
 		m->getGameLayer()->addChild(ProjectTile,1);
 	}
 }
 
 Enemy* CannonTower::getClosestTarget(){
-	//Enemy* nearestEnemy = NULL;
+	Enemy* nearestEnemy = NULL;
     
 	GameMediator* m = GameMediator::sharedMediator();
 	CCObject* temp;
@@ -406,12 +642,33 @@ Enemy* CannonTower::getClosestTarget(){
 		}
 
     }
-
+   
 	return nearestEnemy;
 }
-
+void CannonTower::levelUp(){
+    Tower::levelUp();
+    CCSpriteFrame *frame = NULL;
+    
+    switch (getLevel()) {
+        case 2:
+            frame = Tower3_2;
+            break;
+        case 3:
+            frame = Tower3_3;
+            break;
+        case 4:
+            frame = Tower3_4;
+            break;
+            
+        default:
+            break;
+    }
+    sprite = CCSprite::createWithSpriteFrame(frame);
+    this->addChild(sprite);
+}
 MutilTower* MutilTower::create(){
-    return  MutilTower::create("CannonTurret.png", 200);
+    return  //MutilTower::create("CannonTurret.png", 200);
+    MutilTower::create(Tower4_1, 300);
 }
 MutilTower* MutilTower::create(const char *pszFilename, int range){
     MutilTower *t = new MutilTower;
@@ -423,11 +680,36 @@ MutilTower* MutilTower::create(const char *pszFilename, int range){
     return NULL;
     
 }
+MutilTower* MutilTower::create(CCSpriteFrame *frame, int range){
+    MutilTower *t = new MutilTower;
+    if (t&&t->initWithSpriteFrame(frame, range)) {
+        t->autorelease();
+        return t;
+    }
+    CC_SAFE_DELETE(t);
+    return NULL;
+}
+bool MutilTower::initWithSpriteFrame(CCSpriteFrame* frame, int range){
+    bool bRet = false;
+    do {
+        CC_BREAK_IF(!Tower::initWithSpriteFrame(frame, range));
+        setMoney(Tower4Cost);
+        _damge = T4Damage;
+        _maxDamge = T4MaxDamage;
+        _range = T4Range;
+        enemys = CCArray::create();
+        enemys->retain();
+		schedule(schedule_selector(MutilTower::fire), 2.0f);
+        this->schedule(schedule_selector(MutilTower::towerLogic1), 0.2f);
+		bRet = true;
+    } while (0);
+    return bRet;
+}
 bool MutilTower::initWithFileAndRange(const char *pszFilename, int range){
     bool bRet = false;
     do {
         CC_BREAK_IF(!Tower::initWithFileAndRange(pszFilename, range));
-        this->setRange(200);
+        setMoney(60);
         enemys = CCArray::create();
         enemys->retain();
 		schedule(schedule_selector(MutilTower::fire), 2.0f);
@@ -479,8 +761,8 @@ void MutilTower::fire(float dt){
             Enemy* target = (Enemy*)obj;
             CannonProjectTile* ProjectTile = CannonProjectTile::create(target);
             ProjectTile->setSpeed(300);
-            ProjectTile->setDamage(50);
-            ProjectTile->setMaxDamge(80);
+            ProjectTile->setDamage(_damge);
+            ProjectTile->setMaxDamge(_maxDamge);
             ProjectTile->setProbability(0.25);
             ProjectTile->setPosition(this->getPosition());
             ProjectTile->setRotation(this->getRotation());
@@ -513,16 +795,38 @@ void MutilTower::towerLogic1(float dt){
     
     enemyArr = this->getenemys();
     
-	if(enemyArr->count()!=0){
-        {
-        Enemy* enemy =(Enemy *) enemyArr->lastObject();
-		CCPoint shootVector = ccpSub(enemy->getPosition(), this->getPosition());
-		float shootAngle = ccpToAngle(shootVector);
-		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
-        
-		float rotateSpeed = (float)(0.25 / M_PI);
-		float rotateDuration = fabs(shootAngle * rotateSpeed);
-		this->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
-        }
-	}
+//	if(enemyArr->count()!=0){
+//        {
+//        Enemy* enemy =(Enemy *) enemyArr->lastObject();
+//		CCPoint shootVector = ccpSub(enemy->getPosition(), this->getPosition());
+//		float shootAngle = ccpToAngle(shootVector);
+//		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
+//        
+//		float rotateSpeed = (float)(0.25 / M_PI);
+//		float rotateDuration = fabs(shootAngle * rotateSpeed);
+//		sprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
+//        }
+//	}
+}
+
+void MutilTower::levelUp(){
+    Tower::levelUp();
+    CCSpriteFrame *frame = NULL;
+    
+    switch (getLevel()) {
+        case 2:
+            frame = Tower4_2;
+            break;
+        case 3:
+            frame = Tower4_3;
+            break;
+        case 4:
+            frame = Tower4_4;
+            break;
+            
+        default:
+            break;
+    }
+    sprite = CCSprite::createWithSpriteFrame(frame);
+    this->addChild(sprite);
 }

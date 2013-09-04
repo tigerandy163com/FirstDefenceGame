@@ -9,6 +9,7 @@
 #include "GameHUD.h"
 #include "GameMediator.h"
 #include "StartScene.h"
+#include "data.h"
 using namespace cocos2d;
 USING_NS_CC_EXT;
 int waveCount;
@@ -38,6 +39,7 @@ bool GameHUD::init(){
 		background = CCSprite::create("hud.png");
 		background->setAnchorPoint(CCPointZero);
 		this->addChild(background);
+       // background->setVisible(false);
 		CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_Default);
         
 		movableSprites = CCArray::create();
@@ -46,49 +48,43 @@ bool GameHUD::init(){
 		selSprite = NULL;
 		selSpriteRange = NULL;
         //这里是在容器层testScrollView里创建scrollView的实例
-        tScrollView=CCScrollView::create(CCSizeMake(480, 100));
+        tScrollView=CCScrollView::create(background->getContentSize());
         //设定scrollView的内容尺寸，比如说这里面只是要放一个100x100尺寸的图片，就按下面这样设定
-        tScrollView->setContentSize(CCSize(480,100));
+        tScrollView->setContentSize(CCSize(480,background->getContentSize().height));
         // 设置滚屏属性，这里设置的是两个方向随便拉，其它参数自己看源码
         tScrollView->setDirection(kCCScrollViewDirectionHorizontal);
         //这位置我是随便设定的，需要的自己改
         tScrollView->setPosition(CCPointZero);
         //tScrollView->setContainer(this);
         this->addChild(tScrollView);
-		CCArray* images = CCArray::create(CCString::create("MachineGunTurret.png"), CCString::create("FreezeTurret.png"),
-                                          CCString::create("CannonTurret.png"),CCString::create("CannonTurret.png"), NULL);
-        
-        float offsetFraction = ((float)(CCDirector::sharedDirector()->getWinSize().width))/(images->count()+1);
-		for(unsigned int i = 0; i < images->count(); i++){
-			CCString* image = (CCString*)images->objectAtIndex(i);
-			CCSprite* sprite = CCSprite::create(image->getCString());
+       // CCTexture2D *towers =CCTextureCache::sharedTextureCache()->addImage("enemy.png");
+        CCSpriteFrame *tower1 =TowerIcon1; //CCSpriteFrame::createWithTexture(towers, CCRectMake(520, 156 ,40, 59));
+        CCSpriteFrame *tower2 =TowerIcon2; //CCSpriteFrame::createWithTexture(towers, CCRectMake(58 ,225, 45, 62));
+        CCSpriteFrame *tower3 =TowerIcon3; //CCSpriteFrame::createWithTexture(towers, CCRectMake(904, 366, 60, 55));
+        CCSpriteFrame *tower4 =TowerIcon4; //CCSpriteFrame::createWithTexture(towers, CCRectMake(409 ,333, 43 ,62));
+		//CCArray* images = CCArray::create(CCString::create("MachineGunTurret.png"), CCString::create("FreezeTurret.png"),
+                                         // CCString::create("CannonTurret.png"),CCString::create("CannonTurret.png"), NULL);
+        CCArray* frameArr = CCArray::create(tower1,tower2,tower3,tower4,NULL);
+        towersFrameArr = CCArray::create(Tower1_1,Tower2_1,Tower3_1,Tower4_1,NULL);
+        CCArray* costArr = CCArray::create(CCString::create("25"),CCString::create("30"),CCString::create("40"),CCString::create("60"),NULL);
+        towersFrameArr->retain();
+        float offsetFraction =30; //((float)(CCDirector::sharedDirector()->getWinSize().width))/(frameArr->count()+1);
+		for(unsigned int i = 0; i < frameArr->count(); i++){
+			CCSpriteFrame* image = (CCSpriteFrame*)frameArr->objectAtIndex(i);
+			CCSprite* sprite = CCSprite::createWithSpriteFrame(image);
+            
 			//float offsetFraction = ((float)(i+1))/(images->count()+1);
-			sprite->setPosition(ccp(i*(sprite->getContentSize().width+offsetFraction), 35));
+			sprite->setPosition(ccp(i*(sprite->getContentSize().width+offsetFraction), 20));
 			sprite->setTag(i + 1);
 			tScrollView->addChild(sprite);
 			movableSprites->addObject(sprite);
             
-			CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt", 10);
-			towerCost->setPosition(ccp(sprite->getPosition().x+sprite->getContentSize().width/2, 15));
-			towerCost->setColor(ccc3(0, 0, 0));
+			CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt",20);
+			towerCost->setPosition(ccp(sprite->getPosition().x+sprite->getContentSize().width/2, 0));
+			towerCost->setColor(ccRED);
 			tScrollView->addChild(towerCost, 1);
-            
-			switch(i){
-                case 0:
-                    towerCost->setString("25");
-                    break;
-                case 1:
-                    towerCost->setString("35");
-                    break;
-                case 2:
-                    towerCost->setString("25");
-                    break;
-                case 3:
-                    towerCost->setString("多重");
-                    break;
-                default:
-                    break;
-			}
+            CCString *cost = (CCString*)costArr->objectAtIndex(i);
+			towerCost->setString(cost->getCString());
 		}
         
 		resources = 300;
@@ -273,8 +269,8 @@ bool GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 			selSpriteRange->setScale(scale);
 			this->addChild(selSpriteRange, -1);
 			selSpriteRange->setPosition(sprite->getPosition());
-           
-			newSprite = CCSprite::createWithTexture(sprite->getTexture());
+            CCSpriteFrame* frame = (CCSpriteFrame*)towersFrameArr->objectAtIndex(movableSprites->indexOfObject(temp));
+			newSprite = CCSprite::createWithSpriteFrame(frame);
 			//newSprite->setPosition(ccpAdd(sprite->getPosition(), ccp(0, 30)));
             newSprite->setPosition(touchLocation);
 			selSprite = newSprite;

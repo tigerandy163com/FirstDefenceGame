@@ -47,7 +47,7 @@ protected:
 	cocos2d::CCSprite* selSpriteRange;
 	cocos2d::CCSprite* selSprite;
 	cocos2d::CCArray* movableSprites;
-    
+    cocos2d::CCArray* towersFrameArr;
 	cocos2d::CCLabelTTF* resourceLabel;
 	cocos2d::CCLabelTTF* waveCountLabel;
     

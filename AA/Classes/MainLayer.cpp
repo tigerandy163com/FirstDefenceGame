@@ -16,6 +16,7 @@
 #include "ProjectTile.h"
 #include "Lightning.h"
 #include "StartScene.h"
+#include "data.h"
 using namespace cocos2d;
 
 MainLayer::~MainLayer(){
@@ -138,7 +139,7 @@ CCPoint MainLayer::boundLayerPos(cocos2d::CCPoint newPos){
 	CCPoint retval = newPos;
 	retval.x = MIN(retval.x, 0);
 	retval.x = MAX(retval.x, -mapsize.width+winSize.width);
-	retval.y = MIN(50, retval.y);
+	retval.y = MIN(0, retval.y);
 	retval.y = MAX(-mapsize.height+winSize.height, retval.y);
 	return retval;
 }
@@ -338,25 +339,25 @@ void MainLayer::addTower(CCPoint pos, int towerTag){
                 
                 break;
             case 2:
-                if(gameHUD->getResources() >= 25){
+                if(gameHUD->getResources() >= 30){
                     target = FreezeTower::create();
-                    gameHUD->updateResources(-25);
+                    gameHUD->updateResources(-30);
                 }else{
                     return;
                 }
                 break;
             case 3:
-                if(gameHUD->getResources() >= 25){
+                if(gameHUD->getResources() >= 40){
                     target = CannonTower::create();
-                    gameHUD->updateResources(-25);
+                    gameHUD->updateResources(-40);
                 }else{
                     return;
                 }
                 break;
             case 4:
-                if(gameHUD->getResources() >= 25){
+                if(gameHUD->getResources() >= 60){
                     target = MutilTower::create();
-                    gameHUD->updateResources(-25);
+                    gameHUD->updateResources(-60);
                 }else{
                     return;
                 }
@@ -365,7 +366,9 @@ void MainLayer::addTower(CCPoint pos, int towerTag){
                 break;
 		}
 		//target->setPosition(positionForTileCoord(towerLoc));
-        target->setPosition(pos);
+        
+        CCPoint newPos = positionForTileCoord(towerLoc);
+        target->setPosition(newPos);
 		this->addChild(target, 5);
         
 		m->getTowers()->addObject(target);

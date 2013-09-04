@@ -337,6 +337,10 @@
 		C6E3676817D4859F0021F557 /* button_hl.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3676517D4859F0021F557 /* button_hl.png */; };
 		C6E3676917D4859F0021F557 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3676617D4859F0021F557 /* button.png */; };
 		C6E3676A17D4859F0021F557 /* popback.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3676717D4859F0021F557 /* popback.png */; };
+		C6F62D4D17D6D9D400477FE2 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F62D4C17D6D9D400477FE2 /* enemy.png */; };
+		C6F62D5217D6F7B000477FE2 /* choose.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F62D4F17D6F7B000477FE2 /* choose.png */; };
+		C6F62D5317D6F7B000477FE2 /* effect1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F62D5017D6F7B000477FE2 /* effect1.png */; };
+		C6F62D5417D6F7B000477FE2 /* icons.png in Resources */ = {isa = PBXBuildFile; fileRef = C6F62D5117D6F7B000477FE2 /* icons.png */; };
 		C6FCC82C17D5CED300A066D6 /* TileMap0.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C6FCC82B17D5CED300A066D6 /* TileMap0.tmx */; };
 /* End PBXBuildFile section */
 
@@ -1001,6 +1005,11 @@
 		C6E3676517D4859F0021F557 /* button_hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_hl.png; path = Resources/button_hl.png; sourceTree = "<group>"; };
 		C6E3676617D4859F0021F557 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = Resources/button.png; sourceTree = "<group>"; };
 		C6E3676717D4859F0021F557 /* popback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = popback.png; path = Resources/popback.png; sourceTree = "<group>"; };
+		C6F62D4C17D6D9D400477FE2 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/enemy.png; sourceTree = "<group>"; };
+		C6F62D4E17D6DDA300477FE2 /* data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data.h; sourceTree = "<group>"; };
+		C6F62D4F17D6F7B000477FE2 /* choose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = choose.png; path = Resources/choose.png; sourceTree = "<group>"; };
+		C6F62D5017D6F7B000477FE2 /* effect1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = effect1.png; path = Resources/effect1.png; sourceTree = "<group>"; };
+		C6F62D5117D6F7B000477FE2 /* icons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icons.png; path = Resources/icons.png; sourceTree = "<group>"; };
 		C6FCC82B17D5CED300A066D6 /* TileMap0.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TileMap0.tmx; path = Resources/TileMap0.tmx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1073,6 +1082,10 @@
 		C6E3635217D466350021F557 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C6F62D4F17D6F7B000477FE2 /* choose.png */,
+				C6F62D5017D6F7B000477FE2 /* effect1.png */,
+				C6F62D5117D6F7B000477FE2 /* icons.png */,
+				C6F62D4C17D6D9D400477FE2 /* enemy.png */,
 				C6FCC82B17D5CED300A066D6 /* TileMap0.tmx */,
 				C65FA31617D5BBD400AB5091 /* map1.png */,
 				C65FA31717D5BBD400AB5091 /* map3.png */,
@@ -2297,6 +2310,7 @@
 				C6E366E417D466440021F557 /* AppDelegate.cpp */,
 				C6E366E617D466440021F557 /* HelloWorldScene.h */,
 				C6E366E717D466440021F557 /* HelloWorldScene.cpp */,
+				C6F62D4E17D6DDA300477FE2 /* data.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2409,6 +2423,10 @@
 				C65FA31E17D5BBD400AB5091 /* map5.png in Resources */,
 				C65FA31F17D5BBD400AB5091 /* map6.png in Resources */,
 				C6FCC82C17D5CED300A066D6 /* TileMap0.tmx in Resources */,
+				C6F62D4D17D6D9D400477FE2 /* enemy.png in Resources */,
+				C6F62D5217D6F7B000477FE2 /* choose.png in Resources */,
+				C6F62D5317D6F7B000477FE2 /* effect1.png in Resources */,
+				C6F62D5417D6F7B000477FE2 /* icons.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

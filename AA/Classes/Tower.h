@@ -16,13 +16,16 @@ class Tower : public cocos2d::CCNode, public cocos2d::CCTouchDelegate {
 public:
 	virtual ~Tower();
 	virtual bool initWithFileAndRange(const char *pszFilename, int range);
-    
+    virtual bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    
+
 	CC_SYNTHESIZE(int, _range,  Range);
-    
+//    CC_SYNTHESIZE(int, _money, Money);
+    void setMoney(int val);
+    int getMoney();
+    CC_SYNTHESIZE(int, _level, Level);
 	CC_SYNTHESIZE_RETAIN(Enemy*, _target, Target);
-    void towerLogic(float dt);
+    virtual void towerLogic(float dt);
 protected:
     cocos2d::CCSprite* actionSprite;
 	cocos2d::CCSprite* sprite;
@@ -31,7 +34,11 @@ protected:
 	cocos2d::CCSprite* sprite2;
 	cocos2d::CCSprite* sprite3;
 	cocos2d::CCSprite* sprite4;
-    
+    int _money;
+    int _damge;
+    int _maxDamge;
+    float _interval;
+    bool moneyEnough;
 	virtual Enemy* getClosestTarget();
     
     virtual void fireReady(){
@@ -41,6 +48,7 @@ protected:
         
     }
     
+    virtual  void levelUp();
 	bool isShowing;
 	void show();
 	void unShow();
@@ -50,38 +58,46 @@ protected:
 class MachineGunTower : public Tower {
 public:
 	bool initWithFileAndRange(const char *pszFilename, int range);
+    bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	void fire(float dt);
-    
+     void towerLogic(float dt);
 	static MachineGunTower* create();
 	static MachineGunTower* create(const char *pszFilename, int range);
+     static MachineGunTower* create(cocos2d::CCSpriteFrame* frame,int range);
     void fireReady();
     void fireNow();
+     void levelUp();
 };
 
 class FreezeTower : public Tower {
 public:
 	bool initWithFileAndRange(const char *pszFilename, int range);
+    bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	void fire(float dt);
     
 	static FreezeTower* create();
 	static FreezeTower* create(const char *pszFilename, int range);
+     static FreezeTower* create(cocos2d::CCSpriteFrame* frame,int range);
+     void levelUp();
 };
 
 class CannonTower : public Tower {
 public:
 	bool initWithFileAndRange(const char *pszFilename, int range);
+    bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	void fire(float dt);
-    Enemy* nearestEnemy ;
+  //  Enemy* nearestEnemy ;
 	Enemy* getClosestTarget();
     
 	static CannonTower* create();
 	static CannonTower* create(const char *pszFilename, int range);
-//    virtual void fireReady();
-//    virtual void fireNow();
+    static CannonTower* create(cocos2d::CCSpriteFrame* frame,int range);
+    void levelUp();
 };
 class MutilTower:public Tower{
 public:
 	bool initWithFileAndRange(const char *pszFilename, int range);
+    bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	void fire(float dt);
     
     CC_SYNTHESIZE(int ,fireMount, fireMount);
@@ -91,5 +107,7 @@ public:
     void towerLogic1(float dt);
     static MutilTower* create();
 	static MutilTower* create(const char *pszFilename, int range);
+    static MutilTower* create(cocos2d::CCSpriteFrame* frame,int range);
+     void levelUp();
 };
 #endif /* defined(__MyTowerDefense2D__Tower__) */

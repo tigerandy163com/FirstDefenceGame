@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399894749.039583"
+         timestampString = "399979486.957123"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "201"
-         endingLineNumber = "201"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
          landmarkName = "GameHUD::speedUp(cocos2d::CCObject *psender)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,24 +34,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399894749.039583"
+         timestampString = "399979486.957123"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231"
-         landmarkName = "GameHUD::backToMain()"
-         landmarkType = "5">
+         startingLineNumber = "227"
+         endingLineNumber = "227">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/MainLayer.cpp"
-         timestampString = "399895568.323325"
+         timestampString = "399966296.507071"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "534"
-         endingLineNumber = "534"
+         startingLineNumber = "537"
+         endingLineNumber = "537"
          landmarkName = "MainLayer::addTarget()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +58,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/MainLayer.cpp"
-         timestampString = "399895568.323325"
+         timestampString = "399966296.507071"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "535"
-         endingLineNumber = "535"
+         startingLineNumber = "538"
+         endingLineNumber = "538"
          landmarkName = "MainLayer::addTarget()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,12 +71,64 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/MainLayer.cpp"
-         timestampString = "399895568.323325"
+         timestampString = "399966296.507071"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "512"
-         endingLineNumber = "512"
+         startingLineNumber = "515"
+         endingLineNumber = "515"
          landmarkName = "MainLayer::getCurrentWave()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/MainLayer.cpp"
+         timestampString = "399966296.507071"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "370"
+         endingLineNumber = "370"
+         landmarkName = "MainLayer::addTower(CCPoint pos, int towerTag)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/GameHUD.cpp"
+         timestampString = "399979486.957123"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "261"
+         endingLineNumber = "261"
+         landmarkName = "GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/GameHUD.cpp"
+         timestampString = "399979486.957123"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
+         landmarkName = "GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/Tower.cpp"
+         timestampString = "399980799.277434"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
+         landmarkName = "Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
