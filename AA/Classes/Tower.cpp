@@ -190,10 +190,7 @@ void Tower::towerLogic(float dt){
 		
         }
 	}
-    if (GameHUD::sharedHUD()->getResources()<getMoney()) {
-        moneyEnough = false;
-    }else
-        moneyEnough = true;
+
 //	if(this->getTarget() != NULL){
 //		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
 //		float shootAngle = ccpToAngle(shootVector);
@@ -274,6 +271,10 @@ bool Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 //	}
 	if(isShowing && sprite3->boundingBox().containsPoint(touchLocation)){
 		//sprite3->runAction(CCSequence::create(CCFadeOut::create(0.5), CCFadeIn::create(0.5f), NULL));
+        if (GameHUD::sharedHUD()->getResources()<getMoney()) {
+            moneyEnough = false;
+        }else
+            moneyEnough = true;
         if (moneyEnough) {
             if (_level<TowerMaxLevel) {
                 _level++;
