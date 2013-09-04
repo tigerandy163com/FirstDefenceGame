@@ -69,10 +69,12 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
         this->totalHP = hp;
         isAimed = false;
 		int x, y;
-		x = pos.x/2;
+		x =-20;// pos.x/2;
 		y=  pos.y+10 ;
 		startPos = ccp(x,y);
         this->setPosition(startPos);
+        
+        startPos = ccp(pos.x/2,pos.y+10);
 		x = maxTileWidth  ;
         y = maxTileHeight;
 		endPos = ccp(x, y);
@@ -103,11 +105,11 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
 		healthBar->setMidpoint(ccp(0, 0));
 		healthBar->setBarChangeRate(ccp(1, 0));
 		healthBar->setPercentage(100);
-		healthBar->setScale(0.25f);
+		healthBar->setScale(0.2f);
 		healthBar->setPosition(ccp(0,sprite->getContentSize().height* 0.5f));
 		this->addChild(healthBar);
         scheduleOnce(schedule_selector(Enemy::attack), 0.5f);
-		schedule(schedule_selector(Enemy::enemyLogic), 1.0f);
+		schedule(schedule_selector(Enemy::enemyLogic), 1.0f,kCCRepeatForever,32.0f/speed);
 		schedule(schedule_selector(Enemy::timer), 0.2f);
         
 		bRet = true;
@@ -281,9 +283,10 @@ CCRect Enemy::getRect(){
 
 
 void Enemy::attack(){
-	
+    float moveTime = 32 / speed;
+	auto moveby = CCMoveTo::create(moveTime, startPos);
 	auto moveDone = CCCallFunc::create(this, callfunc_selector(Enemy::moveToTarget));
-	this->runAction(moveDone);
+	this->runAction(CCSequence::create(moveby,moveDone,NULL));
  
 }
 
@@ -294,7 +297,8 @@ void Enemy::moveToTarget( ){
         lasttile = true;
     }
     TileData *toTile;
-   static CCPoint WalktoPosition;
+    CCPoint WalktoPosition;
+    
     if (!lasttile) {
    toTile = (TileData *)WayTilesArray->objectAtIndex(cur);
 
@@ -308,8 +312,9 @@ void Enemy::moveToTarget( ){
 	//CCPoint startPosition = this->getPosition();
     
    WalktoPosition =  mainLayer->positionForTileCoord(_currentTileCoord);
+
     }else{
-    
+        WalktoPosition = getPosition();
         if (curDir==kRight)
             WalktoPosition.x = mainLayer->gameMap->getContentSize().width + mainLayer->gameMap->getTileSize().width/2;
         else if (curDir==kUp)

@@ -98,9 +98,9 @@ bool MainLayer::init()
 		Lightning* l = Lightning::create(ccp(160,maxHeight), ccp(200, 20));
 		l->setVisible(false);
 		this->addChild(l, 1, 999);
-        this->schedule(schedule_selector(MainLayer::strikeLight), 5.0f);
+        this->schedule(schedule_selector(MainLayer::strikeLight), 5.0f,kCCRepeatForever,3.0f);
         
-        this->schedule(schedule_selector(MainLayer::gameLogic), 0.1f);
+        this->schedule(schedule_selector(MainLayer::gameLogic), 0.1f, kCCRepeatForever,5.0f);
 		bRet = true;
 	} while (0);
     

@@ -71,11 +71,16 @@ bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
 	do
 	{
 		sprite = CCSprite::createWithSpriteFrame(frame);
+        float scalex = 32.0f/sprite->getContentSize().width;
+        float scaley = 32.0f/sprite->getContentSize().height;
+        sprite->setScaleX(scalex);
+        sprite->setScaleY(scaley);
 		this->addChild(sprite);
         
         CCSpriteFrame* frame1 = button_sell_normal;
 		sprite1 = CCSprite::createWithSpriteFrame(frame1);
 		this->addChild(sprite1);
+        sprite1->setScale(0.75);
 		sprite1->setVisible(false);
         
 
@@ -88,6 +93,7 @@ bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
         
 		sprite3 = CCSprite::createWithSpriteFrame(button_upgrade_normal);
 		this->addChild(sprite3);
+        sprite3->setScale(0.75);
 		sprite3->setVisible(false);
 		//sprite3->setColor(ccBLACK);
         
@@ -99,7 +105,7 @@ bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
 		this->setRange(range);
         
         rangeSprite = CCSprite::create("Range.png");
-        float scale = range/100.0;
+        float scale = range/100.0f;
         rangeSprite->setScale(scale);
         rangeSprite->setVisible(false);
         rangeSprite->setPosition(sprite->getPosition());
@@ -133,6 +139,7 @@ void Tower::levelUp(){
         CCSprite *max = CCSprite::createWithSpriteFrame(button_max_normal);
         max->setPosition(sprite3->getPosition());
         sprite3->removeFromParent();
+        sprite3->setScale(0.75);
         sprite3 = max;
        this->addChild(max);
     }else{
@@ -144,6 +151,7 @@ void Tower::levelUp(){
     label->removeFromParent();
     towerCost->setTag(888);
     sprite3->addChild(towerCost);
+    sprite3->setScale(0.75);
     }
 }
 Enemy* Tower::getClosestTarget(){
@@ -447,6 +455,10 @@ void MachineGunTower::levelUp(){
             break;
     }
     sprite = CCSprite::createWithSpriteFrame(frame);
+    float scalex = 32.0f/sprite->getContentSize().width;
+    float scaley = 32.0f/sprite->getContentSize().height;
+    sprite->setScaleX(scalex);
+    sprite->setScaleY(scaley);
     this->addChild(sprite);
 }
 FreezeTower* FreezeTower::create(const char *pszFilename, int range){
@@ -537,6 +549,10 @@ void FreezeTower::levelUp(){
             break;
     }
     sprite = CCSprite::createWithSpriteFrame(frame);
+    float scalex = 32.0f/sprite->getContentSize().width;
+    float scaley = 32.0f/sprite->getContentSize().height;
+    sprite->setScaleX(scalex);
+    sprite->setScaleY(scaley);
     this->addChild(sprite);
 }
 CannonTower* CannonTower::create(const char *pszFilename, int range){
@@ -665,6 +681,10 @@ void CannonTower::levelUp(){
             break;
     }
     sprite = CCSprite::createWithSpriteFrame(frame);
+    float scalex = 32.0f/sprite->getContentSize().width;
+    float scaley = 32.0f/sprite->getContentSize().height;
+    sprite->setScaleX(scalex);
+    sprite->setScaleY(scaley);
     this->addChild(sprite);
 }
 MutilTower* MutilTower::create(){
@@ -829,5 +849,9 @@ void MutilTower::levelUp(){
             break;
     }
     sprite = CCSprite::createWithSpriteFrame(frame);
+    float scalex = 32.0f/sprite->getContentSize().width;
+    float scaley = 32.0f/sprite->getContentSize().height;
+    sprite->setScaleX(scalex);
+    sprite->setScaleY(scaley);
     this->addChild(sprite);
 }
