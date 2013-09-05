@@ -266,7 +266,7 @@ void Enemy::enemyLogic(float dt){
 		gm->getGameHUDLayer()->updateResources(5);
         stopAllActions();
 	//	unscheduleAllSelectors();
-		auto deadAction = CCBlink::create(1.0f, 5);
+		auto deadAction = CCBlink::create(0.5f, 3);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         
 		this->runAction(CCSequence::create(deadAction, deadDone, NULL));

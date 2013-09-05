@@ -33,7 +33,7 @@ public:
 	void updateResources(int amount);
 	void updateWaveCount();
     float rangeScale(int towerID);
-    
+    void lev_1_buttonPress();
 	CC_SYNTHESIZE(int, resources, Resources);
 	CC_SYNTHESIZE(float, baseHpPercentage, BaseHpPercentage);
     virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {};
@@ -42,7 +42,8 @@ public:
     cocos2d::extension::CCScrollView* tScrollView;
     CC_SYNTHESIZE(bool, ispause, IsPause);
 protected:
-    
+    cocos2d::CCPointArray* orignArr_L1;
+    cocos2d::CCArray* orignArr_L2;
 	cocos2d::CCSprite* background;
 	cocos2d::CCSprite* selSpriteRange;
 	cocos2d::CCSprite* selSprite;

@@ -68,21 +68,23 @@ bool GameHUD::init(){
         towersFrameArr = CCArray::create(Tower1_1,Tower2_1,Tower3_1,Tower4_1,NULL);
         CCArray* costArr = CCArray::create(CCString::create("25"),CCString::create("30"),CCString::create("40"),CCString::create("60"),NULL);
         towersFrameArr->retain();
-        float offsetFraction =30; //((float)(CCDirector::sharedDirector()->getWinSize().width))/(frameArr->count()+1);
+        orignArr_L1 = CCPointArray::create(frameArr->count());
+        orignArr_L1->retain();
+        float offsetFraction =15; //((float)(CCDirector::sharedDirector()->getWinSize().width))/(frameArr->count()+1);
 		for(unsigned int i = 0; i < frameArr->count(); i++){
 			CCSpriteFrame* image = (CCSpriteFrame*)frameArr->objectAtIndex(i);
 			CCSprite* sprite = CCSprite::createWithSpriteFrame(image);
             
 			//float offsetFraction = ((float)(i+1))/(images->count()+1);
-			sprite->setPosition(ccp(i*(sprite->getContentSize().width+offsetFraction), 20));
+			sprite->setPosition(ccp((i+1)*(sprite->getContentSize().width+offsetFraction), 20));
 			sprite->setTag(i + 1);
 			tScrollView->addChild(sprite);
 			movableSprites->addObject(sprite);
-            
-			CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt",20);
-			towerCost->setPosition(ccp(sprite->getPosition().x+sprite->getContentSize().width/2, 0));
+            orignArr_L1->addControlPoint(sprite->getPosition());
+			CCLabelTTF* towerCost = CCLabelTTF::create("$", "Marker Felt",25);
+			towerCost->setPosition(ccp(sprite->getContentSize().width/2, sprite->getContentSize().height/4));
 			towerCost->setColor(ccRED);
-			tScrollView->addChild(towerCost, 1);
+			sprite->addChild(towerCost);
             CCString *cost = (CCString*)costArr->objectAtIndex(i);
 			towerCost->setString(cost->getCString());
 		}
@@ -144,11 +146,39 @@ bool GameHUD::init(){
         menu3->setPosition(ccp(winSize.width - 50,winSize.height-35));
         menu3->setTag(101);
         this->addChild(menu3);
+        
+        CCMenuItemSprite *lev1 = CCMenuItemSprite::create(CCSprite::createWithSpriteFrame(ui_lv1_normal), CCSprite::createWithSpriteFrame(ui_lv1_press),this,menu_selector(GameHUD::lev_1_buttonPress));
+        
+        lev1->setPosition(CCPointZero);
+        CCMenu* menuL1 = CCMenu::create(lev1,NULL);
+        menuL1->setPosition(ccp(30,40));
+          menuL1->setTag(10);
+        tScrollView->addChild(menuL1);
+      
 		CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0 , true);
         
 		bRet = true;
 	} while (0);
 	return bRet;
+}
+void GameHUD::lev_1_buttonPress(){
+    CCObject *ot = NULL;
+    static bool show = true;
+    show = !show;
+
+    CCARRAY_FOREACH(movableSprites, ot){
+        CCSprite* sprite = (CCSprite*)ot;
+        if (!show) {
+        CCPoint pos = sprite->getPosition();
+        CCMoveTo *move = CCMoveTo::create(0.25, CCPointZero);
+        sprite->runAction(CCSequence::create(move,CCHide::create(),NULL));
+        }else
+        {
+            int index = movableSprites->indexOfObject(ot);
+            CCMoveTo *move = CCMoveTo::create(0.25, orignArr_L1->getControlPointAtIndex(index));
+            sprite->runAction(CCSequence::create(CCShow::create(),move,NULL));
+        }
+    }
 }
 void GameHUD::pauseGame(cocos2d::CCObject* psender){
     if (getIsPause()) {
