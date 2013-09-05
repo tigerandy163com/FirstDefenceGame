@@ -305,6 +305,10 @@ bool GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 			//newSprite->setPosition(ccpAdd(sprite->getPosition(), ccp(0, 30)));
             newSprite->setPosition(touchLocation);
 			selSprite = newSprite;
+            float scalex = 32.0f/newSprite->getContentSize().width;
+            float scaley = 32.0f/newSprite->getContentSize().height;
+            newSprite->setScaleX(scalex);
+            newSprite->setScaleY(scaley);
 			selSprite->setTag(sprite->getTag());
 			this->addChild(newSprite);
 			break;

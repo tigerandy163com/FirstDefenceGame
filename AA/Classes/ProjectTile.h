@@ -28,8 +28,8 @@ public:
 	CC_SYNTHESIZE(cocos2d::CCPoint, targetPos, TargetPos);
     CC_SYNTHESIZE(float, probability, Probability);
 	//CC_SYNTHESIZE(int, damage, Damage);
-   
-    cocos2d::CCMotionStreak* _streak;;
+    CC_SYNTHESIZE(float, _range, Range);
+    cocos2d::CCMotionStreak* _streak;
 protected:
     int damage;
     int maxDamage;

@@ -144,7 +144,7 @@ bool IceProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 	bool bRet = false;
 	do
 	{
-		CC_BREAK_IF(!initWithFile("bullet2.png"));
+		CC_BREAK_IF(!initWithFile("buttlet_new.png"));
         
 		this->setTargetPos(pos);
         
@@ -157,18 +157,30 @@ bool IceProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 
 void IceProjectTile::update(float dt){
 	//GameMediator* gm = GameMediator::sharedMediator();
+  
     
 	CCObject* temp;
+    bool needRemove = false;
 	CCARRAY_FOREACH(gm->getTargets(), temp){
 		Enemy* target = (Enemy*)temp;
         
 		if(this->getRect().intersectsRect(target->getRect())){
-			target->changeSpeed();
-			removeSelf();
-			break;
+		//	target->changeSpeed();
+            needRemove = true;
+            break;
 		}
 	}
-    
+    CCARRAY_FOREACH(gm->getTargets(), temp){
+		Enemy* target = (Enemy*)temp;
+        float dis =  ccpDistance(this->getPosition(), target->getPosition());
+		if(abs(dis)<=getRange() ){
+            target->changeSpeed();
+		}
+	}
+    if (needRemove) {
+        removeSelf();
+
+    }
 }
 
 void IceProjectTile::moveToTargetPos(){
@@ -233,6 +245,7 @@ void CannonProjectTile::update(float dt){
          myEnemy->SetDemage(this->getDamage(),this->getIsBoom());
 		removeSelf();
 	}
+
     
 	float radian = atan2f(targetPos.y - myPos.y, targetPos.x - myPos.x);
 	float angle = -CC_RADIANS_TO_DEGREES(radian);
@@ -261,6 +274,6 @@ void CannonProjectTile::update(float dt){
 	this->setPosition(ccp(myPos.x + x, myPos.y + y));
    
     _streak->setPosition(ccp(myPos.x, myPos.y));
-
+   
 }
 

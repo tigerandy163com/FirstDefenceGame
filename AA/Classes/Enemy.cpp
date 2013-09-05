@@ -233,7 +233,7 @@ void Enemy::boomNow(){
 
 void Enemy::changeSpeed(float time){
 	times = time * 5;//time / 0.2;
-	if(speed < 0.5f)
+	if(speed < 30)
 		return;
 	speed = speed * 0.5f;
 	
@@ -256,7 +256,7 @@ void Enemy::enemyLogic(float dt){
 		unscheduleAllSelectors();
         
 		gm->getGameHUDLayer()->updateBaseHp(-10);
-	//	removeSelf();
+		removeSelf();
 		return;
 	}
     
@@ -266,7 +266,7 @@ void Enemy::enemyLogic(float dt){
 		gm->getGameHUDLayer()->updateResources(5);
         stopAllActions();
 	//	unscheduleAllSelectors();
-		auto deadAction = CCBlink::create(0.5f, 3);
+		auto deadAction = CCBlink::create(0.3f, 3);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         
 		this->runAction(CCSequence::create(deadAction, deadDone, NULL));
@@ -278,8 +278,8 @@ void Enemy::enemyLogic(float dt){
 CCRect Enemy::getRect(){
 	CCRect rect = CCRectMake(this->getPosition().x - sprite->getContentSize().width * 0.5f,
                              this->getPosition().y - sprite->getContentSize().height* 0.5f,
-                             sprite->getContentSize().width,
-                             sprite->getContentSize().height);
+                             sprite->getContentSize().width/2,
+                             sprite->getContentSize().height/2);
 	return rect;
 }
 
@@ -293,7 +293,7 @@ void Enemy::attack(){
     
 }
 void Enemy::startLogic(){
-    schedule(schedule_selector(Enemy::enemyLogic), 1.0f);
+    schedule(schedule_selector(Enemy::enemyLogic), 0.5f);
     schedule(schedule_selector(Enemy::timer), 0.2f);
     moveToTarget();
 }
@@ -311,7 +311,7 @@ void Enemy::moveToTarget( ){
 
     CCPoint _currentTileCoord = toTile->getPosition();
     if (_currentTileCoord.equals(endPos)) {
-        this->removeSelf();
+     //   this->removeSelf();
         return;
     }
    
@@ -352,8 +352,8 @@ void Enemy::moveToTarget( ){
     }
     }
     if (lasttile) {
-        auto doneCallback = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
-        this->runAction(CCSequence::create(moveAction,doneCallback, NULL));
+       // auto doneCallback = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
+        this->runAction(CCSequence::create(moveAction, NULL));
     }else
 	this->runAction(CCSequence::create(moveAction, moveCallback, NULL));
 

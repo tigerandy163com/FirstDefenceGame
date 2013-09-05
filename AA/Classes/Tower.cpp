@@ -105,7 +105,7 @@ bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
 		this->setRange(range);
         
         rangeSprite = CCSprite::create("Range.png");
-        float scale = range/100.0f;
+        float scale = (float)range/100.0f;
         rangeSprite->setScale(scale);
         rangeSprite->setVisible(false);
         rangeSprite->setPosition(sprite->getPosition());
@@ -529,6 +529,7 @@ void FreezeTower::fire(float dt){
 		ProjectTile->setRotation(this->getRotation());
         ProjectTile->setDamage(_damge);
         ProjectTile->setMaxDamge(_maxDamge);
+        ProjectTile->setRange(_range);
 		m->getGameLayer()->addChild(ProjectTile);
 	}
 }
@@ -750,12 +751,13 @@ void MutilTower::getMutilFireEnemys(){
     }else
     {
         int count =arr->count();
-        if (count<=3) {
-            enemys->removeAllObjects();
-            enemys->addObjectsFromArray(arr);
-            return;
-   
-        }else{
+//        if (count<=3) {
+//            enemys->removeAllObjects();
+//            enemys->addObjectsFromArray(arr);
+//            return;
+//   
+//        }else
+        {
             
             CCObject* temp;
             int num= 0;
