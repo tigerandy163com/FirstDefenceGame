@@ -11,6 +11,7 @@
 #include "TowersList.h"
 #include "MapsList.h"
 #include "PopUpLayer.h"
+#include "LoadingLayer.h"
 USING_NS_CC;
 
 StartScene::~StartScene(){
@@ -66,10 +67,10 @@ void StartScene::gotoMapsList(){
 void StartScene:: startGame(){
       
     //场景转换
-    CCScene *pScene = MainLayer::scene();
+    CCScene *pScene = LoadingLayer::scene();
     
     //跳跃式动画
-    CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(1, pScene));
+    CCDirector::sharedDirector()->replaceScene(pScene);
     
     //其他的一些特效
     

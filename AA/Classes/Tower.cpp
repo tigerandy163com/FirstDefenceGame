@@ -300,15 +300,15 @@ bool Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 }
 void MachineGunTower::towerLogic(float dt){
     Tower::towerLogic(dt);
-    	if(this->getTarget() != NULL){
-    		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
-    		float shootAngle = ccpToAngle(shootVector);
-    		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
-    
-    		float rotateSpeed = (float)(0.25 / M_PI);
-    		float rotateDuration = fabs(shootAngle * rotateSpeed);
-    		sprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
-    	}
+//    	if(this->getTarget() != NULL){
+//    		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
+//    		float shootAngle = ccpToAngle(shootVector);
+//    		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
+//    
+//    		float rotateSpeed = (float)(0.25 / M_PI);
+//    		float rotateDuration = fabs(shootAngle * rotateSpeed);
+//    		sprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
+//    	}
 }
 MachineGunTower* MachineGunTower::create(const char *pszFilename, int range){
 	MachineGunTower* t = new MachineGunTower;
@@ -329,8 +329,8 @@ MachineGunTower* MachineGunTower::create(cocos2d::CCSpriteFrame *frame, int rang
 	return NULL;
 }
 MachineGunTower* MachineGunTower::create(){
-	return MachineGunTower::create("MachineGunTurret.png", 100);
-    //MachineGunTower::create(Tower1_1, 100);
+	return //MachineGunTower::create("MachineGunTurret.png", 100);
+    MachineGunTower::create(Tower1_1, 100);
 }
 bool MachineGunTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
     bool bRet = false;

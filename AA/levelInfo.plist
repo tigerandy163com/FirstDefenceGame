@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>levelparameter</key>
+		<array>
+			<dict>
+				<key>internal</key>
+				<integer>1</integer>
+				<key>speed</key>
+				<integer>30</integer>
+				<key>blood</key>
+				<integer>100</integer>
+				<key>count</key>
+				<integer>10</integer>
+				<key>masterType</key>
+				<integer>1</integer>
+			</dict>
+			<dict/>
+		</array>
+		<key>needtoloadimages</key>
+		<dict>
+			<key>4</key>
+			<string>loadingHMenu/111.plist</string>
+			<key>3</key>
+			<string>levelselectone/themescene2-hd.plist</string>
+			<key>2</key>
+			<string>levelselectone/stages_bg-hd.plist</string>
+			<key>1</key>
+			<string>Hmenu/mainscene1-hd.plist</string>
+		</dict>
+	</dict>
+</array>
+</plist>

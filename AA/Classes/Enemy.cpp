@@ -107,7 +107,11 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
 		healthBar->setPercentage(100);
 		healthBar->setScale(0.2f);
 		healthBar->setPosition(ccp(0,sprite->getContentSize().height* 0.5f));
-		this->addChild(healthBar);
+		this->addChild(healthBar,2);
+        CCSprite *redBar = CCSprite::create("health_bar_red.png");
+        redBar->setPosition(healthBar->getPosition());
+        redBar->setScale(0.2);
+        this->addChild(redBar,1);
         scheduleOnce(schedule_selector(Enemy::attack), 0.5f);
 		schedule(schedule_selector(Enemy::enemyLogic), 1.0f,kCCRepeatForever,32.0f/speed);
 		schedule(schedule_selector(Enemy::timer), 0.2f);
@@ -261,8 +265,8 @@ void Enemy::enemyLogic(float dt){
 		
         
 		gm->getGameHUDLayer()->updateResources(5);
-        stopAllActions();
-		unscheduleAllSelectors();
+    //    stopAllActions();
+	//	unscheduleAllSelectors();
 		auto deadAction = CCBlink::create(1.0f, 5);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         

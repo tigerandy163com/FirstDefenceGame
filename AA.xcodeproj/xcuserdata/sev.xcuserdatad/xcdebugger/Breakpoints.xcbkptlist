@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/Enemy.cpp"
-         timestampString = "399896469.166994"
+         timestampString = "400040680.023372"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "316"
-         endingLineNumber = "316"
+         startingLineNumber = "320"
+         endingLineNumber = "320"
          landmarkName = "Enemy::moveToTarget( )"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399979486.957123"
+         timestampString = "400040680.023372"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
          landmarkName = "GameHUD::speedUp(cocos2d::CCObject *psender)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399979486.957123"
+         timestampString = "400040680.023372"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "227"
-         endingLineNumber = "227">
+         startingLineNumber = "228"
+         endingLineNumber = "228">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -97,11 +97,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399979486.957123"
+         timestampString = "400040680.023372"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "262"
+         endingLineNumber = "262"
          landmarkName = "GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -110,11 +110,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "AA/Classes/GameHUD.cpp"
-         timestampString = "399979486.957123"
+         timestampString = "400040680.023372"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "258"
-         endingLineNumber = "258"
+         startingLineNumber = "259"
+         endingLineNumber = "259"
          landmarkName = "GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -129,6 +129,19 @@
          startingLineNumber = "263"
          endingLineNumber = "263"
          landmarkName = "Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/Enemy.cpp"
+         timestampString = "400040840.75119"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "273"
+         endingLineNumber = "273"
+         landmarkName = "Enemy::enemyLogic(float dt)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

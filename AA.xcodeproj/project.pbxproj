@@ -12,6 +12,9 @@
 		C65FA31D17D5BBD400AB5091 /* map4.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31817D5BBD400AB5091 /* map4.png */; };
 		C65FA31E17D5BBD400AB5091 /* map5.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31917D5BBD400AB5091 /* map5.png */; };
 		C65FA31F17D5BBD400AB5091 /* map6.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31A17D5BBD400AB5091 /* map6.png */; };
+		C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87A17D8191100FC0D1C /* levelInfo.plist */; };
+		C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */; };
+		C6DBD88017D81FF700FC0D1C /* loadImg.png in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87F17D81FF700FC0D1C /* loadImg.png */; };
 		C6E3634217D466350021F557 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634117D466350021F557 /* QuartzCore.framework */; };
 		C6E3634417D466350021F557 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634317D466350021F557 /* OpenGLES.framework */; };
 		C6E3634617D466350021F557 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634517D466350021F557 /* OpenAL.framework */; };
@@ -350,6 +353,10 @@
 		C65FA31817D5BBD400AB5091 /* map4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map4.png; path = Resources/map4.png; sourceTree = "<group>"; };
 		C65FA31917D5BBD400AB5091 /* map5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map5.png; path = Resources/map5.png; sourceTree = "<group>"; };
 		C65FA31A17D5BBD400AB5091 /* map6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map6.png; path = Resources/map6.png; sourceTree = "<group>"; };
+		C6DBD87A17D8191100FC0D1C /* levelInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levelInfo.plist; sourceTree = "<group>"; };
+		C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingLayer.cpp; sourceTree = "<group>"; };
+		C6DBD87D17D81A5300FC0D1C /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
+		C6DBD87F17D81FF700FC0D1C /* loadImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loadImg.png; path = Resources/loadImg.png; sourceTree = "<group>"; };
 		C6E3633E17D466350021F557 /* AA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E3634117D466350021F557 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C6E3634317D466350021F557 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1082,6 +1089,7 @@
 		C6E3635217D466350021F557 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C6DBD87F17D81FF700FC0D1C /* loadImg.png */,
 				C6F62D4F17D6F7B000477FE2 /* choose.png */,
 				C6F62D5017D6F7B000477FE2 /* effect1.png */,
 				C6F62D5117D6F7B000477FE2 /* icons.png */,
@@ -1143,6 +1151,7 @@
 				C6E3636517D466350021F557 /* Icon@2x.png */,
 				C6E3636717D466350021F557 /* iTunesArtwork */,
 				C6E3636917D466350021F557 /* Info.plist */,
+				C6DBD87A17D8191100FC0D1C /* levelInfo.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2311,6 +2320,8 @@
 				C6E366E617D466440021F557 /* HelloWorldScene.h */,
 				C6E366E717D466440021F557 /* HelloWorldScene.cpp */,
 				C6F62D4E17D6DDA300477FE2 /* data.h */,
+				C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */,
+				C6DBD87D17D81A5300FC0D1C /* LoadingLayer.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2427,6 +2438,8 @@
 				C6F62D5217D6F7B000477FE2 /* choose.png in Resources */,
 				C6F62D5317D6F7B000477FE2 /* effect1.png in Resources */,
 				C6F62D5417D6F7B000477FE2 /* icons.png in Resources */,
+				C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */,
+				C6DBD88017D81FF700FC0D1C /* loadImg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2699,6 +2712,7 @@
 				C6E3676217D4685F0021F557 /* Tower.cpp in Sources */,
 				C6E3676317D4685F0021F557 /* TowersList.cpp in Sources */,
 				C6E3676417D4685F0021F557 /* Wave.cpp in Sources */,
+				C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

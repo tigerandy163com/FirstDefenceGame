@@ -113,6 +113,7 @@ bool GameHUD::init(){
 		healthBar->setScale(0.5f);
 		healthBar->setPosition(ccp(winSize.width -55, winSize.height -15));
 		this->addChild(healthBar);
+
         CCMenuItemFont *back = CCMenuItemFont::create("back", this, menu_selector(GameHUD::backToMain));
         
         back->setPosition(CCPointZero);
