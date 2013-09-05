@@ -52,7 +52,7 @@ private:
     
     //保存关卡的相关的数值信息
     CCDictionary * s_LevelParameter;
-    CCDictionary *masters;
+    CCDictionary *s_masters;
 private:
     
 };
