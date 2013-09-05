@@ -61,6 +61,7 @@
 		C6DBD8DC17D84B3500FC0D1C /* upgrade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AE17D84B3500FC0D1C /* upgrade.wav */; };
 		C6DBD8DD17D84B3500FC0D1C /* wizardDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AF17D84B3500FC0D1C /* wizardDead.wav */; };
 		C6DBD8DE17D84B3500FC0D1C /* wolfDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8B017D84B3500FC0D1C /* wolfDead.wav */; };
+		C6DBD8E117D8552900FC0D1C /* LoadLevelInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD8DF17D8552800FC0D1C /* LoadLevelInfo.cpp */; };
 		C6E3634217D466350021F557 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634117D466350021F557 /* QuartzCore.framework */; };
 		C6E3634417D466350021F557 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634317D466350021F557 /* OpenGLES.framework */; };
 		C6E3634617D466350021F557 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634517D466350021F557 /* OpenAL.framework */; };
@@ -449,6 +450,8 @@
 		C6DBD8AE17D84B3500FC0D1C /* upgrade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = upgrade.wav; sourceTree = "<group>"; };
 		C6DBD8AF17D84B3500FC0D1C /* wizardDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wizardDead.wav; sourceTree = "<group>"; };
 		C6DBD8B017D84B3500FC0D1C /* wolfDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wolfDead.wav; sourceTree = "<group>"; };
+		C6DBD8DF17D8552800FC0D1C /* LoadLevelInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadLevelInfo.cpp; sourceTree = "<group>"; };
+		C6DBD8E017D8552800FC0D1C /* LoadLevelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadLevelInfo.h; sourceTree = "<group>"; };
 		C6E3633E17D466350021F557 /* AA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E3634117D466350021F557 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C6E3634317D466350021F557 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -2478,6 +2481,8 @@
 				C6F62D4E17D6DDA300477FE2 /* data.h */,
 				C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */,
 				C6DBD87D17D81A5300FC0D1C /* LoadingLayer.h */,
+				C6DBD8DF17D8552800FC0D1C /* LoadLevelInfo.cpp */,
+				C6DBD8E017D8552800FC0D1C /* LoadLevelInfo.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2915,6 +2920,7 @@
 				C6E3676317D4685F0021F557 /* TowersList.cpp in Sources */,
 				C6E3676417D4685F0021F557 /* Wave.cpp in Sources */,
 				C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */,
+				C6DBD8E117D8552900FC0D1C /* LoadLevelInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
