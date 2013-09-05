@@ -56,6 +56,8 @@ bool LoadLevelinfo::f_SetPlist(const char *plistpath)
         //进入关卡所需信息节点
         s_LevelParameter = dynamic_cast<CCDictionary *>(ccd->objectForKey(LEVELPARAMETER));
         CC_BREAK_IF(!s_LevelParameter);
+        
+        masters =  dynamic_cast<CCDictionary *>(ccd->objectForKey(MASTERS));
         //You need to remove : 输出调试信息
         CCLog("Needtoloadimages count is : %d", s_NeedToLoadImages->count());
         CCLog("levelparameter count is : %d", s_LevelParameter->count());
@@ -88,4 +90,9 @@ const char  *LoadLevelinfo::f_GetLoadingImages(int key)
     CCString * pString  = CCString ::createWithFormat("%d",key);
     CCString * temp =   dynamic_cast<CCString*>(s_NeedToLoadImages->objectForKey(pString->getCString()));
     return temp->getCString();
+}
+CCDictionary *LoadLevelinfo::getMasterByTypeID(int type){
+    CCString * pString  = CCString ::createWithFormat("%d",type);
+    CCDictionary * temp =   dynamic_cast<CCDictionary*>(masters->objectForKey(pString->getCString()));
+    return temp;
 }

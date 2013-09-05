@@ -8,6 +8,7 @@
 
 #include "LoadingLayer.h"
 #include "MainLayer.h"
+#include "LoadLevelInfo.h"
 USING_NS_CC;
 
 LoadingLayer::LoadingLayer(){
@@ -76,7 +77,9 @@ bool LoadingLayer::initWithLevel(int lev){
         CCTextureCache::sharedTextureCache()->addImageAsync("choose.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("effect1.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("icons.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
-         
+//       LoadLevelinfo* levelinfo = LoadLevelinfo::createLoadLevelinfo("levelInfo.plist");
+//        CCDictionary* dic = levelinfo->getMasterByTypeID(1);
+        
         bRet =true;
     } while (0 );
     return bRet;

@@ -13,6 +13,7 @@
 using namespace cocos2d;
 #define NEEDTOLOADIMAGES "needtoloadimages"
 #define LEVELPARAMETER "levelparameter"
+#define MASTERS "master"
 class LoadLevelinfo: public CCObject
 {
 public:
@@ -40,7 +41,7 @@ public:
      <string>Hmenu/mainscene1-hd.plist</string>
      */
     const char  * f_GetLoadingImages(int key);
-    
+    CCDictionary *getMasterByTypeID(int type);
     
     //清空已经读取的字符串
     void f_ClearAll();
@@ -51,7 +52,7 @@ private:
     
     //保存关卡的相关的数值信息
     CCDictionary * s_LevelParameter;
-    
+    CCDictionary *masters;
 private:
     
 };
