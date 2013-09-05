@@ -15,6 +15,52 @@
 		C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87A17D8191100FC0D1C /* levelInfo.plist */; };
 		C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */; };
 		C6DBD88017D81FF700FC0D1C /* loadImg.png in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87F17D81FF700FC0D1C /* loadImg.png */; };
+		C6DBD8B117D84B3500FC0D1C /* battle1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88217D84B3500FC0D1C /* battle1.wav */; };
+		C6DBD8B217D84B3500FC0D1C /* battle2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88317D84B3500FC0D1C /* battle2.wav */; };
+		C6DBD8B317D84B3500FC0D1C /* battle3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88417D84B3500FC0D1C /* battle3.wav */; };
+		C6DBD8B417D84B3500FC0D1C /* battle4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88517D84B3500FC0D1C /* battle4.wav */; };
+		C6DBD8B517D84B3500FC0D1C /* battle5.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88617D84B3500FC0D1C /* battle5.wav */; };
+		C6DBD8B617D84B3500FC0D1C /* battle6.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88717D84B3500FC0D1C /* battle6.wav */; };
+		C6DBD8B717D84B3500FC0D1C /* abstacleDestroy.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88917D84B3500FC0D1C /* abstacleDestroy.wav */; };
+		C6DBD8B817D84B3500FC0D1C /* arrowTower.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88A17D84B3500FC0D1C /* arrowTower.wav */; };
+		C6DBD8B917D84B3500FC0D1C /* tower1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88B17D84B3500FC0D1C /* tower1.wav */; };
+		C6DBD8BA17D84B3500FC0D1C /* backSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88C17D84B3500FC0D1C /* backSound.wav */; };
+		C6DBD8BB17D84B3500FC0D1C /* birdDeath.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88D17D84B3500FC0D1C /* birdDeath.wav */; };
+		C6DBD8BC17D84B3500FC0D1C /* CaptainDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88E17D84B3500FC0D1C /* CaptainDead.wav */; };
+		C6DBD8BD17D84B3500FC0D1C /* castleHurtSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD88F17D84B3500FC0D1C /* castleHurtSound.wav */; };
+		C6DBD8BE17D84B3500FC0D1C /* castleHurtSound2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89017D84B3500FC0D1C /* castleHurtSound2.wav */; };
+		C6DBD8BF17D84B3500FC0D1C /* chooseOB.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89117D84B3500FC0D1C /* chooseOB.wav */; };
+		C6DBD8C017D84B3500FC0D1C /* confirm.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89217D84B3500FC0D1C /* confirm.wav */; };
+		C6DBD8C117D84B3500FC0D1C /* doom.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89317D84B3500FC0D1C /* doom.wav */; };
+		C6DBD8C217D84B3500FC0D1C /* flameMagic.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89417D84B3500FC0D1C /* flameMagic.wav */; };
+		C6DBD8C317D84B3500FC0D1C /* freeDreadMagic.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89517D84B3500FC0D1C /* freeDreadMagic.wav */; };
+		C6DBD8C417D84B3500FC0D1C /* freeflame.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89617D84B3500FC0D1C /* freeflame.wav */; };
+		C6DBD8C517D84B3500FC0D1C /* frostMagic.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89717D84B3500FC0D1C /* frostMagic.wav */; };
+		C6DBD8C617D84B3500FC0D1C /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89817D84B3500FC0D1C /* gameover.wav */; };
+		C6DBD8C717D84B3500FC0D1C /* getgold.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89917D84B3500FC0D1C /* getgold.wav */; };
+		C6DBD8C817D84B3500FC0D1C /* giantDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89A17D84B3500FC0D1C /* giantDead.wav */; };
+		C6DBD8C917D84B3500FC0D1C /* iceMagicSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89B17D84B3500FC0D1C /* iceMagicSound.wav */; };
+		C6DBD8CA17D84B3500FC0D1C /* invadeCastleSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89C17D84B3500FC0D1C /* invadeCastleSound.wav */; };
+		C6DBD8CB17D84B3500FC0D1C /* magicElement.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89D17D84B3500FC0D1C /* magicElement.wav */; };
+		C6DBD8CC17D84B3500FC0D1C /* monsterDead1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89E17D84B3500FC0D1C /* monsterDead1.wav */; };
+		C6DBD8CD17D84B3500FC0D1C /* monsterDead2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD89F17D84B3500FC0D1C /* monsterDead2.wav */; };
+		C6DBD8CE17D84B3500FC0D1C /* monsterDead3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A017D84B3500FC0D1C /* monsterDead3.wav */; };
+		C6DBD8CF17D84B3500FC0D1C /* monsterDead4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A117D84B3500FC0D1C /* monsterDead4.wav */; };
+		C6DBD8D017D84B3500FC0D1C /* monsterDead5.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A217D84B3500FC0D1C /* monsterDead5.wav */; };
+		C6DBD8D117D84B3500FC0D1C /* monsterDead6.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A317D84B3500FC0D1C /* monsterDead6.wav */; };
+		C6DBD8D217D84B3500FC0D1C /* orcDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A417D84B3500FC0D1C /* orcDead.wav */; };
+		C6DBD8D317D84B3500FC0D1C /* perWaveVictory.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A517D84B3500FC0D1C /* perWaveVictory.wav */; };
+		C6DBD8D417D84B3500FC0D1C /* thunderSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A617D84B3500FC0D1C /* thunderSound.wav */; };
+		C6DBD8D517D84B3500FC0D1C /* tower2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A717D84B3500FC0D1C /* tower2.wav */; };
+		C6DBD8D617D84B3500FC0D1C /* tower3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A817D84B3500FC0D1C /* tower3.wav */; };
+		C6DBD8D717D84B3500FC0D1C /* tower4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8A917D84B3500FC0D1C /* tower4.wav */; };
+		C6DBD8D817D84B3500FC0D1C /* tower5.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AA17D84B3500FC0D1C /* tower5.wav */; };
+		C6DBD8D917D84B3500FC0D1C /* tower6.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AB17D84B3500FC0D1C /* tower6.wav */; };
+		C6DBD8DA17D84B3500FC0D1C /* tower7.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AC17D84B3500FC0D1C /* tower7.wav */; };
+		C6DBD8DB17D84B3500FC0D1C /* triumf.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AD17D84B3500FC0D1C /* triumf.wav */; };
+		C6DBD8DC17D84B3500FC0D1C /* upgrade.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AE17D84B3500FC0D1C /* upgrade.wav */; };
+		C6DBD8DD17D84B3500FC0D1C /* wizardDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8AF17D84B3500FC0D1C /* wizardDead.wav */; };
+		C6DBD8DE17D84B3500FC0D1C /* wolfDead.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD8B017D84B3500FC0D1C /* wolfDead.wav */; };
 		C6E3634217D466350021F557 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634117D466350021F557 /* QuartzCore.framework */; };
 		C6E3634417D466350021F557 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634317D466350021F557 /* OpenGLES.framework */; };
 		C6E3634617D466350021F557 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E3634517D466350021F557 /* OpenAL.framework */; };
@@ -357,6 +403,52 @@
 		C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingLayer.cpp; sourceTree = "<group>"; };
 		C6DBD87D17D81A5300FC0D1C /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
 		C6DBD87F17D81FF700FC0D1C /* loadImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loadImg.png; path = Resources/loadImg.png; sourceTree = "<group>"; };
+		C6DBD88217D84B3500FC0D1C /* battle1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle1.wav; sourceTree = "<group>"; };
+		C6DBD88317D84B3500FC0D1C /* battle2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle2.wav; sourceTree = "<group>"; };
+		C6DBD88417D84B3500FC0D1C /* battle3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle3.wav; sourceTree = "<group>"; };
+		C6DBD88517D84B3500FC0D1C /* battle4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle4.wav; sourceTree = "<group>"; };
+		C6DBD88617D84B3500FC0D1C /* battle5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle5.wav; sourceTree = "<group>"; };
+		C6DBD88717D84B3500FC0D1C /* battle6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = battle6.wav; sourceTree = "<group>"; };
+		C6DBD88917D84B3500FC0D1C /* abstacleDestroy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = abstacleDestroy.wav; sourceTree = "<group>"; };
+		C6DBD88A17D84B3500FC0D1C /* arrowTower.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arrowTower.wav; sourceTree = "<group>"; };
+		C6DBD88B17D84B3500FC0D1C /* tower1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower1.wav; sourceTree = "<group>"; };
+		C6DBD88C17D84B3500FC0D1C /* backSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backSound.wav; sourceTree = "<group>"; };
+		C6DBD88D17D84B3500FC0D1C /* birdDeath.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = birdDeath.wav; sourceTree = "<group>"; };
+		C6DBD88E17D84B3500FC0D1C /* CaptainDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CaptainDead.wav; sourceTree = "<group>"; };
+		C6DBD88F17D84B3500FC0D1C /* castleHurtSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = castleHurtSound.wav; sourceTree = "<group>"; };
+		C6DBD89017D84B3500FC0D1C /* castleHurtSound2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = castleHurtSound2.wav; sourceTree = "<group>"; };
+		C6DBD89117D84B3500FC0D1C /* chooseOB.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chooseOB.wav; sourceTree = "<group>"; };
+		C6DBD89217D84B3500FC0D1C /* confirm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = confirm.wav; sourceTree = "<group>"; };
+		C6DBD89317D84B3500FC0D1C /* doom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = doom.wav; sourceTree = "<group>"; };
+		C6DBD89417D84B3500FC0D1C /* flameMagic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = flameMagic.wav; sourceTree = "<group>"; };
+		C6DBD89517D84B3500FC0D1C /* freeDreadMagic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeDreadMagic.wav; sourceTree = "<group>"; };
+		C6DBD89617D84B3500FC0D1C /* freeflame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = freeflame.wav; sourceTree = "<group>"; };
+		C6DBD89717D84B3500FC0D1C /* frostMagic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = frostMagic.wav; sourceTree = "<group>"; };
+		C6DBD89817D84B3500FC0D1C /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
+		C6DBD89917D84B3500FC0D1C /* getgold.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = getgold.wav; sourceTree = "<group>"; };
+		C6DBD89A17D84B3500FC0D1C /* giantDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = giantDead.wav; sourceTree = "<group>"; };
+		C6DBD89B17D84B3500FC0D1C /* iceMagicSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = iceMagicSound.wav; sourceTree = "<group>"; };
+		C6DBD89C17D84B3500FC0D1C /* invadeCastleSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = invadeCastleSound.wav; sourceTree = "<group>"; };
+		C6DBD89D17D84B3500FC0D1C /* magicElement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = magicElement.wav; sourceTree = "<group>"; };
+		C6DBD89E17D84B3500FC0D1C /* monsterDead1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead1.wav; sourceTree = "<group>"; };
+		C6DBD89F17D84B3500FC0D1C /* monsterDead2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead2.wav; sourceTree = "<group>"; };
+		C6DBD8A017D84B3500FC0D1C /* monsterDead3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead3.wav; sourceTree = "<group>"; };
+		C6DBD8A117D84B3500FC0D1C /* monsterDead4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead4.wav; sourceTree = "<group>"; };
+		C6DBD8A217D84B3500FC0D1C /* monsterDead5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead5.wav; sourceTree = "<group>"; };
+		C6DBD8A317D84B3500FC0D1C /* monsterDead6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = monsterDead6.wav; sourceTree = "<group>"; };
+		C6DBD8A417D84B3500FC0D1C /* orcDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = orcDead.wav; sourceTree = "<group>"; };
+		C6DBD8A517D84B3500FC0D1C /* perWaveVictory.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = perWaveVictory.wav; sourceTree = "<group>"; };
+		C6DBD8A617D84B3500FC0D1C /* thunderSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = thunderSound.wav; sourceTree = "<group>"; };
+		C6DBD8A717D84B3500FC0D1C /* tower2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower2.wav; sourceTree = "<group>"; };
+		C6DBD8A817D84B3500FC0D1C /* tower3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower3.wav; sourceTree = "<group>"; };
+		C6DBD8A917D84B3500FC0D1C /* tower4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower4.wav; sourceTree = "<group>"; };
+		C6DBD8AA17D84B3500FC0D1C /* tower5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower5.wav; sourceTree = "<group>"; };
+		C6DBD8AB17D84B3500FC0D1C /* tower6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower6.wav; sourceTree = "<group>"; };
+		C6DBD8AC17D84B3500FC0D1C /* tower7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tower7.wav; sourceTree = "<group>"; };
+		C6DBD8AD17D84B3500FC0D1C /* triumf.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = triumf.wav; sourceTree = "<group>"; };
+		C6DBD8AE17D84B3500FC0D1C /* upgrade.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = upgrade.wav; sourceTree = "<group>"; };
+		C6DBD8AF17D84B3500FC0D1C /* wizardDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wizardDead.wav; sourceTree = "<group>"; };
+		C6DBD8B017D84B3500FC0D1C /* wolfDead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wolfDead.wav; sourceTree = "<group>"; };
 		C6E3633E17D466350021F557 /* AA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E3634117D466350021F557 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C6E3634317D466350021F557 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1042,6 +1134,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6DBD88117D84B3500FC0D1C /* BGM */ = {
+			isa = PBXGroup;
+			children = (
+				C6DBD88217D84B3500FC0D1C /* battle1.wav */,
+				C6DBD88317D84B3500FC0D1C /* battle2.wav */,
+				C6DBD88417D84B3500FC0D1C /* battle3.wav */,
+				C6DBD88517D84B3500FC0D1C /* battle4.wav */,
+				C6DBD88617D84B3500FC0D1C /* battle5.wav */,
+				C6DBD88717D84B3500FC0D1C /* battle6.wav */,
+			);
+			name = BGM;
+			path = sounds/BGM;
+			sourceTree = "<group>";
+		};
+		C6DBD88817D84B3500FC0D1C /* SOUND */ = {
+			isa = PBXGroup;
+			children = (
+				C6DBD88917D84B3500FC0D1C /* abstacleDestroy.wav */,
+				C6DBD88A17D84B3500FC0D1C /* arrowTower.wav */,
+				C6DBD88B17D84B3500FC0D1C /* tower1.wav */,
+				C6DBD88C17D84B3500FC0D1C /* backSound.wav */,
+				C6DBD88D17D84B3500FC0D1C /* birdDeath.wav */,
+				C6DBD88E17D84B3500FC0D1C /* CaptainDead.wav */,
+				C6DBD88F17D84B3500FC0D1C /* castleHurtSound.wav */,
+				C6DBD89017D84B3500FC0D1C /* castleHurtSound2.wav */,
+				C6DBD89117D84B3500FC0D1C /* chooseOB.wav */,
+				C6DBD89217D84B3500FC0D1C /* confirm.wav */,
+				C6DBD89317D84B3500FC0D1C /* doom.wav */,
+				C6DBD89417D84B3500FC0D1C /* flameMagic.wav */,
+				C6DBD89517D84B3500FC0D1C /* freeDreadMagic.wav */,
+				C6DBD89617D84B3500FC0D1C /* freeflame.wav */,
+				C6DBD89717D84B3500FC0D1C /* frostMagic.wav */,
+				C6DBD89817D84B3500FC0D1C /* gameover.wav */,
+				C6DBD89917D84B3500FC0D1C /* getgold.wav */,
+				C6DBD89A17D84B3500FC0D1C /* giantDead.wav */,
+				C6DBD89B17D84B3500FC0D1C /* iceMagicSound.wav */,
+				C6DBD89C17D84B3500FC0D1C /* invadeCastleSound.wav */,
+				C6DBD89D17D84B3500FC0D1C /* magicElement.wav */,
+				C6DBD89E17D84B3500FC0D1C /* monsterDead1.wav */,
+				C6DBD89F17D84B3500FC0D1C /* monsterDead2.wav */,
+				C6DBD8A017D84B3500FC0D1C /* monsterDead3.wav */,
+				C6DBD8A117D84B3500FC0D1C /* monsterDead4.wav */,
+				C6DBD8A217D84B3500FC0D1C /* monsterDead5.wav */,
+				C6DBD8A317D84B3500FC0D1C /* monsterDead6.wav */,
+				C6DBD8A417D84B3500FC0D1C /* orcDead.wav */,
+				C6DBD8A517D84B3500FC0D1C /* perWaveVictory.wav */,
+				C6DBD8A617D84B3500FC0D1C /* thunderSound.wav */,
+				C6DBD8A717D84B3500FC0D1C /* tower2.wav */,
+				C6DBD8A817D84B3500FC0D1C /* tower3.wav */,
+				C6DBD8A917D84B3500FC0D1C /* tower4.wav */,
+				C6DBD8AA17D84B3500FC0D1C /* tower5.wav */,
+				C6DBD8AB17D84B3500FC0D1C /* tower6.wav */,
+				C6DBD8AC17D84B3500FC0D1C /* tower7.wav */,
+				C6DBD8AD17D84B3500FC0D1C /* triumf.wav */,
+				C6DBD8AE17D84B3500FC0D1C /* upgrade.wav */,
+				C6DBD8AF17D84B3500FC0D1C /* wizardDead.wav */,
+				C6DBD8B017D84B3500FC0D1C /* wolfDead.wav */,
+			);
+			name = SOUND;
+			path = sounds/SOUND;
+			sourceTree = "<group>";
+		};
 		C6E3633517D466350021F557 = {
 			isa = PBXGroup;
 			children = (
@@ -1078,6 +1232,8 @@
 			isa = PBXGroup;
 			children = (
 				C6E3635217D466350021F557 /* Resources */,
+				C6DBD88117D84B3500FC0D1C /* BGM */,
+				C6DBD88817D84B3500FC0D1C /* SOUND */,
 				C6E3636A17D466350021F557 /* ios */,
 				C6E3637317D466350021F557 /* libs */,
 				C6E366E217D466440021F557 /* Classes */,
@@ -2440,6 +2596,52 @@
 				C6F62D5417D6F7B000477FE2 /* icons.png in Resources */,
 				C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */,
 				C6DBD88017D81FF700FC0D1C /* loadImg.png in Resources */,
+				C6DBD8B117D84B3500FC0D1C /* battle1.wav in Resources */,
+				C6DBD8B217D84B3500FC0D1C /* battle2.wav in Resources */,
+				C6DBD8B317D84B3500FC0D1C /* battle3.wav in Resources */,
+				C6DBD8B417D84B3500FC0D1C /* battle4.wav in Resources */,
+				C6DBD8B517D84B3500FC0D1C /* battle5.wav in Resources */,
+				C6DBD8B617D84B3500FC0D1C /* battle6.wav in Resources */,
+				C6DBD8B717D84B3500FC0D1C /* abstacleDestroy.wav in Resources */,
+				C6DBD8B817D84B3500FC0D1C /* arrowTower.wav in Resources */,
+				C6DBD8B917D84B3500FC0D1C /* tower1.wav in Resources */,
+				C6DBD8BA17D84B3500FC0D1C /* backSound.wav in Resources */,
+				C6DBD8BB17D84B3500FC0D1C /* birdDeath.wav in Resources */,
+				C6DBD8BC17D84B3500FC0D1C /* CaptainDead.wav in Resources */,
+				C6DBD8BD17D84B3500FC0D1C /* castleHurtSound.wav in Resources */,
+				C6DBD8BE17D84B3500FC0D1C /* castleHurtSound2.wav in Resources */,
+				C6DBD8BF17D84B3500FC0D1C /* chooseOB.wav in Resources */,
+				C6DBD8C017D84B3500FC0D1C /* confirm.wav in Resources */,
+				C6DBD8C117D84B3500FC0D1C /* doom.wav in Resources */,
+				C6DBD8C217D84B3500FC0D1C /* flameMagic.wav in Resources */,
+				C6DBD8C317D84B3500FC0D1C /* freeDreadMagic.wav in Resources */,
+				C6DBD8C417D84B3500FC0D1C /* freeflame.wav in Resources */,
+				C6DBD8C517D84B3500FC0D1C /* frostMagic.wav in Resources */,
+				C6DBD8C617D84B3500FC0D1C /* gameover.wav in Resources */,
+				C6DBD8C717D84B3500FC0D1C /* getgold.wav in Resources */,
+				C6DBD8C817D84B3500FC0D1C /* giantDead.wav in Resources */,
+				C6DBD8C917D84B3500FC0D1C /* iceMagicSound.wav in Resources */,
+				C6DBD8CA17D84B3500FC0D1C /* invadeCastleSound.wav in Resources */,
+				C6DBD8CB17D84B3500FC0D1C /* magicElement.wav in Resources */,
+				C6DBD8CC17D84B3500FC0D1C /* monsterDead1.wav in Resources */,
+				C6DBD8CD17D84B3500FC0D1C /* monsterDead2.wav in Resources */,
+				C6DBD8CE17D84B3500FC0D1C /* monsterDead3.wav in Resources */,
+				C6DBD8CF17D84B3500FC0D1C /* monsterDead4.wav in Resources */,
+				C6DBD8D017D84B3500FC0D1C /* monsterDead5.wav in Resources */,
+				C6DBD8D117D84B3500FC0D1C /* monsterDead6.wav in Resources */,
+				C6DBD8D217D84B3500FC0D1C /* orcDead.wav in Resources */,
+				C6DBD8D317D84B3500FC0D1C /* perWaveVictory.wav in Resources */,
+				C6DBD8D417D84B3500FC0D1C /* thunderSound.wav in Resources */,
+				C6DBD8D517D84B3500FC0D1C /* tower2.wav in Resources */,
+				C6DBD8D617D84B3500FC0D1C /* tower3.wav in Resources */,
+				C6DBD8D717D84B3500FC0D1C /* tower4.wav in Resources */,
+				C6DBD8D817D84B3500FC0D1C /* tower5.wav in Resources */,
+				C6DBD8D917D84B3500FC0D1C /* tower6.wav in Resources */,
+				C6DBD8DA17D84B3500FC0D1C /* tower7.wav in Resources */,
+				C6DBD8DB17D84B3500FC0D1C /* triumf.wav in Resources */,
+				C6DBD8DC17D84B3500FC0D1C /* upgrade.wav in Resources */,
+				C6DBD8DD17D84B3500FC0D1C /* wizardDead.wav in Resources */,
+				C6DBD8DE17D84B3500FC0D1C /* wolfDead.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

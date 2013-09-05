@@ -14,26 +14,33 @@
 #define Tower2Cost 30
 #define Tower3Cost 40
 #define Tower4Cost 60
+
 #define  T1Range  100
 #define T2Range   150
 #define T3Range   200
 #define T4Range   200
-#define T1Damage  3
-#define T2Damage  3
-#define T3Damage   20
-#define T4Damage   10
 
-#define T1MaxDamage  10
-#define T2MaxDamage   10
-#define T3MaxDamage    35
-#define T4MaxDamage    25
+#define T1Damage  10
+#define T2Damage  10
+#define T3Damage   30
+#define T4Damage   20
 
-#define Tower1CostStr "25"
-#define Tower2CostStr "30"
-#define Tower3CostStr "40"
-#define Tower4CostStr "60"
+#define T1MaxDamage  25
+#define T2MaxDamage   25
+#define T3MaxDamage    55
+#define T4MaxDamage    45
 
-#define EnemyTexture CCTextureCache::sharedTextureCache()->addImage("enemy.png")
+#define T1Speed 0.5f
+#define T2Speed  0.8f
+#define T3Speed  0.8f
+#define T4Speed  0.8f
+
+#define T1Interval 0.5f
+#define T2Interval 0.8f
+#define T3Interval 0.8f
+#define T4Interval 1.0f
+
+#define EnemyTexture CCTextureCache::sharedTextureCache()->textureForKey("enemy.png")
 #define Tower1_1  CCSpriteFrame::createWithTexture(EnemyTexture, CCRectMake(520, 156 ,40, 59))
 #define Tower1_2  CCSpriteFrame::createWithTexture(EnemyTexture, CCRectMake(979, 189, 41, 57))
 #define Tower1_3  CCSpriteFrame::createWithTexture(EnemyTexture, CCRectMake(468 ,238, 52, 61))

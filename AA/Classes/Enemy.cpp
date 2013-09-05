@@ -74,7 +74,7 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
 		startPos = ccp(x,y);
         this->setPosition(startPos);
         
-        startPos = ccp(pos.x/2,pos.y+10);
+        startPos = ccp(15,pos.y+10);
 		x = maxTileWidth  ;
         y = maxTileHeight;
 		endPos = ccp(x, y);
@@ -113,8 +113,7 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
         redBar->setScale(0.2);
         this->addChild(redBar,1);
         scheduleOnce(schedule_selector(Enemy::attack), 0.5f);
-		schedule(schedule_selector(Enemy::enemyLogic), 1.0f,kCCRepeatForever,32.0f/speed);
-		schedule(schedule_selector(Enemy::timer), 0.2f);
+
         
 		bRet = true;
 	} while (0);
@@ -265,7 +264,7 @@ void Enemy::enemyLogic(float dt){
 		
         
 		gm->getGameHUDLayer()->updateResources(5);
-    //    stopAllActions();
+        stopAllActions();
 	//	unscheduleAllSelectors();
 		auto deadAction = CCBlink::create(1.0f, 5);
 		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
@@ -289,11 +288,15 @@ CCRect Enemy::getRect(){
 void Enemy::attack(){
     float moveTime = 32 / speed;
 	auto moveby = CCMoveTo::create(moveTime, startPos);
-	auto moveDone = CCCallFunc::create(this, callfunc_selector(Enemy::moveToTarget));
+	auto moveDone = CCCallFunc::create(this, callfunc_selector(Enemy::startLogic));
 	this->runAction(CCSequence::create(moveby,moveDone,NULL));
- 
+    
 }
-
+void Enemy::startLogic(){
+    schedule(schedule_selector(Enemy::enemyLogic), 1.0f);
+    schedule(schedule_selector(Enemy::timer), 0.2f);
+    moveToTarget();
+}
 void Enemy::moveToTarget( ){
    bool lasttile = false;
     cur++;

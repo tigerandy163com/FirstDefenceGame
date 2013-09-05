@@ -17,6 +17,7 @@
 #include "Lightning.h"
 #include "StartScene.h"
 #include "data.h"
+#include "SimpleAudioEngine.h"
 using namespace cocos2d;
 
 MainLayer::~MainLayer(){
@@ -98,6 +99,8 @@ bool MainLayer::init()
 		Lightning* l = Lightning::create(ccp(160,maxHeight), ccp(200, 20));
 		l->setVisible(false);
 		this->addChild(l, 1, 999);
+        
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("battle1.wav", true);
         this->schedule(schedule_selector(MainLayer::strikeLight), 5.0f,kCCRepeatForever,3.0f);
         
         this->schedule(schedule_selector(MainLayer::gameLogic), 0.1f, kCCRepeatForever,5.0f);
@@ -625,6 +628,8 @@ void MainLayer::strikeLight(float dt){
 	l->strikeRandom();
 }
 void MainLayer::onExit(){
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->stopAllEffects();
     GameMediator* gm = GameMediator::sharedMediator();
     gm->clear();
     GameHUD* hud = gameHUD->sharedHUD();

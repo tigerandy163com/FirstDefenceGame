@@ -356,7 +356,7 @@ bool MachineGunTower::initWithFileAndRange(const char *pszFilename, int range){
         _damge = T1Damage;
         _maxDamge = T1MaxDamage;
         _range = T1Range;
-		schedule(schedule_selector(MachineGunTower::fire), 1.0f);
+		schedule(schedule_selector(MachineGunTower::fire), T1Interval);
         this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
 		bRet = true;
 	} while (0);
@@ -411,7 +411,7 @@ void MachineGunTower::fireReady(){
    
     sprite->addChild(actionSprite,1);
     //根据动画模板创建动画
-    animation->setDelayPerUnit(0.2f);
+    animation->setDelayPerUnit(0.1f);
     CCAnimate *animate=CCAnimate::create(animation);
     
     auto callfun = CCCallFunc::create(this,callfunc_selector(MachineGunTower::fireNow));
@@ -423,6 +423,7 @@ void MachineGunTower::fireReady(){
 }
 void MachineGunTower::fire(float dt){
 	if(this->getTarget() != NULL){
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower1.wav");
         fireReady();
 //		GameMediator* m = GameMediator::sharedMediator();
 //        
@@ -491,7 +492,7 @@ bool FreezeTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
         _damge = T2Damage;
         _maxDamge = T2MaxDamage;
         _range = T2Range;
-        schedule(schedule_selector(FreezeTower::fire), 1.0f);
+        schedule(schedule_selector(FreezeTower::fire), T2Interval);
         this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
         bret = true;
     } while (0);
@@ -515,6 +516,7 @@ bool FreezeTower::initWithFileAndRange(const char *pszFilename, int range){
 
 void FreezeTower::fire(float dt){
 	if(this->getTarget() != NULL){
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower2.wav");
 		GameMediator* m = GameMediator::sharedMediator();
         
 		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
@@ -597,7 +599,7 @@ bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
         _damge = T3Damage;
         _maxDamge = T3MaxDamage;
         _range = T3Range;
-		schedule(schedule_selector(CannonTower::fire), 2.0f);
+		schedule(schedule_selector(CannonTower::fire), T3Interval);
          this->schedule(schedule_selector(Tower::towerLogic), 0.1f);
 		bRet = true;
 	} while (0);
@@ -606,7 +608,7 @@ bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
 
 void CannonTower::fire(float dt){
 	if(this->getTarget() != NULL){
-        
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower3.wav");
 		GameMediator* m = GameMediator::sharedMediator();
         
 		CannonProjectTile* ProjectTile = CannonProjectTile::create(this->getTarget());
@@ -733,7 +735,7 @@ bool MutilTower::initWithFileAndRange(const char *pszFilename, int range){
         setMoney(60);
         enemys = CCArray::create();
         enemys->retain();
-		schedule(schedule_selector(MutilTower::fire), 2.0f);
+		schedule(schedule_selector(MutilTower::fire), T4Interval );
         this->schedule(schedule_selector(MutilTower::towerLogic1), 0.2f);
 		bRet = true;
     } while (0);
@@ -776,6 +778,7 @@ void MutilTower::getMutilFireEnemys(){
 }
 void MutilTower::fire(float dt){
 	if(this->getenemys() != NULL){
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower4.wav");
 		GameMediator* m = GameMediator::sharedMediator();
         CCObject *obj;
         CCARRAY_FOREACH(this->getenemys(), obj){

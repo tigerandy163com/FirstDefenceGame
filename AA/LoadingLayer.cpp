@@ -61,11 +61,22 @@ bool LoadingLayer::initWithLevel(int lev){
         addChild(label);
         label->setTag(123);
         currentCount = 0;
-        totalCount = 4;
+        totalCount = 9;
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("battle1.wav");
+        currentCount++;
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower1.wav");
+        currentCount++;
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower2.wav");
+        currentCount++;
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower3.wav");
+        currentCount++;
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower4.wav");
+        currentCount++;
         CCTextureCache::sharedTextureCache()->addImageAsync("enemy.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("choose.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("effect1.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("icons.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
+         
         bRet =true;
     } while (0 );
     return bRet;

@@ -22,6 +22,7 @@ public:
 	void attack();
     void SetDemage(float val,bool isBoom);
     void clearDemageLab();
+    void startLogic();
 	virtual cocos2d::CCRect getRect();
 	virtual void changeSpeed(float time = 1.0f);
     int totalHP;
