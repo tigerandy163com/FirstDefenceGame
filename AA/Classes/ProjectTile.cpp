@@ -173,7 +173,7 @@ void IceProjectTile::update(float dt){
     CCARRAY_FOREACH(gm->getTargets(), temp){
 		Enemy* target = (Enemy*)temp;
         float dis =  ccpDistance(this->getPosition(), target->getPosition());
-		if(abs(dis)<=getRange() ){
+		if(dis<=getRange() ){
             target->changeSpeed();
 		}
 	}
@@ -261,7 +261,7 @@ void CannonProjectTile::update(float dt){
 		tempAngle = 0;
 	}
     
-	if(360 - abs(angle - myAngle) < abs(angle - myAngle)){
+	if(360 - (angle - myAngle) < (angle - myAngle)){
 		tempAngle *= -1;
 	}
     

@@ -9,8 +9,10 @@
 #include "LoadingLayer.h"
 #include "MainLayer.h"
 #include "LoadLevelInfo.h"
+#include "DataParserBase.h"
+#include "GameMediator.h"
 USING_NS_CC;
-
+#define ToTalResCount 16
 LoadingLayer::LoadingLayer(){
     
 }
@@ -56,13 +58,16 @@ bool LoadingLayer::initWithLevel(int lev){
     bool bRet = false;
     do {
         CC_BREAK_IF(!LoadingLayer::init());
+        scheduleUpdate();
+        GameMediator *gm = GameMediator::sharedMediator();
         CCSize winsize = CCDirector::sharedDirector()->getWinSize();
         CCLabelTTF *label = CCLabelTTF::create("Loading(0%)..."," Marker Felt", 30);
         label->setPosition(ccp(winsize.width/2, winsize.height/2));
         addChild(label);
         label->setTag(123);
         currentCount = 0;
-        totalCount = 9;
+        totalCount = ToTalResCount;
+        
         CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("battle1.wav");
         currentCount++;
         CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower1.wav");
@@ -73,12 +78,27 @@ bool LoadingLayer::initWithLevel(int lev){
         currentCount++;
         CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower4.wav");
         currentCount++;
+        if (gm->getFirstLoad()){
+            gm->setParser1(DataParserBase::creat("actorData.txt"));
+            currentCount++;
+            gm->setParser2(DataParserBase::creat("data.txt"));
+            currentCount++;
+            gm->setParser3(DataParserBase::creat("res.txt"));
+            currentCount++;
+            gm->setParser4(DataParserBase::creat("res1.txt"));
+            currentCount++;
+            gm->setParser5(DataParserBase::creat("stage.txt"));
+            currentCount++;
+            gm->setParser6(DataParserBase::creat("UI.txt"));
+            currentCount++;
+        }else
+            totalCount-=6;
+        gm->setFirstLoad(false);
         CCTextureCache::sharedTextureCache()->addImageAsync("enemy.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("choose.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("effect1.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
-        CCTextureCache::sharedTextureCache()->addImageAsync("icons.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
-//       LoadLevelinfo* levelinfo = LoadLevelinfo::createLoadLevelinfo("levelInfo.plist");
-//        CCDictionary* dic = levelinfo->getMasterByTypeID(1);
+        CCTextureCache::sharedTextureCache()->addImageAsync("icon.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
+        CCTextureCache::sharedTextureCache()->addImageAsync("effect2.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         
         bRet =true;
     } while (0 );
@@ -87,17 +107,19 @@ bool LoadingLayer::initWithLevel(int lev){
 
 void LoadingLayer::loadingCallBack(cocos2d::CCObject *psender){
     ++currentCount;
+}
+void LoadingLayer::startGame(){
+    CCScene *game = MainLayer::scene();
+    CCDirector::sharedDirector()->replaceScene(CCTransitionSlideInB::create(0.3, game));
+}
+void LoadingLayer::update(float delta){
     float percent = (float)currentCount/(float)totalCount*100;
     CCLabelTTF *label =(CCLabelTTF*) getChildByTag(123);
     CCString *str = CCString::createWithFormat("Loading(%d)...",(int)percent);
     label->setString(str->getCString());
     if (currentCount==totalCount) {
         label->setString("Load finished");
-         
+        unscheduleUpdate();
         scheduleOnce(schedule_selector(LoadingLayer::startGame), 0.3);
     }
-}
-void LoadingLayer::startGame(){
-    CCScene *game = MainLayer::scene();
-    CCDirector::sharedDirector()->replaceScene(CCTransitionSlideInB::create(0.3, game));
 }

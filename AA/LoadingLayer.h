@@ -16,7 +16,7 @@ class LoadingLayer:public cocos2d::CCLayer{
 public:
     LoadingLayer();
     ~LoadingLayer();
-
+void update(float dt);
 virtual bool init();
 static  cocos2d::CCScene*   scene();
 static  cocos2d::CCScene*   scene(int lev);

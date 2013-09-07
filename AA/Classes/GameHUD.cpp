@@ -57,11 +57,12 @@ bool GameHUD::init(){
         tScrollView->setPosition(CCPointZero);
         //tScrollView->setContainer(this);
         this->addChild(tScrollView);
+        GameMediator* gm = GameMediator::sharedMediator();
        // CCTexture2D *towers =CCTextureCache::sharedTextureCache()->addImage("enemy.png");
-        CCSpriteFrame *tower1 =TowerIcon1; //CCSpriteFrame::createWithTexture(towers, CCRectMake(520, 156 ,40, 59));
-        CCSpriteFrame *tower2 =TowerIcon2; //CCSpriteFrame::createWithTexture(towers, CCRectMake(58 ,225, 45, 62));
-        CCSpriteFrame *tower3 =TowerIcon3; //CCSpriteFrame::createWithTexture(towers, CCRectMake(904, 366, 60, 55));
-        CCSpriteFrame *tower4 =TowerIcon4; //CCSpriteFrame::createWithTexture(towers, CCRectMake(409 ,333, 43 ,62));
+        CCSpriteFrame *tower1 = gm->getParser4()->SpriteFrameFromFile("frame1", 154);//TowerIcon1; //CCSpriteFrame::createWithTexture(towers, CCRectMake(520, 156 ,40, 59));
+        CCSpriteFrame *tower2 = gm->getParser4()->SpriteFrameFromFile("frame1", 156);//TowerIcon2; //CCSpriteFrame::createWithTexture(towers, CCRectMake(58 ,225, 45, 62));
+        CCSpriteFrame *tower3 = gm->getParser4()->SpriteFrameFromFile("frame1", 158);//TowerIcon3; //CCSpriteFrame::createWithTexture(towers, CCRectMake(904, 366, 60, 55));
+        CCSpriteFrame *tower4 = gm->getParser4()->SpriteFrameFromFile("frame1", "ui_tower4_normal");//TowerIcon4; //CCSpriteFrame::createWithTexture(towers, CCRectMake(409 ,333, 43 ,62));
 		//CCArray* images = CCArray::create(CCString::create("MachineGunTurret.png"), CCString::create("FreezeTurret.png"),
                                          // CCString::create("CannonTurret.png"),CCString::create("CannonTurret.png"), NULL);
         CCArray* frameArr = CCArray::create(tower1,tower2,tower3,tower4,NULL);

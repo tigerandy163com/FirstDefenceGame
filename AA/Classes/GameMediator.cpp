@@ -7,6 +7,7 @@
 //
 
 #include "GameMediator.h"
+
 #include "Enemy.h"
 #include "Tower.h"
 #include "ProjectTile.h"
@@ -29,6 +30,12 @@ GameMediator::~GameMediator(){
 	CC_SAFE_RELEASE_NULL(_waves);
 	CC_SAFE_RELEASE_NULL(_towers);
 	CC_SAFE_RELEASE_NULL(_ProjectTiles);
+    CC_SAFE_RELEASE_NULL(_parser1);
+    CC_SAFE_RELEASE_NULL(_parser2);
+    CC_SAFE_RELEASE_NULL(_parser3);
+    CC_SAFE_RELEASE_NULL(_parser4);
+    CC_SAFE_RELEASE_NULL(_parser5);
+    CC_SAFE_RELEASE_NULL(_parser6);
 }
 
 bool GameMediator::init(){
@@ -39,7 +46,7 @@ bool GameMediator::init(){
         nowSpeed = 1;
 		_gameLayer = NULL;
 		_gameHUDLayer = NULL;
-        
+        _firstLoad = true;
 		_targets = CCArray::create();
 		_targets->retain();
         

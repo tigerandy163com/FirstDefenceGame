@@ -8,7 +8,7 @@
 
 #ifndef AA_data_h
 #define AA_data_h
-
+#include "DataParserBase.h"
 #define TowerMaxLevel 4
 #define Tower1Cost 25
 #define Tower2Cost 30
