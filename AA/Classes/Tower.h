@@ -40,7 +40,9 @@ protected:
     float _interval;
     bool moneyEnough;
 	virtual Enemy* getClosestTarget();
-    
+    virtual void fire(){
+        
+    }
     virtual void fireReady(){
         
     }
@@ -86,8 +88,7 @@ public:
 	bool initWithFileAndRange(const char *pszFilename, int range);
     bool initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range);
 	void fire(float dt);
-  //  Enemy* nearestEnemy ;
-	Enemy* getClosestTarget();
+
     
 	static CannonTower* create();
 	static CannonTower* create(const char *pszFilename, int range);

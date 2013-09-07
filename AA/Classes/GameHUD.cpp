@@ -268,21 +268,21 @@ float GameHUD::rangeScale(int towerID){
     float range = 0;
     switch (towerID) {
         case 1:
-            range = 100.0;
+            range = T1Range;
             break;
         case 2:
-            range = 150.0;
+            range = T2Range;
             break;
         case 3:
-            range = 200.0;
+            range = T3Range;
             break;
         case 4:
-            range = 200.0;
+            range = T4Range;
             break;
         default:
             break;
     }
-   return  ret = range/100.0;
+   return  ret = range*2/100.0;
 }
 bool GameHUD::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
 	CCPoint touchLocation = this->convertTouchToNodeSpace(pTouch);

@@ -14,17 +14,28 @@
 using namespace cocos2d;
 
 bool ProjectTile::initWithFile(const char* filename){
+    init();
     
-	mySprite = CCSprite::create(filename);
+    DataParserBase* parser = gm->getParser3();
+   
+	mySprite =parser->FrameSpriteFromFile("frame1", 83);
+    
 	this->addChild(mySprite);
     
-	speed = 960.0f;
+    
+    
+	return true;
+}
+
+bool ProjectTile::init(){
+    gm = GameMediator::sharedMediator();
+    speed = 960.0f;
 	targetPos = CCPointZero;
 	damage = 3;
     maxDamage = 10;
     probability = 0.6;
     isBoom = false;
-	gm = GameMediator::sharedMediator();
+	
     
 	hasRemoved = false;
     
@@ -32,7 +43,6 @@ bool ProjectTile::initWithFile(const char* filename){
     
 	return true;
 }
-
 void ProjectTile::removeSelf(){
 	if(hasRemoved)
 		return;
@@ -88,12 +98,12 @@ bool MachineProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 	bool bRet = false;
 	do
 	{
-		CC_BREAK_IF(!initWithFile("buttlet_new.png"));
+		CC_BREAK_IF(!initWithMyFile());
         setSpeed(500);
 		this->setTargetPos(pos);
         
 		moveToTargetPos();
-        _streak = CCMotionStreak::create(0.2, 15, 15, ccBLUE, "buttlet_new.png");
+        _streak = CCMotionStreak::create(0.2, 15, 15, ccBLUE, this->mySprite->getTexture());
         _streak->setFastMode(true);
         MainLayer* gm = GameMediator::sharedMediator()->getGameLayer();
         gm-> addChild(_streak);
@@ -101,7 +111,20 @@ bool MachineProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 	} while (0);
 	return bRet;
 }
+bool MachineProjectTile::initWithMyFile(){
+    init();
+    
+    DataParserBase* parser = gm->getParser3();
+    
+	mySprite =parser->FrameSpriteFromFile("frame1", 40);
+    
+	this->addChild(mySprite);
+    
+    
+    
+	return true;
 
+}
 void MachineProjectTile::update(float dt){
 	//GameMediator* gm = GameMediator::sharedMediator();
     CCObject* temp;
@@ -144,7 +167,7 @@ bool IceProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 	bool bRet = false;
 	do
 	{
-		CC_BREAK_IF(!initWithFile("buttlet_new.png"));
+		CC_BREAK_IF(!initWithMyFile());
         
 		this->setTargetPos(pos);
         
@@ -154,7 +177,20 @@ bool IceProjectTile::initWithTargetPos(cocos2d::CCPoint pos){
 	} while (0);
 	return bRet;
 }
-
+bool IceProjectTile::initWithMyFile(){
+    init();
+    
+    DataParserBase* parser = gm->getParser3();
+    
+	mySprite =parser->FrameSpriteFromFile("frame1", 270);
+    
+	this->addChild(mySprite);
+    
+    
+    
+	return true;
+    
+}
 void IceProjectTile::update(float dt){
 	//GameMediator* gm = GameMediator::sharedMediator();
   
@@ -205,7 +241,7 @@ bool CannonProjectTile::initWithTarget(Enemy* enemy){
 	bool bRet = false;
 	do
 	{
-		CC_BREAK_IF(!initWithFile("rocket.png"));
+		CC_BREAK_IF(!ProjectTile::initWithFile("rocket.png"));
         
 		myEnemy = enemy;
         enemy->IamAimed(true);

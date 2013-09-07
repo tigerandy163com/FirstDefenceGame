@@ -22,7 +22,7 @@ typedef struct{
 typedef struct{
     const char* name;
     int FrameCount;
-    int index[];
+    int index[20];
 }AnimateInfo;
 class DataParserBase:public cocos2d::CCObject{
 public:

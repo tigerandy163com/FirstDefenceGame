@@ -78,7 +78,8 @@ bool LoadingLayer::initWithLevel(int lev){
         currentCount++;
         CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect("tower4.wav");
         currentCount++;
-        if (gm->getFirstLoad()){
+  
+        {
             gm->setParser1(DataParserBase::creat("actorData.txt"));
             currentCount++;
             gm->setParser2(DataParserBase::creat("data.txt"));
@@ -91,9 +92,9 @@ bool LoadingLayer::initWithLevel(int lev){
             currentCount++;
             gm->setParser6(DataParserBase::creat("UI.txt"));
             currentCount++;
-        }else
-            totalCount-=6;
-        gm->setFirstLoad(false);
+        }
+
+       gm->setFirstLoad(false);
         CCTextureCache::sharedTextureCache()->addImageAsync("enemy.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("choose.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));
         CCTextureCache::sharedTextureCache()->addImageAsync("effect1.png", this, callfuncO_selector(LoadingLayer::loadingCallBack));

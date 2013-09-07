@@ -13,8 +13,6 @@ USING_NS_CC;
 using namespace std;
 
 DataParserBase::~DataParserBase(){
-    keyVec.~vector<string>();
-    mapinfo.~map();
      
 }
 DataParserBase* DataParserBase::creat(const char* path){
@@ -166,7 +164,8 @@ CCAnimation* DataParserBase::animateFromFile(const char* _key,const char* name,c
     map<string, string>spriteMap;
     vector<string> temp =mapinfo[_key];
     vector<string> content;
-    AnimateInfo tempAnimateInfo;
+    AnimateInfo tempAnimateInfo = {"",0,{0}};
+    
     vector<string>::iterator piter;
     for (piter=temp.begin(); piter!=temp.end(); piter++) {
         string tempstr = *piter;
@@ -186,9 +185,12 @@ CCAnimation* DataParserBase::animateFromFile(const char* _key,const char* name,c
     }
     tempAnimateInfo.name =content[0].c_str();
     tempAnimateInfo.FrameCount = atoi(content[1].c_str()) ;
+    
     int i = 0;
     for (piter=content.begin()+2; piter!=content.end(); piter++) {
-        tempAnimateInfo.index[i] = atoi((*piter).c_str());
+        int val= atoi((*piter).c_str());
+        tempAnimateInfo.index[i] = val;
+        i++;
     }
 
     CCArray *frameArr = CCArray::create();

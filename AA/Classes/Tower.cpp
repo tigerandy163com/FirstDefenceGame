@@ -47,7 +47,8 @@ bool Tower::initWithFileAndRange(const char *pszFilename, int range){
 		this->setRange(range);
         
         rangeSprite = CCSprite::create("Range.png");
-        float scale = range/100.0;
+        float wh =rangeSprite->getContentSize().width;
+        float scale = 2*range/wh;
         rangeSprite->setScale(scale);
         rangeSprite->setVisible(false);
         rangeSprite->setPosition(sprite->getPosition());
@@ -105,7 +106,7 @@ bool Tower:: initWithSpriteFrame(cocos2d::CCSpriteFrame* frame,int range){
 		this->setRange(range);
         
         rangeSprite = CCSprite::create("Range.png");
-        float scale = (float)range/100.0f;
+        float scale = (float)2*range/rangeSprite->getContentSize().width;
         rangeSprite->setScale(scale);
         rangeSprite->setVisible(false);
         rangeSprite->setPosition(sprite->getPosition());
@@ -173,6 +174,7 @@ Enemy* Tower::getClosestTarget(){
 	}
     
 	if(maxDistant < this->getRange()){
+        
 		return closestEnemy;
 	}
     
@@ -185,7 +187,9 @@ void Tower::towerLogic(float dt){
         CCObject *ret = this->getClosestTarget();
         if (ret!=NULL) {
             this->setTarget((Enemy*)ret);
-        }
+        }else
+            this->setTarget(NULL);
+            
 	}
     else{
   
@@ -194,7 +198,10 @@ void Tower::towerLogic(float dt){
             CCObject *ret = this->getClosestTarget();
             if (ret!=NULL) {
                 this->setTarget((Enemy*)ret);
-            }
+               
+            }else
+                this->setTarget(NULL);
+                
 		
         }
 	}
@@ -235,7 +242,7 @@ void Tower::show(){
 //	sprite4->runAction(CCMoveBy::create(0.5f, ccp(0, - sprite->getContentSize().height - 10)));
 //	sprite4->setVisible(true);
     
-    rangeSprite->setVisible(true);
+  //  rangeSprite->setVisible(true);
     
     rangeSprite->runAction(CCSequence::create(fade, CCShow::create(),NULL));
 }
@@ -330,7 +337,7 @@ MachineGunTower* MachineGunTower::create(cocos2d::CCSpriteFrame *frame, int rang
 }
 MachineGunTower* MachineGunTower::create(){
 	return //MachineGunTower::create("MachineGunTurret.png", 100);
-    MachineGunTower::create(Tower1_1, 100);
+    MachineGunTower::create(Tower1_1, T1Range);
 }
 bool MachineGunTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
     bool bRet = false;
@@ -340,7 +347,7 @@ bool MachineGunTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int ran
         setMoney(25);
         _damge = T1Damage;
         _maxDamge = T1MaxDamage;
-        _range = T1Range;
+        _range = range;
 		schedule(schedule_selector(MachineGunTower::fire), 1.0f);
         this->schedule(schedule_selector(MachineGunTower::towerLogic), 0.2f);
 		bRet = true;
@@ -355,7 +362,7 @@ bool MachineGunTower::initWithFileAndRange(const char *pszFilename, int range){
         setMoney(Tower1Cost);
         _damge = T1Damage;
         _maxDamge = T1MaxDamage;
-        _range = T1Range;
+        _range = range;
 		schedule(schedule_selector(MachineGunTower::fire), T1Interval);
         this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
 		bRet = true;
@@ -385,40 +392,50 @@ void MachineGunTower::fireNow(){
     m->getGameLayer()->addChild(ProjectTile);
 }
 void MachineGunTower::fireReady(){
-    //将图片生成纹理，保存到全局的纹理缓存取
-    CCTexture2D *heroTexture=CCTextureCache::sharedTextureCache()->addImage("attac.png");
-    //用纹理创建4幅帧动画
-    CCSpriteFrame *frame0,*frame1,*frame2,*frame3,*frame4;
-    //第二个参数表示显示区域的x,y,width,height
-    frame0=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(60*0,0,60,66));
-    frame1=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(60,0,60,66));
-    frame2=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(120,0,65,66));
-    frame3=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(200,0,60,66));
-    frame4=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(260,0,40,66));
-    //CCMutableArray<CCSpriteFrame*> *animFramess=new CCMutableArray<CCSpriteFrame*>(4);
-
-    CCArray *animFrames=CCArray::create();
-    animFrames->addObject(frame0);
-    animFrames->addObject(frame1);
-    animFrames->addObject(frame2);
-    animFrames->addObject(frame3);
-    //  animFrames->addObject(frame4);
-    //根据4幅帧生成ＣＣＡnimation对象
-    CCAnimation *animation=CCAnimation::createWithSpriteFrames(animFrames);
+//    //将图片生成纹理，保存到全局的纹理缓存取
+//    CCTexture2D *heroTexture=CCTextureCache::sharedTextureCache()->addImage("attac.png");
+//    //用纹理创建4幅帧动画
+//    CCSpriteFrame *frame0,*frame1,*frame2,*frame3,*frame4;
+//    //第二个参数表示显示区域的x,y,width,height
+//    frame0=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(60*0,0,60,66));
+//    frame1=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(60,0,60,66));
+//    frame2=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(120,0,65,66));
+//    frame3=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(200,0,60,66));
+//    frame4=CCSpriteFrame::createWithTexture(heroTexture, cocos2d::CCRectMake(260,0,40,66));
+//    //CCMutableArray<CCSpriteFrame*> *animFramess=new CCMutableArray<CCSpriteFrame*>(4);
+//
+//    CCArray *animFrames=CCArray::create();
+//    animFrames->addObject(frame0);
+//    animFrames->addObject(frame1);
+//    animFrames->addObject(frame2);
+//    animFrames->addObject(frame3);
+//    //  animFrames->addObject(frame4);
+//    //根据4幅帧生成ＣＣＡnimation对象
+    GameMediator*gm = GameMediator::sharedMediator();
+    DataParserBase* parser = gm->getParser3();
+    CCAnimation *animation=parser->animateFromFile("ani", "tower1Attack", "frame1");//CCAnimation::createWithSpriteFrames(animFrames);
     //创建一个CCSprite用来显示勇士，可以使用Animation中的一帧来作为勇士静止时的画面
-    actionSprite=CCSprite::createWithSpriteFrame(frame0);
-    actionSprite->setPosition(CCPointMake(30, 30));
-   
-    sprite->addChild(actionSprite,1);
+    actionSprite=parser->FrameSpriteFromFile("frame1", 223);
+    actionSprite->setPosition(CCPointZero);
+    actionSprite->setAnchorPoint(CCPointMake(0.25,0));
+    
+    sprite->addChild(actionSprite);
     //根据动画模板创建动画
-    animation->setDelayPerUnit(0.1f);
+    animation->setDelayPerUnit(0.05f);
     CCAnimate *animate=CCAnimate::create(animation);
     
     auto callfun = CCCallFunc::create(this,callfunc_selector(MachineGunTower::fireNow));
+    		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
+    		float shootAngle = ccpToAngle(shootVector);
+    		float cocosAngle = 90-CC_RADIANS_TO_DEGREES(shootAngle);
+    
+    		float rotateSpeed = (float)(0.25 / M_PI);
+    		float rotateDuration = fabs(shootAngle * rotateSpeed);
+    		actionSprite->runAction(CCRotateTo::create(rotateDuration, cocosAngle));
     //创建不断重复的动画，并让heroSprite播放
     actionSprite->runAction(CCSequence::create(animate,callfun,NULL));
     
-    animFrames->release();
+   // animFrames->release();
     
 }
 void MachineGunTower::fire(float dt){
@@ -482,7 +499,7 @@ FreezeTower* FreezeTower::create(CCSpriteFrame* frame, int range){
 }
 FreezeTower* FreezeTower::create(){
 	return //FreezeTower::create("FreezeTurret.png", 150);
-    FreezeTower::create(Tower2_1, 150);
+    FreezeTower::create(Tower2_1, T2Range);
 }
 bool FreezeTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
     bool bret = false;
@@ -491,7 +508,7 @@ bool FreezeTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
         setMoney(Tower2Cost);
         _damge = T2Damage;
         _maxDamge = T2MaxDamage;
-        _range = T2Range;
+        _range = range;
         schedule(schedule_selector(FreezeTower::fire), T2Interval);
         this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
         bret = true;
@@ -506,7 +523,7 @@ bool FreezeTower::initWithFileAndRange(const char *pszFilename, int range){
         setMoney(Tower2Cost);
         _damge = T2Damage;
         _maxDamge = T2MaxDamage;
-        _range = T2Range;
+        _range = range;
 		schedule(schedule_selector(FreezeTower::fire), 1.0f);
          this->schedule(schedule_selector(Tower::towerLogic), 0.2f);
 		bRet = true;
@@ -578,7 +595,7 @@ CannonTower* CannonTower::create(CCSpriteFrame* frame, int range){
 }
 CannonTower* CannonTower::create(){
 	return //CannonTower::create("CannonTurret.png", 400);
-    CannonTower::create(Tower3_1, 400);
+    CannonTower::create(Tower3_1, T4Range);
 }
 bool CannonTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
     bool bret = false;
@@ -599,7 +616,7 @@ bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
         setMoney(Tower3Cost);
         _damge = T3Damage;
         _maxDamge = T3MaxDamage;
-        _range = T3Range;
+        _range = range;
 		schedule(schedule_selector(CannonTower::fire), T3Interval);
          this->schedule(schedule_selector(Tower::towerLogic), 0.1f);
 		bRet = true;
@@ -622,49 +639,7 @@ void CannonTower::fire(float dt){
 	}
 }
 
-Enemy* CannonTower::getClosestTarget(){
-	Enemy* nearestEnemy = NULL;
-    
-	GameMediator* m = GameMediator::sharedMediator();
-	CCObject* temp;
-    if (m->getTargets()->count()==0) {
-        return NULL;
-    }
-    Enemy *first = (Enemy*)m->getTargets()->objectAtIndex(0);
-    float dis = ccpDistance(this->getPosition(),first->getPosition());
-	CCARRAY_FOREACH(m->getTargets(), temp){
-		Enemy* enemy = (Enemy*)temp;
-		if(enemy->getHP() <= 0){
-			continue;
-		}
-		float curDistance = ccpDistance(this->getPosition(), enemy->getPosition());
-		if(curDistance < this->getRange()){
-			if (curDistance<=dis) {
-                dis = curDistance;
-            }
-			//break;
-		}
-	}
-    CCARRAY_FOREACH(m->getTargets(), temp){
-        
-        Enemy* enemy = (Enemy*)temp;
-		if(enemy->getHP() <= 0){
-			continue;
-		}
-		float curDistance = ccpDistance(this->getPosition(), enemy->getPosition());
-		if(curDistance < this->getRange()){
-			if (curDistance==dis)
-            {
-                nearestEnemy = enemy;
-                break;
-            }
 
-		}
-
-    }
-   
-	return nearestEnemy;
-}
 void CannonTower::levelUp(){
     Tower::levelUp();
     CCSpriteFrame *frame = NULL;
@@ -692,7 +667,7 @@ void CannonTower::levelUp(){
 }
 MutilTower* MutilTower::create(){
     return  //MutilTower::create("CannonTurret.png", 200);
-    MutilTower::create(Tower4_1, 300);
+    MutilTower::create(Tower4_1, T4Range);
 }
 MutilTower* MutilTower::create(const char *pszFilename, int range){
     MutilTower *t = new MutilTower;
@@ -720,7 +695,7 @@ bool MutilTower::initWithSpriteFrame(CCSpriteFrame* frame, int range){
         setMoney(Tower4Cost);
         _damge = T4Damage;
         _maxDamge = T4MaxDamage;
-        _range = T4Range;
+        _range = range;
         enemys = CCArray::create();
         enemys->retain();
 		schedule(schedule_selector(MutilTower::fire), 2.0f);

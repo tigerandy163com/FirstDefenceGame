@@ -17,7 +17,10 @@ class GameMediator;
 class ProjectTile : public cocos2d::CCNode {
 public:
 	virtual bool initWithFile(const char* filename);
-    
+    virtual bool init();
+    virtual bool initWithMyFile(){
+        return true;
+    }
 	virtual cocos2d::CCRect getRect();
     int getDamage(void);
     void setDamage(int val);
@@ -56,7 +59,7 @@ public:
 	static MachineProjectTile* create(cocos2d:: CCPoint pos);
     
 private:
-    
+    bool initWithMyFile();
 	void moveToTargetPos();
 };
 
@@ -70,6 +73,7 @@ public:
     
 private:
 	void moveToTargetPos();
+    bool initWithMyFile();
 };
 
 class CannonProjectTile : public ProjectTile {

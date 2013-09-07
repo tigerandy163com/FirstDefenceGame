@@ -16,9 +16,9 @@
 #define Tower4Cost 60
 
 #define  T1Range  100
-#define T2Range   150
-#define T3Range   200
-#define T4Range   200
+#define T2Range   100
+#define T3Range   120
+#define T4Range   120
 
 #define T1Damage  10
 #define T2Damage  10
