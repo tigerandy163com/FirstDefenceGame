@@ -602,7 +602,10 @@ bool CannonTower::initWithSpriteFrame(cocos2d::CCSpriteFrame *frame, int range){
     do {
         CC_BREAK_IF(!Tower::initWithSpriteFrame(frame, range));
         setMoney(Tower3Cost);
-        schedule(schedule_selector(CannonTower::fire), 2.0f);
+        _damge = T3Damage;
+        _maxDamge = T3MaxDamage;
+        _range = range;
+        schedule(schedule_selector(CannonTower::fire), T3Interval);
         this->schedule(schedule_selector(Tower::towerLogic), 0.1f);
         bret = true;
     } while (0);

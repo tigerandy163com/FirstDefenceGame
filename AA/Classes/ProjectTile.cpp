@@ -253,7 +253,7 @@ bool CannonProjectTile::initWithTarget(Enemy* enemy){
         _streak = CCMotionStreak::create(0.4, 5, 5, ccYELLOW, "rocket.png");
         _streak->setFastMode(true);
         MainLayer* gm = GameMediator::sharedMediator()->getGameLayer();
-        gm-> addChild(_streak);
+      //  gm-> addChild(_streak);
 		bRet = true;
 	} while (0);
 	return bRet;
