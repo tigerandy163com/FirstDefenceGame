@@ -18,7 +18,7 @@ Enemy::~Enemy(){
 	CC_SAFE_RELEASE_NULL(shortestPath);
 }
 
-bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
+bool Enemy::initWithMem(const char* filename, int hp, float speed,int gift,CCPoint pos){
 	bool bRet = false;
 	do
 	{
@@ -66,6 +66,7 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,CCPoint pos){
 		actionSprite->retain();
 		this->setHP(hp);
 		this->setSpeed(speed);
+        this->setGift(gift);
         this->totalHP = hp;
         isAimed = false;
 		int x, y;
@@ -263,7 +264,7 @@ void Enemy::enemyLogic(float dt){
 	if(this->getHP() <= 0){
 		
         
-		gm->getGameHUDLayer()->updateResources(5);
+		gm->getGameHUDLayer()->updateResources(gift);
         stopAllActions();
 	//	unscheduleAllSelectors();
 		auto deadAction = CCBlink::create(0.3f, 3);
@@ -278,8 +279,8 @@ void Enemy::enemyLogic(float dt){
 CCRect Enemy::getRect(){
 	CCRect rect = CCRectMake(this->getPosition().x - sprite->getContentSize().width * 0.5f,
                              this->getPosition().y - sprite->getContentSize().height* 0.5f,
-                             sprite->getContentSize().width/2,
-                             sprite->getContentSize().height/2);
+                             sprite->getContentSize().width,
+                             sprite->getContentSize().height);
 	return rect;
 }
 
@@ -427,9 +428,9 @@ void Enemy::removeSelf(){
 	gm->getTargets()->removeObject(this);
 }
 
-FastRedEnemy* FastRedEnemy::create(const char* filename, int hp, float speed,CCPoint pos){
+FastRedEnemy* FastRedEnemy::create(const char* filename, int hp, float speed,int gift,CCPoint pos){
 	FastRedEnemy* fre = new FastRedEnemy;
-	if(fre && fre->initWithMem(filename, hp, speed,pos)){
+	if(fre && fre->initWithMem(filename, hp, speed, gift,pos)){
 		fre->autorelease();
 		return fre;
 	}
@@ -440,12 +441,12 @@ FastRedEnemy* FastRedEnemy::create(const char* filename, int hp, float speed,CCP
 FastRedEnemy* FastRedEnemy::create(cocos2d::CCPoint pos){
    // CCSprite *sp =CCSprite::createWithSpriteFrameName("Obss9_9-41.png");
  
-	return FastRedEnemy::create("hero_fast.png", 100, 64.0f,pos);
+	return FastRedEnemy::create("hero_fast.png", 100, 64.0f,10,pos);
 }
 
-StrongGreenEnemy* StrongGreenEnemy::create(const char* filename, int hp, float speed,cocos2d::CCPoint pos){
+StrongGreenEnemy* StrongGreenEnemy::create(const char* filename, int hp, float speed,int gift,cocos2d::CCPoint pos){
 	StrongGreenEnemy* sge = new StrongGreenEnemy;
-	if(sge && sge->initWithMem(filename, hp, speed,pos)){
+	if(sge && sge->initWithMem(filename, hp,speed,gift,pos)){
 		sge->autorelease();
 		return sge;
 	}
@@ -454,5 +455,5 @@ StrongGreenEnemy* StrongGreenEnemy::create(const char* filename, int hp, float s
 }
 
 StrongGreenEnemy* StrongGreenEnemy::create(cocos2d::CCPoint pos){
-	return StrongGreenEnemy::create("hero_phy.png", 200, 32.0f,pos);
+	return StrongGreenEnemy::create("hero_phy.png", 200, 32.0f,8,pos);
 }

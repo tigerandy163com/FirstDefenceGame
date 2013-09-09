@@ -16,10 +16,10 @@ using namespace cocos2d;
 bool ProjectTile::initWithFile(const char* filename){
     init();
     
-    DataParserBase* parser = gm->getParser3();
-   
-	mySprite =parser->FrameSpriteFromFile("frame1", 83);
-    
+//    DataParserBase* parser = gm->getParser3();
+//   
+//	mySprite =parser->FrameSpriteFromFile("frame1", 83);
+    mySprite = CCSprite::create(filename);
 	this->addChild(mySprite);
     
     
@@ -253,7 +253,7 @@ bool CannonProjectTile::initWithTarget(Enemy* enemy){
         _streak = CCMotionStreak::create(0.4, 5, 5, ccYELLOW, "rocket.png");
         _streak->setFastMode(true);
         MainLayer* gm = GameMediator::sharedMediator()->getGameLayer();
-      //  gm-> addChild(_streak);
+        gm-> addChild(_streak);
 		bRet = true;
 	} while (0);
 	return bRet;

@@ -489,11 +489,11 @@ HeroDirection MainLayer::directionFor(CCString *cstr){
 void MainLayer::addWaves(){
 	GameMediator* m = GameMediator::sharedMediator();
     
-	Wave* wave = Wave::create(2.0f, 1, 0);
+	Wave* wave = Wave::create(2.0f, 5, 10);
 	m->getWaves()->addObject(wave);
 	wave = NULL;
     
-	wave = Wave::create(1.7f, 5, 15);
+	wave = Wave::create(1.7f, 10, 15);
 	m->getWaves()->addObject(wave);
 	wave = NULL;
     
@@ -501,11 +501,11 @@ void MainLayer::addWaves(){
 	m->getWaves()->addObject(wave);
 	wave = NULL;
     
-	wave = Wave::create(1.3f, 40, 30);
+	wave = Wave::create(1.3f, 25, 30);
 	m->getWaves()->addObject(wave);
 	wave = NULL;
     
-	wave = Wave::create(1.2f, 40, 60);
+	wave = Wave::create(1.2f, 30, 30);
 	m->getWaves()->addObject(wave);
 	wave = NULL;
     

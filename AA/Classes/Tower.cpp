@@ -757,7 +757,7 @@ void MutilTower::getMutilFireEnemys(){
     }
 }
 void MutilTower::fire(float dt){
-	if(this->getenemys() != NULL){
+	if(this->getenemys()->count()!=0){
           CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower4.wav");
 		GameMediator* m = GameMediator::sharedMediator();
         CCObject *obj;

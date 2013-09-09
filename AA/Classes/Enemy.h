@@ -17,7 +17,7 @@ class MainLayer;
 class Enemy : public cocos2d::CCNode {
 public:
 	~Enemy();
-	bool initWithMem(const char* filename, int hp, float speed,cocos2d::CCPoint pos);
+	bool initWithMem(const char* filename, int hp, float speed,int gift,cocos2d::CCPoint pos);
     
 	void attack();
     void SetDemage(float val,bool isBoom);
@@ -28,6 +28,7 @@ public:
     int totalHP;
     HeroDirection curDir;
     char *imageName;
+    CC_SYNTHESIZE(int, gift, Gift);
 	CC_SYNTHESIZE(int, hp, HP);
 	CC_SYNTHESIZE(float, speed, Speed);
 	CC_SYNTHESIZE(cocos2d::CCPoint, startPos, StartPos);
@@ -88,13 +89,13 @@ protected:
 class FastRedEnemy : public Enemy {
 public:
 	static FastRedEnemy* create(cocos2d::CCPoint);
-	static FastRedEnemy* create(const char* filename, int hp, float speed,cocos2d::CCPoint pos);
+	static FastRedEnemy* create(const char* filename, int hp, float speed,int gift,cocos2d::CCPoint pos);
 };
 
 class StrongGreenEnemy : public Enemy {
 public:
 	static StrongGreenEnemy* create(cocos2d::CCPoint);
-	static StrongGreenEnemy* create(const char* filename, int hp, float speed,cocos2d::CCPoint pos);
+	static StrongGreenEnemy* create(const char* filename, int hp, float speed,int gift,cocos2d::CCPoint pos);
 
 };
 
