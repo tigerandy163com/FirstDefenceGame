@@ -35,6 +35,7 @@ bool MapsList::init()
         pTableView->setDelegate(this);
         pTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
         this->addChild(pTableView);
+        pTableView->setZoomScale(0.8);
         pTableView->reloadData();
       //  initDialog();
         

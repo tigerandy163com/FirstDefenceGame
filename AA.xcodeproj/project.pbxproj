@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261E08D917E0ABB800EB41D9 /* CCNewScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */; };
 		26E1247217DA2C0D00DE0F61 /* actorData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246617DA2C0D00DE0F61 /* actorData.txt */; };
 		26E1247317DA2C0D00DE0F61 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246717DA2C0D00DE0F61 /* data.txt */; };
 		26E1247417DA2C0D00DE0F61 /* FRAMDCN.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246817DA2C0D00DE0F61 /* FRAMDCN.TTF */; };
@@ -405,6 +406,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNewScrollView.cpp; sourceTree = "<group>"; };
+		261E08D817E0ABB800EB41D9 /* CCNewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNewScrollView.h; sourceTree = "<group>"; };
 		26E1246617DA2C0D00DE0F61 /* actorData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = actorData.txt; sourceTree = "<group>"; };
 		26E1246717DA2C0D00DE0F61 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		26E1246817DA2C0D00DE0F61 /* FRAMDCN.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FRAMDCN.TTF; sourceTree = "<group>"; };
@@ -2525,6 +2528,8 @@
 				C6DBD8E317D86B4900FC0D1C /* GameOverLayer.h */,
 				26E1247E17DA2CA100DE0F61 /* DataParserBase.cpp */,
 				26E1247F17DA2CA100DE0F61 /* DataParserBase.h */,
+				261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */,
+				261E08D817E0ABB800EB41D9 /* CCNewScrollView.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2973,6 +2978,7 @@
 				C6DBD8E117D8552900FC0D1C /* LoadLevelInfo.cpp in Sources */,
 				C6DBD8E417D86B4A00FC0D1C /* GameOverLayer.cpp in Sources */,
 				26E1248017DA2CA100DE0F61 /* DataParserBase.cpp in Sources */,
+				261E08D917E0ABB800EB41D9 /* CCNewScrollView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
