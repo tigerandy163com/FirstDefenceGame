@@ -29,6 +29,7 @@
 		C65FA31D17D5BBD400AB5091 /* map4.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31817D5BBD400AB5091 /* map4.png */; };
 		C65FA31E17D5BBD400AB5091 /* map5.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31917D5BBD400AB5091 /* map5.png */; };
 		C65FA31F17D5BBD400AB5091 /* map6.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31A17D5BBD400AB5091 /* map6.png */; };
+		C6B45D0817E141390005C88B /* SelectLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6B45D0617E141390005C88B /* SelectLevel.cpp */; };
 		C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87A17D8191100FC0D1C /* levelInfo.plist */; };
 		C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */; };
 		C6DBD88017D81FF700FC0D1C /* loadImg.png in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87F17D81FF700FC0D1C /* loadImg.png */; };
@@ -430,6 +431,8 @@
 		C65FA31817D5BBD400AB5091 /* map4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map4.png; path = Resources/map4.png; sourceTree = "<group>"; };
 		C65FA31917D5BBD400AB5091 /* map5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map5.png; path = Resources/map5.png; sourceTree = "<group>"; };
 		C65FA31A17D5BBD400AB5091 /* map6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map6.png; path = Resources/map6.png; sourceTree = "<group>"; };
+		C6B45D0617E141390005C88B /* SelectLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectLevel.cpp; path = Classes/SelectLevel.cpp; sourceTree = "<group>"; };
+		C6B45D0717E141390005C88B /* SelectLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectLevel.h; path = Classes/SelectLevel.h; sourceTree = "<group>"; };
 		C6DBD87A17D8191100FC0D1C /* levelInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levelInfo.plist; sourceTree = "<group>"; };
 		C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingLayer.cpp; sourceTree = "<group>"; };
 		C6DBD87D17D81A5300FC0D1C /* LoadingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingLayer.h; sourceTree = "<group>"; };
@@ -2530,6 +2533,8 @@
 				26E1247F17DA2CA100DE0F61 /* DataParserBase.h */,
 				261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */,
 				261E08D817E0ABB800EB41D9 /* CCNewScrollView.h */,
+				C6B45D0617E141390005C88B /* SelectLevel.cpp */,
+				C6B45D0717E141390005C88B /* SelectLevel.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2979,6 +2984,7 @@
 				C6DBD8E417D86B4A00FC0D1C /* GameOverLayer.cpp in Sources */,
 				26E1248017DA2CA100DE0F61 /* DataParserBase.cpp in Sources */,
 				261E08D917E0ABB800EB41D9 /* CCNewScrollView.cpp in Sources */,
+				C6B45D0817E141390005C88B /* SelectLevel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

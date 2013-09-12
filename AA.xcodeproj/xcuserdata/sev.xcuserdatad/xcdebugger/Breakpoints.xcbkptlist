@@ -157,5 +157,18 @@
          landmarkName = "Enemy::enemyLogic(float dt)"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "AA/Classes/SelectLevel.cpp"
+         timestampString = "400642058.276528"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
+         landmarkName = "CLevelSelectLayer::scrollViewClick( const cocos2d::CCPoint&amp; oOffset,const cocos2d::CCPoint &amp; oPoint ,cocos2d::CCNode * pPage,int nPage )"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
