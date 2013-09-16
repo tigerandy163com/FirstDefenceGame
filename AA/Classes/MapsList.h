@@ -17,7 +17,7 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 class MapsList:public cocos2d::CCLayerColor,public cocos2d::extension::CCTableViewDataSource,public cocos2d::extension::CCTableViewDelegate{
-public:
+private:
     virtual bool init();
    
     virtual void scrollViewDidScroll(cocos2d::extension::CCScrollView* view);
@@ -36,6 +36,9 @@ public:
     
     //一共多少项
     virtual unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
+    
+    virtual void tableCellHighlight(CCTableView* table, CCTableViewCell* cell);
+    virtual void tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell);
     CC_SYNTHESIZE_RETAIN(PopupLayer*, pl,PopUpLayer);
     void onEnter();
     void onExit();
@@ -47,18 +50,19 @@ public:
     
     void okMenuItemCallback(CCObject *pSender);
     void cancelMenuItemCallback(CCObject *pSender);
-    
+    float lastpos;
     void initDialog();
     void popupLayer();
     void buttonCallback(cocos2d::CCNode *pNode);
     void removePop();
+    
     CCTableView* pTableView;
     CCMenu* m_pMenu;
     cocos2d::CCArray* mapsInfos;
     cocos2d::CCArray* mapsImages;
     bool m_bTouchedMenu;
     CCLayer *poplayer;
-    
+public:
     CREATE_FUNC(MapsList);
     
 };

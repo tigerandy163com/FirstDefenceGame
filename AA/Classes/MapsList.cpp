@@ -8,8 +8,10 @@
 
 #include "MapsList.h"
 #include "GameMediator.h"
+#include "XBridge.h"
 
-
+#define CELLW 256
+#define CELLH 128
 bool MapsList::init()
 {
     bool bRet = false;
@@ -19,26 +21,29 @@ bool MapsList::init()
         CCSprite *background = CCSprite::create("popback.png");
         background->setPosition(CCPointZero);
         this->addChild(background);
-        mapsInfos = CCArray::createWithCapacity(3);
-        mapsInfos->addObject(CCStringMake("沙漠戈壁"));
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        XBridge::doSth();
         
-        mapsInfos->addObject(CCStringMake("冰雪原野"));
-        
-        mapsInfos->retain();
-        mapsImages = CCArray::create(CCString::create("tmw_desert_spacing.png"),CCString::create("map3.jpg"), NULL);
-        mapsImages->retain();
-        GameMediator::sharedMediator()->getMaps()->addObjectsFromArray(mapsImages);
-        
-        pTableView = CCTableView::create(this, CCSizeMake(480, 320));
-        pTableView->setDirection(kCCScrollViewDirectionVertical);
-        pTableView->setPosition(ccp(0,0));
-        pTableView->setDelegate(this);
-        pTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-        this->addChild(pTableView);
-        
-        pTableView->reloadData();
+#endif
+//        mapsInfos = CCArray::create(CCStringMake("map1.png"),CCStringMake("map2.png"),CCStringMake("map3.png"),CCStringMake("map4.png"),CCStringMake("map5.png"),CCStringMake("map6.png"), NULL);
+//
+//        
+//        mapsInfos->retain();
+//        mapsImages = CCArray::create(CCStringMake("map1.png"),CCStringMake("map2.png"),CCStringMake("map3.png"),CCStringMake("map4.png"),CCStringMake("map5.png"),CCStringMake("map6.png"), NULL);
+//        mapsImages->retain();
+//        GameMediator::sharedMediator()->getMaps()->addObjectsFromArray(mapsImages);
+//        
+//        pTableView = CCTableView::create(this, CCSizeMake(480, 320));
+//        
+//        pTableView->setDirection(kCCScrollViewDirectionHorizontal);
+//        pTableView->setPosition(ccp(0,0));
+//        pTableView->setDelegate(this);
+//        pTableView->setVerticalFillOrder(kCCTableViewFillTopDown);
+//        this->addChild(pTableView);
+//        
+//        pTableView->reloadData();
       //  initDialog();
-        
+        lastpos = -1;
         bRet = true;
     }while(0);
     
@@ -48,45 +53,45 @@ bool MapsList::init()
 void MapsList::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     CCLog("cell touched at index: %i", cell->getIdx());
-    CCSprite *sp = (CCSprite*)cell->getChildByTag(101);
-    sp->setOpacity(200);
-    GameMediator::sharedMediator()->setCurMapID(cell->getIdx());
-    this->popupLayer();
+//    CCSprite *sp = (CCSprite*)cell->getChildByTag(101);
+//    sp->setOpacity(200);
+//    GameMediator::sharedMediator()->setCurMapID(cell->getIdx());
+//    this->popupLayer();
 }
 
 CCSize MapsList::cellSizeForTable(CCTableView *table)
 {
-    return CCSizeMake(480, 200);
+    return CCSizeMake(CELLW, CELLH);
 }
 
 CCTableViewCell* MapsList::tableCellAtIndex(CCTableView *table, unsigned int idx)
 {
     CCString *pString = (CCString*)mapsInfos->objectAtIndex(idx);
     CCString *tString = (CCString*)mapsImages->objectAtIndex(idx);
-    CCTableViewCell *pCell = table->dequeueCell();
+    CCTableViewCell *pCell =NULL; //table->dequeueCell();
     if (!pCell) {
         pCell = new CCTableViewCell();
         pCell->autorelease();
-        CCSprite *pSprite = CCSprite::create("hud.png");
-        float scale = 200/pSprite->getContentSize().height;
-        pSprite->setScale(scale);
-        pSprite->setAnchorPoint(CCPointZero);
-        pSprite->setPosition(CCPointZero);
-        pCell->addChild(pSprite);
-        pSprite->setTag(100);
-        CCLabelTTF *pLabel = CCLabelTTF::create(pString->getCString(), "Arial", 20.0);
-        pLabel->setPosition(CCPointMake(50, 10));
-        pLabel->setAnchorPoint(CCPointZero);
-        ccColor3B color = ccBLUE;
-        pLabel->setColor(color);
-        pLabel->setTag(123);
-        pCell->addChild(pLabel);
+        float scale=0.0f;
+//        CCSprite *pSprite = CCSprite::create("hud.png");
+//         scale = CELLH/pSprite->getContentSize().height;
+//        pSprite->setScaleY(scale);
+//        pSprite->setAnchorPoint(CCPointZero);
+//        pSprite->setPosition(CCPointZero);
+//        pCell->addChild(pSprite);
+//        pSprite->setTag(100);
+//        CCLabelTTF *pLabel = CCLabelTTF::create(pString->getCString(), "Arial", 20.0);
+//        pLabel->setPosition(CCPointMake(50, 10));
+//        pLabel->setAnchorPoint(CCPointZero);
+//        ccColor3B color = ccBLUE;
+//        pLabel->setColor(color);
+//        pLabel->setTag(123);
+//        pCell->addChild(pLabel);
         
         CCSprite* tower = CCSprite::create(tString->getCString());
-        
-        scale = 140/tower->getContentSize().height;
-        tower->setScale(scale);
-        tower->setPosition(CCPointMake(200,120));
+        tower->setAnchorPoint(CCPointZero);
+
+        tower->setPosition(CCPointMake(0,-100));
         pCell->addChild(tower);
         tower->setTag(101);
         
@@ -94,16 +99,15 @@ CCTableViewCell* MapsList::tableCellAtIndex(CCTableView *table, unsigned int idx
     else
     {
         CCLabelTTF *pLabel = (CCLabelTTF*)pCell->getChildByTag(123);
-        pLabel->setString(pString->getCString());
-        
-         CCSprite *sp = (CCSprite*)pCell->getChildByTag(101);
-        sp->removeFromParentAndCleanup(true);
+//        pLabel->setString(pString->getCString());
+//        
+//         CCSprite *sp = (CCSprite*)pCell->getChildByTag(101);
+//        sp->removeFromParentAndCleanup(true);
         CCSprite* tower = CCSprite::create(tString->getCString());
-        
-        float scale = 140/tower->getContentSize().height;
-        tower->setScale(scale);
+        tower->setAnchorPoint(CCPointZero);
+  
         tower->setTag(101);
-        tower->setPosition(CCPointMake(200,120));
+        tower->setPosition(CCPointMake(0,-100));
         pCell->addChild(tower);
     }
     
@@ -116,12 +120,51 @@ unsigned int MapsList::numberOfCellsInTableView(CCTableView *table)
 
 void MapsList::scrollViewDidScroll(CCScrollView *view)
 {
+    int  dir = -1;
+    if (lastpos!=-1) {
+        if (view->getContentOffset().x<lastpos) {
+            dir = 0;
+        }
+        if (view->getContentOffset().x>lastpos) {
+            dir =1;
+        }
+    }
+    lastpos = view->getContentOffset().x ;
+     CCLOG("last:%f",lastpos);
+    int nPage = abs((int)view->getContentOffset().x / (int)CELLW);
+    if (pTableView) {
+        CCTableViewCell *cell = pTableView->cellAtIndex(nPage);
+        if (cell!=NULL){
+    
+       CCPoint pos= this->convertToNodeSpace( cell->getPosition());
+        
+        float pos_x =-( pos.x + CELLW/2);
+            CCLOG("pagddd:%f",pos_x);
+            {
+                if (dir==1&&( lastpos==-128||lastpos==-384||lastpos==-640)) {
+                    
+                    cell->getChildByTag(101)->setScale(1.2);
+                }else if (dir==0)
+                    cell->getChildByTag(101)->setScale(1);
+            }
+        }
+    }
+ 
 }
 
 void MapsList::scrollViewDidZoom(CCScrollView *view)
 {
+    
+    
 }
+void MapsList:: tableCellHighlight(CCTableView* table, CCTableViewCell* cell){
+    CCLOG("hiiii");
 
+}
+ void MapsList:: tableCellUnhighlight(CCTableView* table, CCTableViewCell* cell){
+     CCLOG("kkkkk");
+
+}
 
 void MapsList::popupLayer(){
         // 定义一个弹出层，传入一张背景图
@@ -181,11 +224,11 @@ void MapsList::onExit()
 bool MapsList::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 
-    CCRect rec = pTableView->boundingBox();
-    if (rec.containsPoint(pTouch->getLocationInView())){
-        m_bTouchedMenu = pTableView->ccTouchBegan(pTouch, pEvent);
-    }
-        
+//    CCRect rec = pTableView->boundingBox();
+//    if (rec.containsPoint(pTouch->getLocationInView())){
+//        m_bTouchedMenu = pTableView->ccTouchBegan(pTouch, pEvent);
+//    }
+//        
     
     return true;
 }
@@ -193,32 +236,32 @@ bool MapsList::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 void MapsList::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 
-    if (m_bTouchedMenu) {
-        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
-            pTableView->ccTouchMoved(pTouch, pEvent); 
-        }
+//    if (m_bTouchedMenu) {
+//        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
+//            pTableView->ccTouchMoved(pTouch, pEvent); 
+//        }
     
 }
 
 void MapsList::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 
-    if ( m_bTouchedMenu) {
-        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
-            pTableView->ccTouchEnded(pTouch, pEvent);
-        
-        m_bTouchedMenu = false;
-    }
+//    if ( m_bTouchedMenu) {
+//        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
+//            pTableView->ccTouchEnded(pTouch, pEvent);
+//        
+//        m_bTouchedMenu = false;
+//    }
 }
 
 void MapsList::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
 
-    if (m_bTouchedMenu) {
-        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
-            pTableView->ccTouchEnded(pTouch, pEvent);
-        m_bTouchedMenu = false;
-    }
+//    if (m_bTouchedMenu) {
+//        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
+//            pTableView->ccTouchEnded(pTouch, pEvent);
+//        m_bTouchedMenu = false;
+//    }
 }
 
 void MapsList::okMenuItemCallback(cocos2d::CCObject *pSender)

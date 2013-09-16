@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "InfiniteScrollPicker.h"
 
 @implementation RootViewController
 
@@ -46,7 +46,10 @@
     return UIInterfaceOrientationMaskLandscape;
 #endif
 }
-
+- (void)infiniteScrollPicker:(InfiniteScrollPicker *)infiniteScrollPicker didSelectAtImage:(NSNumber*)image
+{
+    NSLog(@"selected::%d",[image integerValue]);
+}
 - (BOOL) shouldAutorotate {
     return YES;
 }

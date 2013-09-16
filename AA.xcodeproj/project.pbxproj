@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		261E08D917E0ABB800EB41D9 /* CCNewScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */; };
+		26D13FB517E733AA006FCA0F /* XBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26D13FB217E733AA006FCA0F /* XBridge.mm */; };
+		26D13FB617E733AA006FCA0F /* XBridgeTableViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26D13FB417E733AA006FCA0F /* XBridgeTableViewController.mm */; };
+		26D13FBC17E73413006FCA0F /* InfiniteScrollPicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26D13FB917E73413006FCA0F /* InfiniteScrollPicker.mm */; };
+		26D13FBD17E73413006FCA0F /* UIView+viewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 26D13FBB17E73413006FCA0F /* UIView+viewController.mm */; };
 		26E1247217DA2C0D00DE0F61 /* actorData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246617DA2C0D00DE0F61 /* actorData.txt */; };
 		26E1247317DA2C0D00DE0F61 /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246717DA2C0D00DE0F61 /* data.txt */; };
 		26E1247417DA2C0D00DE0F61 /* FRAMDCN.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 26E1246817DA2C0D00DE0F61 /* FRAMDCN.TTF */; };
@@ -409,6 +413,14 @@
 /* Begin PBXFileReference section */
 		261E08D717E0ABB800EB41D9 /* CCNewScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNewScrollView.cpp; sourceTree = "<group>"; };
 		261E08D817E0ABB800EB41D9 /* CCNewScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNewScrollView.h; sourceTree = "<group>"; };
+		26D13FB117E733AA006FCA0F /* XBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBridge.h; path = ios/XBridge.h; sourceTree = "<group>"; };
+		26D13FB217E733AA006FCA0F /* XBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = XBridge.mm; path = ios/XBridge.mm; sourceTree = "<group>"; };
+		26D13FB317E733AA006FCA0F /* XBridgeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBridgeTableViewController.h; path = ios/XBridgeTableViewController.h; sourceTree = "<group>"; };
+		26D13FB417E733AA006FCA0F /* XBridgeTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = XBridgeTableViewController.mm; path = ios/XBridgeTableViewController.mm; sourceTree = "<group>"; };
+		26D13FB817E73413006FCA0F /* InfiniteScrollPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollPicker.h; sourceTree = "<group>"; };
+		26D13FB917E73413006FCA0F /* InfiniteScrollPicker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InfiniteScrollPicker.mm; sourceTree = "<group>"; };
+		26D13FBA17E73413006FCA0F /* UIView+viewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+viewController.h"; sourceTree = "<group>"; };
+		26D13FBB17E73413006FCA0F /* UIView+viewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIView+viewController.mm"; sourceTree = "<group>"; };
 		26E1246617DA2C0D00DE0F61 /* actorData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = actorData.txt; sourceTree = "<group>"; };
 		26E1246717DA2C0D00DE0F61 /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		26E1246817DA2C0D00DE0F61 /* FRAMDCN.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FRAMDCN.TTF; sourceTree = "<group>"; };
@@ -1165,6 +1177,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26D13FB717E73413006FCA0F /* InfiniteScrollPicker */ = {
+			isa = PBXGroup;
+			children = (
+				26D13FB817E73413006FCA0F /* InfiniteScrollPicker.h */,
+				26D13FB917E73413006FCA0F /* InfiniteScrollPicker.mm */,
+				26D13FBA17E73413006FCA0F /* UIView+viewController.h */,
+				26D13FBB17E73413006FCA0F /* UIView+viewController.mm */,
+			);
+			path = InfiniteScrollPicker;
+			sourceTree = "<group>";
+		};
 		26E1246517DA2C0D00DE0F61 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1306,7 @@
 			children = (
 				26E1246517DA2C0D00DE0F61 /* Font */,
 				C6E3635217D466350021F557 /* Resources */,
+				26D13FB717E73413006FCA0F /* InfiniteScrollPicker */,
 				C6DBD88117D84B3500FC0D1C /* BGM */,
 				C6DBD88817D84B3500FC0D1C /* SOUND */,
 				C6E3636A17D466350021F557 /* ios */,
@@ -1362,6 +1386,10 @@
 		C6E3636A17D466350021F557 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				26D13FB117E733AA006FCA0F /* XBridge.h */,
+				26D13FB217E733AA006FCA0F /* XBridge.mm */,
+				26D13FB317E733AA006FCA0F /* XBridgeTableViewController.h */,
+				26D13FB417E733AA006FCA0F /* XBridgeTableViewController.mm */,
 				C6E3636B17D466350021F557 /* AppController.h */,
 				C6E3636C17D466350021F557 /* AppController.mm */,
 				C6E3636E17D466350021F557 /* RootViewController.h */,
@@ -2985,6 +3013,10 @@
 				26E1248017DA2CA100DE0F61 /* DataParserBase.cpp in Sources */,
 				261E08D917E0ABB800EB41D9 /* CCNewScrollView.cpp in Sources */,
 				C6B45D0817E141390005C88B /* SelectLevel.cpp in Sources */,
+				26D13FB517E733AA006FCA0F /* XBridge.mm in Sources */,
+				26D13FB617E733AA006FCA0F /* XBridgeTableViewController.mm in Sources */,
+				26D13FBC17E73413006FCA0F /* InfiniteScrollPicker.mm in Sources */,
+				26D13FBD17E73413006FCA0F /* UIView+viewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

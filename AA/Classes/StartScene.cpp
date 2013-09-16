@@ -13,6 +13,9 @@
 #include "PopUpLayer.h"
 #include "LoadingLayer.h"
 #include "SelectLevel.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "XBridge.h"
+#endif
 USING_NS_CC;
 
 StartScene::~StartScene(){
@@ -60,10 +63,11 @@ void StartScene::gotoTowersList(){
     this->addChild(towers);
 }
 void StartScene::gotoMapsList(){
-//    MapsList *towers = MapsList::create();
-//   this->addChild(towers);
-    CLevelSelectLayer* layer = CLevelSelectLayer::create();
-    this->addChild(layer);
+
+    MapsList *towers = MapsList::create();
+   this->addChild(towers);
+//    CLevelSelectLayer* layer = CLevelSelectLayer::create();
+//    this->addChild(layer);
 }
 
 void StartScene:: startGame(){
