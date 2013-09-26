@@ -50,18 +50,18 @@
     {
         
         // Init 5 set of images, 3 for user selection, 2 for
-        for (int i = 0; i < (_imageAry.count*5); i++)
+        for (int i = 0; i < (_imageAry.count*1); i++)
         {
             // Place images into the bottom of view
-            UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake(i * _itemSize.width, self.frame.size.height - _itemSize.height, _itemSize.width, _itemSize.height)];
+            UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake((i +2)* _itemSize.width, self.frame.size.height - _itemSize.height, _itemSize.width, _itemSize.height)];
             temp.image = [_imageAry objectAtIndex:i%_imageAry.count];
             [imageStore addObject:temp];
             [self addSubview:temp];
         }
         
-        self.contentSize = CGSizeMake(_imageAry.count * 5 * _itemSize.width, self.frame.size.height);
+        self.contentSize = CGSizeMake(_imageAry.count  * _itemSize.width+4*_itemSize.width, self.frame.size.height);
         
-        float viewMiddle = _imageAry.count * 2 * _itemSize.width;
+        float viewMiddle = _imageAry.count * 1 * _itemSize.width;
         [self setContentOffset:CGPointMake(viewMiddle, 0)];
         
         self.delegate = self;
@@ -95,14 +95,14 @@
     
     if (self.contentOffset.x > 0)
     {
-        float sectionSize = _imageAry.count * _itemSize.width;
+  //      float sectionSize = _imageAry.count * _itemSize.width;
         
-        if (self.contentOffset.x <= (sectionSize - sectionSize/2))
-        {
-            self.contentOffset = CGPointMake(sectionSize * 2 - sectionSize/2, 0);
-        } else if (self.contentOffset.x >= (sectionSize * 3 + sectionSize/2)) {
-            self.contentOffset = CGPointMake(sectionSize * 2 + sectionSize/2, 0);
-        }
+//        if (self.contentOffset.x <= (sectionSize - sectionSize/2))
+//        {
+//            self.contentOffset = CGPointMake(sectionSize * 2 - sectionSize/2, 0);
+//        } else if (self.contentOffset.x >= (sectionSize * 3 + sectionSize/2)) {
+//            self.contentOffset = CGPointMake(sectionSize * 2 + sectionSize/2, 0);
+//        }
 
         [self reloadView:self.contentOffset.x];
     }
