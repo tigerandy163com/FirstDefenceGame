@@ -17,7 +17,7 @@
 
 @synthesize window;
 @synthesize viewController;
-
+@synthesize cutMap =_cutMap;
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -59,6 +59,7 @@ static AppDelegate s_sharedApplication;
 
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
 
+    _cutMap = 0;
     cocos2d::CCApplication::sharedApplication()->run();
     return YES;
 }

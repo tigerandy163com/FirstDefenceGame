@@ -12,9 +12,11 @@
 #include "cocos2d.h"
 
 class XBridge {
-    
+
 public:
     static void doSth();
+static void clearmy();
+static int getCurMap();
 };
 
 #endif

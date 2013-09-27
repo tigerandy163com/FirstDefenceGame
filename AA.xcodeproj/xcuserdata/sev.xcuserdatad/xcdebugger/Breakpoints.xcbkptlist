@@ -38,7 +38,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "258"
-         endingLineNumber = "258">
+         endingLineNumber = "258"
+         landmarkName = "GameHUD::setSpeed(int val)"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

@@ -23,7 +23,9 @@ void XBridge::doSth() {
        InfiniteScrollPicker* isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, 480, 200)];
         [isp setItemSize:CGSizeMake(160, 160)];
         [isp setImageAry:set1];
+        
         [set1 release];
+        [isp setTag:1015];
         AppController *controller = (AppController *)sth;
         [controller.viewController.view addSubview:isp];
 //        
@@ -31,5 +33,19 @@ void XBridge::doSth() {
 //        tempTableViewController.tableView.frame = CGRectMake(100, 100, 200, 100);
 //        AppController *controller = (AppController *)sth;
 //        [controller.viewController.view addSubview:tempTableViewController.tableView];
+    }
+}
+int XBridge::getCurMap(){
+    AppController *controller = (AppController *)[UIApplication sharedApplication ].delegate;
+    return controller.cutMap;
+}
+void XBridge::clearmy(){
+    id sth = [[UIApplication sharedApplication] delegate];
+      AppController *controller = (AppController *)sth;
+    for (UIView *view in controller.viewController.view.subviews) {
+        if (view.tag==1015) {
+            [view removeFromSuperview];
+            break;
+        }
     }
 }

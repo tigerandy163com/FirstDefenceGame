@@ -58,6 +58,7 @@ private:
     
     CCTableView* pTableView;
     CCMenu* m_pMenu;
+    CCMenu *menu;
     cocos2d::CCArray* mapsInfos;
     cocos2d::CCArray* mapsImages;
     bool m_bTouchedMenu;

@@ -8,6 +8,7 @@
 
 #include "MapsList.h"
 #include "GameMediator.h"
+#include "LoadingLayer.h"
 #include "XBridge.h"
 
 #define CELLW 256
@@ -21,10 +22,17 @@ bool MapsList::init()
         CCSprite *background = CCSprite::create("popback.png");
         background->setPosition(CCPointZero);
         this->addChild(background);
+  
+ 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         XBridge::doSth();
         
 #endif
+        CCMenuItemFont *select = CCMenuItemFont::create("选择", this, menu_selector(MapsList::popupLayer));
+        select->setFontSize(20);
+        menu = CCMenu::create(select,NULL);
+        menu->setPosition(ccp(200, 100));
+        this->addChild(menu);
 //        mapsInfos = CCArray::create(CCStringMake("map1.png"),CCStringMake("map2.png"),CCStringMake("map3.png"),CCStringMake("map4.png"),CCStringMake("map5.png"),CCStringMake("map6.png"), NULL);
 //
 //        
@@ -171,12 +179,11 @@ void MapsList::popupLayer(){
         PopupLayer* pl = PopupLayer::create("popback.png");
         this->setPopUpLayer(pl);
         
-        // ContentSize 是可选的设置，可以不设置，如果设置把它当作 9 图缩放
+
         pl->setContentSize(CCSizeMake(400, 350));
         pl->setTitle("选择地图");
         pl->setContentText("你要在这张地图上进行游戏吗", 20, 60, 250);
-        // 设置回调函数，回调传回一个 CCNode 以获取 tag 判断点击的按钮
-        // 这只是作为一种封装实现，如果使用 delegate 那就能够更灵活的控制参数了
+
         pl->setCallbackFunc(this, callfuncN_selector(MapsList::buttonCallback));
         // 添加按钮，设置图片，文字，tag 信息
         pl->addButton("button.png", "button_hl.png", "确定", 0);
@@ -196,12 +203,17 @@ void MapsList::buttonCallback(cocos2d::CCNode *pNode){
     int tag = pNode->getTag();
     CCLog("button call back. tag: %d",tag);
     if (tag==0) {
- 
+      
+        GameMediator::sharedMediator()->setCurMapID(XBridge::getCurMap());
+        CCLog("Mapis:%d",XBridge::getCurMap());
         //场景转换
-        CCScene *pScene = MainLayer::scene();
+        CCScene *pScene = LoadingLayer::scene();
         
-        //跳跃式动画
-        CCDirector::sharedDirector()->replaceScene(CCTransitionTurnOffTiles::create(2, pScene));
+     
+        CCDirector::sharedDirector()->replaceScene(pScene);
+         XBridge::clearmy();
+ 
+    
     }else
     {
         
@@ -219,6 +231,7 @@ void MapsList::onExit()
     CCLayerColor::onExit();
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     this->getPopUpLayer()->release();
+   
 }
 
 bool MapsList::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
@@ -229,6 +242,10 @@ bool MapsList::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 //        m_bTouchedMenu = pTableView->ccTouchBegan(pTouch, pEvent);
 //    }
 //        
+        CCRect rec = menu->boundingBox();
+        if (rec.containsPoint(pTouch->getLocationInView())){
+           m_bTouchedMenu = menu->ccTouchBegan(pTouch, pEvent);
+        }
     
     return true;
 }
@@ -240,7 +257,7 @@ void MapsList::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 //        if ( pTableView->boundingBox().containsPoint(pTouch->getLocationInView()))
 //            pTableView->ccTouchMoved(pTouch, pEvent); 
 //        }
-    
+
 }
 
 void MapsList::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
@@ -252,6 +269,12 @@ void MapsList::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 //        
 //        m_bTouchedMenu = false;
 //    }
+        if ( m_bTouchedMenu) {
+            if ( menu->boundingBox().containsPoint(pTouch->getLocationInView()))
+                menu->ccTouchEnded(pTouch, pEvent);
+    
+           m_bTouchedMenu = false;
+        }
 }
 
 void MapsList::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
@@ -262,6 +285,11 @@ void MapsList::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
 //            pTableView->ccTouchEnded(pTouch, pEvent);
 //        m_bTouchedMenu = false;
 //    }
+       if (m_bTouchedMenu) {
+            if ( menu->boundingBox().containsPoint(pTouch->getLocationInView()))
+               menu->ccTouchEnded(pTouch, pEvent);
+           m_bTouchedMenu = false;
+        }
 }
 
 void MapsList::okMenuItemCallback(cocos2d::CCObject *pSender)

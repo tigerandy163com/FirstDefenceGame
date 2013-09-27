@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "InfiniteScrollPicker.h"
-
+#import "AppController.h"
 @implementation RootViewController
 
 /*
@@ -49,6 +49,8 @@
 - (void)infiniteScrollPicker:(InfiniteScrollPicker *)infiniteScrollPicker didSelectAtImage:(NSNumber*)image
 {
     NSLog(@"selected::%d",[image integerValue]);
+    AppController *controller = (AppController *)[UIApplication sharedApplication ].delegate;
+    [controller setCutMap:[image integerValue]];
 }
 - (BOOL) shouldAutorotate {
     return YES;
