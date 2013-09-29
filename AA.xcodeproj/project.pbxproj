@@ -33,6 +33,8 @@
 		C65FA31D17D5BBD400AB5091 /* map4.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31817D5BBD400AB5091 /* map4.png */; };
 		C65FA31E17D5BBD400AB5091 /* map5.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31917D5BBD400AB5091 /* map5.png */; };
 		C65FA31F17D5BBD400AB5091 /* map6.png in Resources */ = {isa = PBXBuildFile; fileRef = C65FA31A17D5BBD400AB5091 /* map6.png */; };
+		C690FE8217F689DC00B09EB4 /* MapSelViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C690FE8017F689DC00B09EB4 /* MapSelViewController.mm */; };
+		C690FE8317F689DC00B09EB4 /* MapSelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C690FE8117F689DC00B09EB4 /* MapSelViewController.xib */; };
 		C6B45D0817E141390005C88B /* SelectLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6B45D0617E141390005C88B /* SelectLevel.cpp */; };
 		C6DBD87B17D8191100FC0D1C /* levelInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6DBD87A17D8191100FC0D1C /* levelInfo.plist */; };
 		C6DBD87E17D81A5300FC0D1C /* LoadingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6DBD87C17D81A5300FC0D1C /* LoadingLayer.cpp */; };
@@ -443,6 +445,9 @@
 		C65FA31817D5BBD400AB5091 /* map4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map4.png; path = Resources/map4.png; sourceTree = "<group>"; };
 		C65FA31917D5BBD400AB5091 /* map5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map5.png; path = Resources/map5.png; sourceTree = "<group>"; };
 		C65FA31A17D5BBD400AB5091 /* map6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map6.png; path = Resources/map6.png; sourceTree = "<group>"; };
+		C690FE7F17F689DC00B09EB4 /* MapSelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelViewController.h; path = ios/MapSelViewController.h; sourceTree = "<group>"; };
+		C690FE8017F689DC00B09EB4 /* MapSelViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MapSelViewController.mm; path = ios/MapSelViewController.mm; sourceTree = "<group>"; };
+		C690FE8117F689DC00B09EB4 /* MapSelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapSelViewController.xib; path = ios/MapSelViewController.xib; sourceTree = "<group>"; };
 		C6B45D0617E141390005C88B /* SelectLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectLevel.cpp; path = Classes/SelectLevel.cpp; sourceTree = "<group>"; };
 		C6B45D0717E141390005C88B /* SelectLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectLevel.h; path = Classes/SelectLevel.h; sourceTree = "<group>"; };
 		C6DBD87A17D8191100FC0D1C /* levelInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = levelInfo.plist; sourceTree = "<group>"; };
@@ -1395,6 +1400,9 @@
 				C6E3636E17D466350021F557 /* RootViewController.h */,
 				C6E3636F17D466350021F557 /* RootViewController.mm */,
 				C6E3637117D466350021F557 /* main.m */,
+				C690FE7F17F689DC00B09EB4 /* MapSelViewController.h */,
+				C690FE8017F689DC00B09EB4 /* MapSelViewController.mm */,
+				C690FE8117F689DC00B09EB4 /* MapSelViewController.xib */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -2520,6 +2528,8 @@
 		C6E366E217D466440021F557 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C6E366E317D466440021F557 /* AppDelegate.h */,
+				C6E366E417D466440021F557 /* AppDelegate.cpp */,
 				C6E3673E17D4685F0021F557 /* Enemy.cpp */,
 				C6E3673F17D4685F0021F557 /* Enemy.h */,
 				C6E3674017D4685F0021F557 /* GameHUD.cpp */,
@@ -2546,8 +2556,6 @@
 				C6E3675517D4685F0021F557 /* TowersList.h */,
 				C6E3675617D4685F0021F557 /* Wave.cpp */,
 				C6E3675717D4685F0021F557 /* Wave.h */,
-				C6E366E317D466440021F557 /* AppDelegate.h */,
-				C6E366E417D466440021F557 /* AppDelegate.cpp */,
 				C6E366E617D466440021F557 /* HelloWorldScene.h */,
 				C6E366E717D466440021F557 /* HelloWorldScene.cpp */,
 				C6F62D4E17D6DDA300477FE2 /* data.h */,
@@ -2735,6 +2743,7 @@
 				26EB6E4917DAC42900F83293 /* effect2.png in Resources */,
 				26EB6E4A17DAC42900F83293 /* ui_frame.png in Resources */,
 				26EB6E4C17DADBEB00F83293 /* icon.png in Resources */,
+				C690FE8317F689DC00B09EB4 /* MapSelViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3017,6 +3026,7 @@
 				26D13FB617E733AA006FCA0F /* XBridgeTableViewController.mm in Sources */,
 				26D13FBC17E73413006FCA0F /* InfiniteScrollPicker.mm in Sources */,
 				26D13FBD17E73413006FCA0F /* UIView+viewController.mm in Sources */,
+				C690FE8217F689DC00B09EB4 /* MapSelViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

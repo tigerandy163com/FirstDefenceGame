@@ -175,6 +175,7 @@ void MapsList:: tableCellHighlight(CCTableView* table, CCTableViewCell* cell){
 }
 
 void MapsList::popupLayer(){
+
         // 定义一个弹出层，传入一张背景图
         PopupLayer* pl = PopupLayer::create("popback.png");
         this->setPopUpLayer(pl);
@@ -189,8 +190,9 @@ void MapsList::popupLayer(){
         pl->addButton("button.png", "button_hl.png", "确定", 0);
         pl->addButton("button.png", "button_hl.png", "取消", 1);
         // 添加到当前层
-      
+        XBridge::tobackground();
         this->addChild(pl);
+        
     }
 
 

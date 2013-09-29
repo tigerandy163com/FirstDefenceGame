@@ -63,9 +63,9 @@ void StartScene::gotoTowersList(){
     this->addChild(towers);
 }
 void StartScene::gotoMapsList(){
-
-    MapsList *towers = MapsList::create();
-   this->addChild(towers);
+    XBridge::doSth();
+//    MapsList *towers = MapsList::create();
+//   this->addChild(towers);
 //    CLevelSelectLayer* layer = CLevelSelectLayer::create();
 //    this->addChild(layer);
 }

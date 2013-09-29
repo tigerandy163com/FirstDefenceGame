@@ -15,8 +15,12 @@ class XBridge {
 
 public:
     static void doSth();
-static void clearmy();
-static int getCurMap();
+    static void clearmy();
+    static int getCurMap();
+    static void setCurMap(int cur);
+    static void tobackground();
+    static void tofront();
+    static void startGameWithMap();
 };
 
 #endif
