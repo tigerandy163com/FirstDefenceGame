@@ -94,15 +94,6 @@
 		</dict>
 	</dict>
 	<key>needtoloadimages</key>
-	<dict>
-		<key>4</key>
-		<string>loadingHMenu/111.plist</string>
-		<key>3</key>
-		<string>levelselectone/themescene2-hd.plist</string>
-		<key>2</key>
-		<string>levelselectone/stages_bg-hd.plist</string>
-		<key>1</key>
-		<string>Hmenu/mainscene1-hd.plist</string>
-	</dict>
+	<dict/>
 </dict>
 </plist>
