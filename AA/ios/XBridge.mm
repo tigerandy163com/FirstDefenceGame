@@ -13,6 +13,7 @@
 #import "InfiniteScrollPicker.h"
 #import "MapSelViewController.h"
 #import "StartScene.h"
+#import "GameMediator.h"
 using namespace cocos2d;
 
 void XBridge::doSth() {
@@ -60,13 +61,13 @@ void XBridge::tofront(){
     }
 }
 void XBridge::setCurMap(int cur){
-    AppController *controller = (AppController *)[UIApplication sharedApplication ].delegate;
-    [controller setCutMap:cur];
+
+    GameMediator::sharedMediator()->setCurMapID(cur);
+
    
 }
 int XBridge::getCurMap(){
-    AppController *controller = (AppController *)[UIApplication sharedApplication ].delegate;
-    return controller.cutMap;
+  return   GameMediator::sharedMediator()->getCurMapID();
 }
 void XBridge::startGameWithMap(){
     XBridge::clearmy();

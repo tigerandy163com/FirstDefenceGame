@@ -12,7 +12,7 @@
     UIWindow *window;
     RootViewController    *viewController;
 }
-@property int cutMap;
+
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) RootViewController *viewController;
 

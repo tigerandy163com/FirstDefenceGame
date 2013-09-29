@@ -63,8 +63,9 @@
 {
     NSLog(@"selected::%d",[image integerValue]);
     _cur = [image integerValue];
-//    AppController *controller = (AppController *)[UIApplication sharedApplication ].delegate;
-//    [controller setCutMap:[image integerValue]];
+    if (_cur>2) {
+        _cur=1;
+    }
 }
 -(void)btnAction:(id)sel
 {
