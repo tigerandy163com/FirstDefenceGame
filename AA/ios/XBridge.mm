@@ -33,11 +33,23 @@ void XBridge::doSth() {
 //        [controller.viewController.view addSubview:isp];
 //
         MapSelViewController *mapSelViewController = [[MapSelViewController alloc] initWithNibName:@"MapSelViewController" bundle:nil];
-        mapSelViewController.view.frame = CGRectMake(0, 0, 320, 480);
+        [mapSelViewController.view setFrame:CGRectMake(-480, 0, mapSelViewController.view.frame.size.width, mapSelViewController.view.frame.size.height)];
         [mapSelViewController.view setTag:1015];
         AppController *controller = (AppController *)sth;
         
         [controller.viewController.view addSubview:mapSelViewController.view];
+        [UIView animateWithDuration:1.0f delay:0.0 options:UIViewAnimationCurveEaseIn
+                         animations:^{
+                              [mapSelViewController.view setFrame:CGRectMake(0, 0, mapSelViewController.view.frame.size.width, mapSelViewController.view.frame.size.height)];
+                         }completion:^(BOOL finished){
+                            
+                         }];
+//                [UIView beginAnimations:nil context:nil];
+//                [UIView setAnimationDelay:1.0f];
+//                [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//                [mapSelViewController.view setFrame:CGRectMake(0, 0, mapSelViewController.view.frame.size.width, mapSelViewController.view.frame.size.height)];
+//                [UIView commitAnimations];
+//
     }
 }
 void XBridge::tobackground(){
@@ -70,16 +82,32 @@ int XBridge::getCurMap(){
   return   GameMediator::sharedMediator()->getCurMapID();
 }
 void XBridge::startGameWithMap(){
-    XBridge::clearmy();
+    XBridge::clearmy(false);
     StartScene *nowscene = (StartScene*)CCDirector::sharedDirector()->getRunningScene();
     nowscene->startGame();
 }
-void XBridge::clearmy(){
+void XBridge::clearmy(bool animate){
     id sth = [[UIApplication sharedApplication] delegate];
       AppController *controller = (AppController *)sth;
     for (UIView *view in controller.viewController.view.subviews) {
         if (view.tag==1015) {
-            [view removeFromSuperview];
+            if (animate) {
+                [UIView animateWithDuration:1.0f delay:0.0 options:UIViewAnimationCurveEaseOut
+                                 animations:^{
+                                     [view setFrame:CGRectMake(-480, 0,view.frame.size.width, view.frame.size.height)];
+                                 }completion:^(BOOL finished){
+                                     [view removeFromSuperview];
+                                 }];
+            }else
+                [view removeFromSuperview];
+//            [UIView beginAnimations:nil context:nil];
+//            [UIView setAnimationDelay:1.0f];
+//            [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//            [view setFrame:CGRectMake(-480, 0,view.frame.size.width, view.frame.size.height)];
+//             [view removeFromSuperview];
+//            [UIView commitAnimations];
+
+           
             break;
         }
     }

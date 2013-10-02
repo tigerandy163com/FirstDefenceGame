@@ -39,7 +39,7 @@ bool GameHUD::init(){
 		background = CCSprite::create("hud.png");
 		background->setAnchorPoint(CCPointZero);
 		this->addChild(background);
-       // background->setVisible(false);
+        background->setVisible(false);
 		CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_Default);
         
 		movableSprites = CCArray::create();

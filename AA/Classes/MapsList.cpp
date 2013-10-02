@@ -213,7 +213,7 @@ void MapsList::buttonCallback(cocos2d::CCNode *pNode){
         
      
         CCDirector::sharedDirector()->replaceScene(pScene);
-         XBridge::clearmy();
+        
  
     
     }else

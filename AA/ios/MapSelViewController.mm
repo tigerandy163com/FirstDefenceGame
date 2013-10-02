@@ -28,12 +28,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.view setFrame:CGRectMake(0,0, 480, 320)];
     UIImageView *background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"popback.png"]];
     background.frame = CGRectMake(0,0, 480, 320);
     
     [self.view addSubview:background];
     [background release];
     
+    [self.view setBackgroundColor:[UIColor blueColor]];
     NSMutableArray *set1 = [[NSMutableArray alloc] init];
     for (int i = 1; i <= 6; i++) {
         [set1 addObject:[UIImage imageNamed:[NSString stringWithFormat:@"map%d.png", i]]];
@@ -42,6 +44,7 @@
     InfiniteScrollPicker* isp = [[InfiniteScrollPicker alloc] initWithFrame:CGRectMake(0, 0, 480, 200)];
     [isp setItemSize:CGSizeMake(160, 160)];
     [isp setImageAry:set1];
+   
     [self.view addSubview:isp];
     [set1 release];
     
@@ -74,17 +77,19 @@
         [alert release];
 }
 -(void)backMain:(UIButton *)btn{
-    XBridge::clearmy();
+    XBridge::clearmy(true);
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (BOOL) shouldAutorotateToInterfaceOrientation:
-(UIInterfaceOrientation)toInterfaceOrientation {
-    return (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight);
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscapeRight;
 }
@@ -97,5 +102,15 @@
                XBridge::setCurMap(_cur);
         XBridge::startGameWithMap();
     }
+}
+//对画面进行单次点击时所触发的函式
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    //宣告一个UITouch的指标来存放事件触发时所撷取到的状态
+//    UITouch *touch = [[event allTouches] anyObject];
+    
+    //将XY轴的座标资讯正规化后输出
+//    touchX.text = [NSString stringWithFormat:@"%0.0f", [touch locationInView:touch.view].x];
+//    touchY.text = [NSString stringWithFormat:@"%0.0f", [touch locationInView:touch.view].y];
 }
 @end
