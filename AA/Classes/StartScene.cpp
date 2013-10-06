@@ -63,7 +63,10 @@ void StartScene::gotoTowersList(){
     this->addChild(towers);
 }
 void StartScene::gotoMapsList(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     XBridge::doSth();
+    
+#endif
 //    MapsList *towers = MapsList::create();
 //   this->addChild(towers);
 //    CLevelSelectLayer* layer = CLevelSelectLayer::create();
