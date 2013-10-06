@@ -424,7 +424,7 @@ void MachineGunTower::fireReady(){
     animation->setDelayPerUnit(0.05f);
     CCAnimate *animate=CCAnimate::create(animation);
     
-    auto callfun = CCCallFunc::create(this,callfunc_selector(MachineGunTower::fireNow));
+    CCCallFunc* callfun = CCCallFunc::create(this,callfunc_selector(MachineGunTower::fireNow));
     		CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
     		float shootAngle = ccpToAngle(shootVector);
     		float cocosAngle = 90-CC_RADIANS_TO_DEGREES(shootAngle);

@@ -148,8 +148,8 @@ void MachineProjectTile::update(float dt){
 void MachineProjectTile::moveToTargetPos(){
 	float distance = ccpDistance(this->getPosition(), this->getTargetPos());
 	float moveDur = distance / speed;
-	auto moveTo = CCMoveTo::create(moveDur, this->getTargetPos());
-	auto moveDone = CCCallFunc::create(this, callfunc_selector(MachineProjectTile::removeSelf));
+	CCMoveTo* moveTo = CCMoveTo::create(moveDur, this->getTargetPos());
+	CCCallFunc* moveDone = CCCallFunc::create(this, callfunc_selector(MachineProjectTile::removeSelf));
 	this->runAction(CCSequence::create(moveTo, moveDone, NULL));
 }
 
@@ -222,8 +222,8 @@ void IceProjectTile::update(float dt){
 void IceProjectTile::moveToTargetPos(){
 	float distance = ccpDistance(this->getPosition(), this->getTargetPos());
 	float moveDur = distance / speed;
-	auto moveTo = CCMoveTo::create(moveDur, this->getTargetPos());
-	auto moveDone = CCCallFunc::create(this, callfunc_selector(IceProjectTile::removeSelf));
+	CCMoveTo* moveTo = CCMoveTo::create(moveDur, this->getTargetPos());
+	CCCallFunc* moveDone = CCCallFunc::create(this, callfunc_selector(IceProjectTile::removeSelf));
 	this->runAction(CCSequence::create(moveTo, moveDone, NULL));
 }
 

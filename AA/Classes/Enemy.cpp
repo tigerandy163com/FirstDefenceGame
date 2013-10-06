@@ -190,7 +190,7 @@ void Enemy:: SetDemage(float val,bool isBoom){
     if (animate==NULL) {
         return;
     }
-    auto callfun = CCCallFunc::create(this,callfunc_selector(Enemy::boomNow));
+    CCCallFunc* callfun = CCCallFunc::create(this,callfunc_selector(Enemy::boomNow));
     actionSprite->runAction(CCSequence::create(animate,callfun));
 }
 CCAnimate * Enemy::BoomReady(){
@@ -267,8 +267,8 @@ void Enemy::enemyLogic(float dt){
 		gm->getGameHUDLayer()->updateResources(gift);
         stopAllActions();
 	//	unscheduleAllSelectors();
-		auto deadAction = CCBlink::create(0.3f, 3);
-		auto deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
+		CCBlink* deadAction = CCBlink::create(0.3f, 3);
+		CCCallFunc* deadDone = CCCallFunc::create(this, callfunc_selector(Enemy::removeSelf));
         
 		this->runAction(CCSequence::create(deadAction, deadDone, NULL));
         return;
@@ -288,8 +288,8 @@ CCRect Enemy::getRect(){
 
 void Enemy::attack(){
     float moveTime = 32 / speed;
-	auto moveby = CCMoveTo::create(moveTime, startPos);
-	auto moveDone = CCCallFunc::create(this, callfunc_selector(Enemy::startLogic));
+	CCMoveTo* moveby = CCMoveTo::create(moveTime, startPos);
+	CCCallFunc* moveDone = CCCallFunc::create(this, callfunc_selector(Enemy::startLogic));
 	this->runAction(CCSequence::create(moveby,moveDone,NULL));
     
 }
