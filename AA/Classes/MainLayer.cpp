@@ -158,7 +158,7 @@ void MainLayer::createTileMap(){
     dirChangeArr->retain();
     CCLog("%s",GameMediator::sharedMediator()->getCurMapName()->getCString());
     gameMap = CCTMXTiledMap::create(GameMediator::sharedMediator()->getCurMapName()->getCString());
-    
+
   //  CCSize wSize = CCDirector::sharedDirector()->getWinSize();
     this->mapsize = gameMap->getContentSize();
     mapRect = CCRectMake(0, 0, mapsize.width, mapsize.height);
@@ -170,7 +170,7 @@ void MainLayer::createTileMap(){
     _objects = gameMap->objectGroupNamed("Objects");
     
     //CCPoint tankPoint=this->objectPosition(_objects, "pl1");
-    
+   
     this->addChild(gameMap,0);
     CCSize tile = gameMap->getTileSize();
     this->tileSize = tile;
