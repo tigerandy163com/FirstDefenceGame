@@ -247,9 +247,9 @@ bool CannonProjectTile::initWithTarget(Enemy* enemy){
         enemy->IamAimed(true);
 		this->setDamage(10);
         this->setMaxDamge(30);
-		this->setSpeed(120);
+		this->setSpeed(200);
         
-		angularVelocity = 5.0f;
+		angularVelocity = 10.0f;
         _streak = CCMotionStreak::create(0.4, 5, 5, ccYELLOW, "rocket.png");
         _streak->setFastMode(true);
         MainLayer* gm = GameMediator::sharedMediator()->getGameLayer();
@@ -288,7 +288,7 @@ void CannonProjectTile::update(float dt){
 	angle = to360Angle(angle);
     
 	float myAngle = to360Angle(this->getRotation());
-	float tempAngle;
+	float tempAngle = myAngle;
 	if(myAngle < angle){
 		tempAngle = angularVelocity;
 	}else if(myAngle >angle){

@@ -629,13 +629,17 @@ bool CannonTower::initWithFileAndRange(const char *pszFilename, int range){
 
 void CannonTower::fire(float dt){
 	if(this->getTarget() != NULL){
+        CCPoint shootVector = ccpSub(this->getTarget()->getPosition(), this->getPosition());
+		float shootAngle = ccpToAngle(shootVector);
+		float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
+
           CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("tower3.wav");
 		GameMediator* m = GameMediator::sharedMediator();
         
 		CannonProjectTile* ProjectTile = CannonProjectTile::create(this->getTarget());
         CCLOG("target pos is:%f,%f",this->getTarget()->getPosition().x,this->getTarget()->getPosition().y);
 		ProjectTile->setPosition(this->getPosition());
-		ProjectTile->setRotation(this->getRotation());
+		ProjectTile->setRotation(cocosAngle);
         ProjectTile->setDamage(_damge);
         ProjectTile->setMaxDamge(_maxDamge);
 		m->getGameLayer()->addChild(ProjectTile,1);
@@ -763,13 +767,16 @@ void MutilTower::fire(float dt){
         CCObject *obj;
         CCARRAY_FOREACH(this->getenemys(), obj){
             Enemy* target = (Enemy*)obj;
+            CCPoint shootVector = ccpSub(target->getPosition(), this->getPosition());
+            float shootAngle = ccpToAngle(shootVector);
+            float cocosAngle = CC_RADIANS_TO_DEGREES(-1 * shootAngle);
             CannonProjectTile* ProjectTile = CannonProjectTile::create(target);
-            ProjectTile->setSpeed(300);
+            ProjectTile->setSpeed(400);
             ProjectTile->setDamage(_damge);
             ProjectTile->setMaxDamge(_maxDamge);
             ProjectTile->setProbability(0.25);
             ProjectTile->setPosition(this->getPosition());
-            ProjectTile->setRotation(this->getRotation());
+            ProjectTile->setRotation(cocosAngle);
             m->getGameLayer()->addChild(ProjectTile);
         }
 
