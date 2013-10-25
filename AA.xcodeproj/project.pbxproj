@@ -355,7 +355,6 @@
 		C6E366E517D466440021F557 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6E366E417D466440021F557 /* AppDelegate.cpp */; };
 		C6E366E817D466440021F557 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6E366E717D466440021F557 /* HelloWorldScene.cpp */; };
 		C6E3671617D4684E0021F557 /* 003-Attack01.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E366EE17D4684D0021F557 /* 003-Attack01.png */; };
-		C6E3671717D4684E0021F557 /* action.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E366EF17D4684D0021F557 /* action.png */; };
 		C6E3671817D4684E0021F557 /* aim.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E366F017D4684D0021F557 /* aim.png */; };
 		C6E3671917D4684E0021F557 /* attac.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E366F117D4684D0021F557 /* attac.png */; };
 		C6E3671A17D4684E0021F557 /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E366F217D4684D0021F557 /* bullet1.png */; };
@@ -388,8 +387,6 @@
 		C6E3673717D4684E0021F557 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3670F17D4684E0021F557 /* stars.png */; };
 		C6E3673A17D4684E0021F557 /* TileMap1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C6E3671217D4684E0021F557 /* TileMap1.tmx */; };
 		C6E3673B17D4684E0021F557 /* tmw_desert_spacing.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3671317D4684E0021F557 /* tmw_desert_spacing.png */; };
-		C6E3673C17D4684E0021F557 /* tower.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3671417D4684E0021F557 /* tower.png */; };
-		C6E3673D17D4684E0021F557 /* tower1.png in Resources */ = {isa = PBXBuildFile; fileRef = C6E3671517D4684E0021F557 /* tower1.png */; };
 		C6E3675817D4685F0021F557 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6E3673E17D4685F0021F557 /* Enemy.cpp */; };
 		C6E3675917D4685F0021F557 /* GameHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6E3674017D4685F0021F557 /* GameHUD.cpp */; };
 		C6E3675A17D4685F0021F557 /* GameMediator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6E3674217D4685F0021F557 /* GameMediator.cpp */; };
@@ -1090,7 +1087,6 @@
 		C6E366E617D466440021F557 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		C6E366E717D466440021F557 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
 		C6E366EE17D4684D0021F557 /* 003-Attack01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "003-Attack01.png"; path = "Resources/003-Attack01.png"; sourceTree = "<group>"; };
-		C6E366EF17D4684D0021F557 /* action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = action.png; path = Resources/action.png; sourceTree = "<group>"; };
 		C6E366F017D4684D0021F557 /* aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aim.png; path = Resources/aim.png; sourceTree = "<group>"; };
 		C6E366F117D4684D0021F557 /* attac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = attac.png; path = Resources/attac.png; sourceTree = "<group>"; };
 		C6E366F217D4684D0021F557 /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet1.png; path = Resources/bullet1.png; sourceTree = "<group>"; };
@@ -1123,8 +1119,6 @@
 		C6E3670F17D4684E0021F557 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stars.png; path = Resources/stars.png; sourceTree = "<group>"; };
 		C6E3671217D4684E0021F557 /* TileMap1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TileMap1.tmx; path = Resources/TileMap1.tmx; sourceTree = "<group>"; };
 		C6E3671317D4684E0021F557 /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmw_desert_spacing.png; path = Resources/tmw_desert_spacing.png; sourceTree = "<group>"; };
-		C6E3671417D4684E0021F557 /* tower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tower.png; path = Resources/tower.png; sourceTree = "<group>"; };
-		C6E3671517D4684E0021F557 /* tower1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tower1.png; path = Resources/tower1.png; sourceTree = "<group>"; };
 		C6E3673E17D4685F0021F557 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Enemy.cpp; sourceTree = "<group>"; };
 		C6E3673F17D4685F0021F557 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Enemy.h; sourceTree = "<group>"; };
 		C6E3674017D4685F0021F557 /* GameHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameHUD.cpp; path = Classes/GameHUD.cpp; sourceTree = "<group>"; };
@@ -1343,7 +1337,6 @@
 				C6E3676617D4859F0021F557 /* button.png */,
 				C6E3676717D4859F0021F557 /* popback.png */,
 				C6E366EE17D4684D0021F557 /* 003-Attack01.png */,
-				C6E366EF17D4684D0021F557 /* action.png */,
 				C6E366F017D4684D0021F557 /* aim.png */,
 				C6E366F117D4684D0021F557 /* attac.png */,
 				C6E366F217D4684D0021F557 /* bullet1.png */,
@@ -1375,8 +1368,6 @@
 				C6E3670E17D4684E0021F557 /* rocket.png */,
 				C6E3670F17D4684E0021F557 /* stars.png */,
 				C6E3671317D4684E0021F557 /* tmw_desert_spacing.png */,
-				C6E3671417D4684E0021F557 /* tower.png */,
-				C6E3671517D4684E0021F557 /* tower1.png */,
 				C6E3635317D466350021F557 /* CloseNormal.png */,
 				C6E3635517D466350021F557 /* CloseSelected.png */,
 				C6E3635717D466350021F557 /* Default.png */,
@@ -2634,7 +2625,6 @@
 				C6E3640717D466380021F557 /* ChangeLog in Resources */,
 				C6E3657B17D466400021F557 /* project.pbxproj in Resources */,
 				C6E3671617D4684E0021F557 /* 003-Attack01.png in Resources */,
-				C6E3671717D4684E0021F557 /* action.png in Resources */,
 				C6E3671817D4684E0021F557 /* aim.png in Resources */,
 				C6E3671917D4684E0021F557 /* attac.png in Resources */,
 				C6E3671A17D4684E0021F557 /* bullet1.png in Resources */,
@@ -2667,8 +2657,6 @@
 				C6E3673717D4684E0021F557 /* stars.png in Resources */,
 				C6E3673A17D4684E0021F557 /* TileMap1.tmx in Resources */,
 				C6E3673B17D4684E0021F557 /* tmw_desert_spacing.png in Resources */,
-				C6E3673C17D4684E0021F557 /* tower.png in Resources */,
-				C6E3673D17D4684E0021F557 /* tower1.png in Resources */,
 				C6E3676817D4859F0021F557 /* button_hl.png in Resources */,
 				C6E3676917D4859F0021F557 /* button.png in Resources */,
 				C6E3676A17D4859F0021F557 /* popback.png in Resources */,
