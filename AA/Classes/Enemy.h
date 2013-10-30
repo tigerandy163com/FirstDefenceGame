@@ -14,7 +14,7 @@
 class MainLayer;
 
 
-class Enemy : public cocos2d::CCNode {
+class Enemy : public cocos2d::CCNode,public cocos2d::CCTouchDelegate {
 public:
 	~Enemy();
 	bool initWithMem(const char* filename, int hp, float speed,int gift,cocos2d::CCPoint pos);
@@ -25,6 +25,7 @@ public:
     void startLogic();
 	virtual cocos2d::CCRect getRect();
 	virtual void changeSpeed(float time = 1.0f);
+    void attackOnlyOne();
     int totalHP;
     HeroDirection curDir;
     char *imageName;
@@ -65,7 +66,9 @@ protected:
     
 	void removeSelf();
 	void enemyLogic(float dt);
-    
+    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+	void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+	void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     void StartAnimationFromStep(TileData *tile);
 	cocos2d::CCArray* spOpenSteps;
 	cocos2d::CCArray* spClosedSteps;

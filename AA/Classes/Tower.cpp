@@ -305,6 +305,7 @@ bool Tower::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
     
 	return false;
 }
+
 void MachineGunTower::towerLogic(float dt){
     Tower::towerLogic(dt);
 //    	if(this->getTarget() != NULL){

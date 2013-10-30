@@ -26,6 +26,7 @@ public:
     CC_SYNTHESIZE(int, _level, Level);
 	CC_SYNTHESIZE_RETAIN(Enemy*, _target, Target);
     virtual void towerLogic(float dt);
+
 protected:
     cocos2d::CCSprite* actionSprite;
 	cocos2d::CCSprite* sprite;
@@ -39,6 +40,7 @@ protected:
     int _maxDamge;
     float _interval;
     bool moneyEnough;
+   
 	virtual Enemy* getClosestTarget();
     virtual void fire(){
         

@@ -9,7 +9,7 @@
 #include "Enemy.h"
 #include "GameMediator.h"
 #include "MainLayer.h"
-
+#include "Tower.h"
 using namespace cocos2d;
 
 Enemy::~Enemy(){
@@ -61,7 +61,7 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,int gift,CCPoi
         sprite->runAction(forever);
         
         animFrames->release();
-
+       
 		actionSprite = CCSprite::createWithSpriteFrame(frame0);
 		actionSprite->retain();
 		this->setHP(hp);
@@ -69,6 +69,7 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,int gift,CCPoi
         this->setGift(gift);
         this->totalHP = hp;
         isAimed = false;
+        aim = nil;
 		int x, y;
 		x =-20;// pos.x/2;
 		y=  pos.y+10 ;
@@ -114,8 +115,8 @@ bool Enemy::initWithMem(const char* filename, int hp, float speed,int gift,CCPoi
         redBar->setScale(0.2);
         this->addChild(redBar,1);
         scheduleOnce(schedule_selector(Enemy::attack), 0.5f);
-
-        
+       
+        CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 1, true);
 		bRet = true;
 	} while (0);
 	return bRet;
@@ -152,12 +153,23 @@ CCAnimation* Enemy::createAnimationByDirection(HeroDirection direction){
 }
 void Enemy::IamAimed(bool aimed){
     if (aimed&&!isAimed) {
-        aim = CCSprite::create("aim.png");
-        
-        aim->setScale(0.4);
-        aim->setPosition(CCPointZero);
-        addChild(aim);
+        if (!aim) {
+            aim = CCSprite::create("aim.png");
+            aim->setScale(0.4);
+            aim->setPosition(CCPointZero);
+            addChild(aim);
+            CCLOG("i am aimed");
+        }
+     
         isAimed = true;
+    }else if(!aimed&&isAimed)
+    {
+        if(aim){
+        aim->removeFromParent();
+            aim = nil;
+            CCLOG("dont aimed");
+        }
+        isAimed = false;
     }
 
 }
@@ -427,7 +439,42 @@ void Enemy::removeSelf(){
 	GameMediator* gm = GameMediator::sharedMediator();
 	gm->getTargets()->removeObject(this);
 }
+void Enemy:: attackOnlyOne(){
+    GameMediator* gm = GameMediator::sharedMediator();
+    CCArray *enemyarr = gm->getTargets();
+    CCObject *obj = nil;
+    CCARRAY_FOREACH(enemyarr, obj){
+        Enemy *theenemy = (Enemy*)obj;
+        if (theenemy==this) {
+            theenemy->IamAimed(true);
 
+        }else
+        theenemy->IamAimed(false);
+    }
+    CCArray *towerarr = gm->getTowers();
+    CCARRAY_FOREACH(towerarr, obj){
+         Tower *thetower = (Tower *)obj;
+        thetower->pauseSchedulerAndActions();
+        thetower->setTarget(this);
+        thetower->resumeSchedulerAndActions();
+    }
+}
+bool Enemy::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
+	CCPoint touchLocation = this->convertTouchToNodeSpace(pTouch);
+    if(sprite->boundingBox().containsPoint(touchLocation)){
+    this->attackOnlyOne();
+    return true;
+    }
+    return false;
+}
+void Enemy::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
+	CCPoint touchLocation = this->convertTouchToNodeSpace(pTouch);
+}
+void Enemy::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent){
+	CCPoint touchLocation = this->convertTouchToNodeSpace(pTouch);
+    //if(sprite->boundingBox().containsPoint(touchLocation))
+    //this->IamAimed(false);
+}
 FastRedEnemy* FastRedEnemy::create(const char* filename, int hp, float speed,int gift,CCPoint pos){
 	FastRedEnemy* fre = new FastRedEnemy;
 	if(fre && fre->initWithMem(filename, hp, speed, gift,pos)){
